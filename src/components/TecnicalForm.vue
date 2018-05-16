@@ -147,7 +147,7 @@ export default {
                         max: 255,
                         rows: 4,
                         required: true
-                    }, {                        
+                    }, {
                         type: "input",
                         inputType: "date",
                         label: "Data da Informação da Proposta:",
