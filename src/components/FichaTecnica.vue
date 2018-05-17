@@ -32,7 +32,19 @@ export default {
       SuperCategoria:'',
       Categoria:'',
       SubCategoria:'',
-      Localizacao:'',
+      Localizacao:'', 
+      Proprietario:'',
+      EnderecoPostalDoProprietario:'',
+      EndereçoElectronicoDoProprietario:'',
+      ContactosTelefónicosDoProprietario:'',
+      Dimentcao:'',
+      OutrasDimensões:'',
+      DonoDaObra:'',
+      EnderecoPostalDonoDaObra:'',
+      ContactosTelefonicosDonoDaObra:'',
+      Mecenas:'',
+      EndereçoPostalMecenas:'',
+      ContactosTelefonicosMecenas:'',
       status: true
     },
 
@@ -91,7 +103,7 @@ export default {
         inputType: 'date',
         label: 'Data de entrada do CEARC: ',
         model: 'DataDeEntradaDoCEARC',
-        placeholder: '',
+
         featured: true,
         required: false
       },{
@@ -99,7 +111,6 @@ export default {
         inputType: 'file',
         label: 'Registo Fotográfico Identificativo do Objecto: ',
         model: 'FotoObjeto',
-        placeholder: '',
         featured: true,
         required: true
       },{
@@ -117,6 +128,7 @@ export default {
         inputType: 'text',
         label: 'Super-Categoria',
         model: 'SuperCategoria',
+        placeholder: 'Insira a super-categoria do objeto',
         featured: true,
         required: true
       },{
@@ -124,6 +136,7 @@ export default {
         inputType: 'text',
         label: 'Categoria',
         model: 'Categoria',
+        placeholder: 'Insira a categoria do objeto',
         featured: true,
         required: true
       },{
@@ -131,6 +144,7 @@ export default {
         inputType: 'text',
         label: 'SubCategoria',
         model: 'SubCategoria',
+        placeholder: 'Insira a Sub-categoria do objeto',
         featured: true,
         required: true
       },{
@@ -140,8 +154,102 @@ export default {
         model: 'Localizacao',
         featured: true,
         required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Proprietário',
+        model: 'Proprietario',
+        placeholder: 'Insira o nome do proprietário',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Postal do Proprietário',
+        model: 'EnderecoPostalDoProprietario',
+        placeholder: 'Insira o endereço postal do proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Electronico Proprietário',
+        model: 'EndereçoElectronicoDoProprietario',
+        placeholder: 'Insira o endereço electronico do proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónico Proprietários',
+        model: 'ContactosTelefónicosDoProprietario',
+        placeholder: 'Insira o contacto telefónico proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Dimenção',
+        model: 'Dimencao',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Outras Dimensões',
+        model: 'OutrasDimensões',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Dono da Obra',
+        model: 'DonoDaObra',
+        placeholder: 'Insira o nome do dono da obra',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereco Postal do Dono da Obra',
+        model: 'EnderecoPostalDonoDaObra',
+         placeholder: 'Insira o endereço postal do dono da obra',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónicos do Dono da Obra',
+        model: 'ContactosTelefonicosDonoDaObra',
+        placeholder: 'Insira o contacto telefónico do dono da obra',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Mecenas',
+        model: 'Mecenas',
+        featured: true,
+        required: false
+      }, {
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Postal Mecenas',
+        model: 'EndereçoPostalMecenas',
+         placeholder: 'Insira o endereço postal do Mecenas',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónicos Mecenas',
+        model: 'ContactosTelefonicosMecenas',
+        placeholder: 'Insira o contacto telefónico do Mecenas',
+        featured: true,
+        required: false
       },
-     
+      
+   
       ]
     },
 
