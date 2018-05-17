@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    HEADER
-    <h1>{{ auth.logged }}</h1>
+    <h4>Brandi</h4>
     <button v-on:click="logout" v-if="auth.logged">Logout</button>
   </div>
 </template>
