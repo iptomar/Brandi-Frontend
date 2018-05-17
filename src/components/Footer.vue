@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    FOOTER
+    PSI 2018
   </div>
 </template>
 
