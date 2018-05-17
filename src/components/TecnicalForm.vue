@@ -13,8 +13,10 @@
       <b-container class="container">
         <b-container class="panel panel-default">
           <b-container class="panel-heading" > Intervenções anteriores </b-container>
-            <b-container class="panel-body">
-                <vue-form-generator :schema='schema61' :options='formOptions'></vue-form-generator>
+            <b-container class="panel-heading-subtitulo" > Intervenções ao longo da história do objeto, anteriores à intervenção no Lab.CR-Madeiras </b-container>
+                <b-container class="panel-body">
+                    <vue-form-generator :schema='schema61' :options='formOptions'></vue-form-generator>
+                </b-container>
             </b-container>
         </b-container>
       </b-container>
@@ -358,13 +360,23 @@ fieldset {
 	color: #333;
 	background-color: #f5f5f5;
 	border-color: #ddd;
+    font-weight: bold;
 
 	padding: 10px 15px;
 	border-bottom: 1px solid transparent;
 	border-top-left-radius: 3px;
 	border-top-right-radius: 3px;        
 }
-
+.panel-heading-subtitulo {
+	color: #333;
+	background-color: #f5f5f5;
+	border-color: #ddd;
+    font-weight: normal;
+	padding: 5px 10px;
+	border-bottom: 1px transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;        
+}
 .panel-body {
 	padding: 15px;
 }				
