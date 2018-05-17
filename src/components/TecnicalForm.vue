@@ -114,7 +114,7 @@ export default {
 
                     }]
 
-                }, {
+                    }, {
 
                     //pagina 7
 
@@ -127,6 +127,47 @@ export default {
                             "Conservação",
                             "Restauro"
                         ]
+                    }, {
+                      label: 'Página 5'
+                    }, {
+                      type: 'textArea',
+                      label: 'Deterioração Física',
+                      inputType: 'text',
+                      model: 'estruturafisica',
+                      placeholder: 'Estrutura'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'superficiefisica',
+                      placeholder: 'Superfície'
+                    },{
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'elementosfisica',
+                      placeholder: 'Elementos Acessórios'
+                    }, {
+                      type: 'textArea',
+                      label: 'Deterioração Biológica ',
+                      inputType: 'text',
+                      model: 'estruturabiologica',
+                      placeholder: 'Estrutura'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'superficiebiologica',
+                      placeholder: 'Superfície'
+                    },{
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'elementosbiologica',
+                      placeholder: 'Elementos Acessórios'
+                    }, {
+                      type: 'textArea',
+                      label: 'Conclusão',
+                      inputType: 'text',
+                      model: 'conclusaoestado'
+                    }, {
+                      label: 'Página 7'
                     }, {
                         type: "textArea",
                         label: "Proposta metodológica de intervenção",
@@ -202,6 +243,63 @@ export default {
                         maxlength: 25,
                         required: true,
                         placeholder: "(IPT)(Client)"
+                    }, {
+                      label: 'Página 9'
+                    }, {
+                      type: 'input',
+                      required: true,
+                      label: 'Ref Arquivo',
+                      inputType: 'text',
+                      model: 'refarquivo',
+                      placeholder: 'Referencia'
+                    }, {
+                      type: 'textArea',
+                      label: 'Originais Fotográficos',
+                      inputType: 'text',
+                      model: 'originaistipo',
+                      placeholder: 'Tipo'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'originaisref',
+                      placeholder: 'Referências'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'originaisautor',
+                      placeholder: 'Autor'
+                    }, {
+                      type: 'textArea',
+                      label: 'Documentação Gráfica',
+                      inputType: 'text',
+                      model: 'doctipo',
+                      placeholder: 'Tipo'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'docref',
+                      placeholder: 'Referências'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'docautor',
+                      placeholder: 'Autor'
+                    }, {
+                      type: 'textArea',
+                      label: 'Exames e Análises',
+                      inputType: 'text',
+                      model: 'exametipo',
+                      placeholder: 'Tipo'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'exameref',
+                      placeholder: 'Referências'
+                    }, {
+                      type: 'textArea',
+                      inputType: 'text',
+                      model: 'exameautor',
+                      placeholder: 'Autor'
                     }]
                 }]
             },
