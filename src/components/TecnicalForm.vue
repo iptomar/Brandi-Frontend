@@ -366,7 +366,16 @@ fieldset {
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
 }
-
+.panel-heading-subtitulo {
+	color: #333;
+	background-color: #f5f5f5;
+	border-color: #ddd;
+    font-weight: normal;
+	padding: 5px 10px;
+	border-bottom: 1px transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
 .panel-body {
     padding: 15px;
 }
