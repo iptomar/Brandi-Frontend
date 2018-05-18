@@ -3,7 +3,36 @@
     <b-row class="text-center">
         <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
     </b-row>
+
+    <p>pag.7</p>
+
+    <b-container class="container">
+        <b-container class="panel-default">CONDIÇÕES AMBIENTAIS DO LOCAL DE INSERÇÃO DO BEM CULTURAL</b-container>
+        <vue-form-generator :schema='pagina3_Desc' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container>Ciclos das Estações Climatéricas Anuais | Frio /Húmido | Quente /Seco:</b-container>
+        <vue-form-generator :schema='pagina3_Cic' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container class="panel-default">Radiação | Iluminação</b-container>
+         <vue-form-generator :schema='pagina3_Radi_Natural' :options='formOptions'></vue-form-generator>
+          <vue-form-generator :schema='pagina3_Radi_Artificial' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container class="panel-default">Poluição</b-container>
+         <vue-form-generator :schema='pagina3_Pol' :options='formOptions'></vue-form-generator>
+    </b-container>
+    
+    <b-container class="container">
+        <b-container class="panel-default">Observações | Conclusões</b-container>
+         <vue-form-generator :schema='pagina3_Con' :options='formOptions'></vue-form-generator>
+    </b-container>
 </b-container>
+
 </template>
 
 <script>
@@ -79,8 +108,10 @@ export default {
 
                     }]
 
-                }, {
+                }, 
 
+                
+                {
                     //pagina 7
 
                     fields: [{
@@ -171,6 +202,185 @@ export default {
                 }]
             },
 
+            pagina3_Cic: {
+                fields:[{
+                    type:"textArea",
+                    label:"Temperatura",
+                    model:"Temperatura",
+                    hint:"Max 10 characters",
+                    placeholder:"Temperatura(Valores Médios em ºC)",
+                    max:10,
+                    rows:1,
+                    required:true
+                },{
+                    type:"textArea",
+                    label:"Humidade Relativa",
+                    model:"Humidade Relativa",
+                    hint:"Max 10 characters",
+                    placeholder:"Humidade Relativa(Valores Médios em %)",
+                    max:10,
+                    rows:1,
+                    required:true
+                },{
+                    type:"textArea",
+                    label:"Período do Ano",
+                    model:"Período do Ano",
+                    hint:"Max 10 characters",
+                    placeholder:"Período do Ano(Início / Fim – em meses)",
+                    max:10,
+                    rows:1,
+                    required:true
+                }]
+            },
+             pagina3_Radi_Natural: {
+                fields:[{
+                    type: "textArea",
+                    label:"Tipo:",
+                    model:"Tipo:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor de Iluminância (lux):",
+                    model:"Valor de Iluminância (lux):",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:20,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor de U.V Medidos:",
+                    model:"Valor de U.V Medidos:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor Real de U.V:",
+                    model:"Valor Real de U.V:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"UV=(0.3(Medida UV) x 10000)/(50 (Lux)) = 60uW/Lúmen",
+                    model:"Valor Real de U.V:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                }]
+            }, pagina3_Radi_Artificial: {
+                fields:[{
+                    type: "textArea",
+                    label:"Tipo:",
+                    model:"Tipo:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor de Iluminância (lux):",
+                    model:"Valor de Iluminância (lux):",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:20,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor de U.V Medidos:",
+                    model:"Valor de U.V Medidos:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"Valor Real de U.V:",
+                    model:"Valor Real de U.V:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                },{
+                    type: "textArea",
+                    label:"UV=(0.3(Medida UV) x 10000)/(50 (Lux)) = 60uW/Lúmen",
+                    model:"Valor Real de U.V:",
+                    hint:"Max 50 characters",
+                    placeholder:"Tipo:",
+                    max:50,
+                    rows:1,
+                    required:true
+                }]
+            },
+            pagina3_Desc: {
+                fields:[{
+                    type:"textArea",
+                    label:"Descrição",
+                    model:"Descricao",
+                    hint:"Max 255 characters",
+                    placeholder: "Descrição:",
+                    max:255,
+                    rows:4,
+                    required:true
+                }]
+            }, 
+
+            pagina3_Pol: {
+                fields:[{   
+                type:"textArea",
+                label:"Agentes_Poluidores",
+                model:"Agentes_Poluidores",
+                hint:"Max 255 characters",
+                placeholder: "Agentes Poluidores:",
+                max:255,
+                rows:4,
+                required:true
+                },{
+                    type:"textArea",
+                    label:"Fontes | Origem",
+                    model:"Fontes_Origem",
+                    hint:"Max 255 characters",
+                    placeholder: "Fontes | Origem",
+                    max:255,
+                    rows:4,
+                    required:true
+                },{
+                    type:"textArea",
+                    label:"Resultados:",
+                    model:"Resultados",
+                    hint:"Max 255 characters",
+                    placeholder: "Resultados:",
+                    max:255,
+                    rows:4,
+                    required:true   
+                }]
+            }, 
+
+            pagina3_Con: {
+                fields:[{
+                type:"textArea",
+                hint:"Max 255 characters",
+                //placeholder: "Resultados:",
+                max:255,
+                rows:4,
+                required:true  
+                }]
+            },
 
             formOptions: {
                 validateAfterLoad: true,
