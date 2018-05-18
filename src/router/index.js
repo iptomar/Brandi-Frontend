@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import Login from '@/components/Login'
 import TecnicalForm from '@/components/TecnicalForm'
 import EliminarCliente from '@/components/EliminarCliente'
+import EditarCliente from '@/components/EditarCliente'
 
 Vue.use(Router)
 
@@ -23,6 +24,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/editarCliente',
+      name: 'EditarCliente',
+      component: EditarCliente
     },
     {
       path: '/eliminarcliente',
