@@ -5,6 +5,7 @@ import Login from '@/components/Login'
 import TecnicalForm from '@/components/TecnicalForm'
 import EliminarCliente from '@/components/EliminarCliente'
 import EditarCliente from '@/components/EditarCliente'
+import AddClient from '@/components/AddClient'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/eliminarcliente',
       name: 'EliminarCliente',
       component: EliminarCliente
+    },
+    {
+      path: '/addClient',
+      name: 'AddClient',
+      component: AddClient
     },
     {
       path: '/form',
