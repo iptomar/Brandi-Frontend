@@ -6,6 +6,7 @@ import TecnicalForm from '@/components/TecnicalForm'
 import EliminarCliente from '@/components/EliminarCliente'
 import EditarCliente from '@/components/EditarCliente'
 import AddClient from '@/components/AddClient'
+import AdicionarObjecto from '@/components/AdicionarObjecto'
 
 Vue.use(Router)
 
@@ -45,6 +46,11 @@ export default new Router({
       path: '/form',
       name: 'TecnicalForm',
       component: TecnicalForm
+    },
+    {
+      path: '/adicionarobjectos',
+      name: 'AdicionarObjecto',
+      component: AdicionarObjecto
     }
   ]
 })
