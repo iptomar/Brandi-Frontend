@@ -51,6 +51,11 @@ export default new Router({
       path: '/adicionarobjectos',
       name: 'AdicionarObjecto',
       component: AdicionarObjecto
+    },
+	{
+      path: '/eliminarobjeto',
+      name: 'EliminarObjeto',
+      component: EliminarObjeto
     }
   ]
 })
