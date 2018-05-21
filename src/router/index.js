@@ -5,8 +5,9 @@ import Login from '@/components/Login'
 import TecnicalForm from '@/components/TecnicalForm'
 import EliminarCliente from '@/components/EliminarCliente'
 import EditarCliente from '@/components/EditarCliente'
-import AddClient from '@/components/AddClient'
+import AdicionarCliente from '@/components/AdicionarCliente'
 import AdicionarObjecto from '@/components/AdicionarObjecto'
+import EliminarObjeto from '@/components/EliminarObjeto'
 
 Vue.use(Router)
 
@@ -38,9 +39,9 @@ export default new Router({
       component: EliminarCliente
     },
     {
-      path: '/addClient',
-      name: 'AddClient',
-      component: AddClient
+      path: '/adicionarcliente',
+      name: 'AdicionarCliente',
+      component: AdicionarCliente
     },
     {
       path: '/form',
@@ -52,7 +53,7 @@ export default new Router({
       name: 'AdicionarObjecto',
       component: AdicionarObjecto
     },
-	{
+    {
       path: '/eliminarobjeto',
       name: 'EliminarObjeto',
       component: EliminarObjeto
