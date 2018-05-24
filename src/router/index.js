@@ -11,6 +11,7 @@ import EliminarObjeto from '@/components/EliminarObjeto'
 import ListarPedidos from '@/components/ListarPedidos'
 import ListarDeslocacoes from '@/components/ListarDeslocacoes'
 import ListarClientes from '@/components/ListarClientes'
+import listarEventos from '@/components/listarEventos'
 
 Vue.use(Router)
 
@@ -75,6 +76,11 @@ export default new Router({
       path: '/listarclientes',
       name: 'ListarClientes',
       component: ListarClientes
+    },
+    {
+      path: '/eventos',
+      name: 'listarEventos',
+      component: listarEventos
     }
   ]
 })
