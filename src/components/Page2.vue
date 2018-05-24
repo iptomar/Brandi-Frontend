@@ -29,7 +29,7 @@ export default {
       InscricaoConstr:'',
       ClassPatrimonial:'',
       Estilo:'',
-      Epoca: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação']
+      Epoca: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação'],
       Qualidade: ['Excelente','Muito Boa','Boa','Regular','Fraca'],
       Descricao: '',
       Analogia: '',
