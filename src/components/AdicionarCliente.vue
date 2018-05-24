@@ -28,7 +28,6 @@ export default {
     return {
       auth: store.auth,
       error: [],
-
       model: {
         id: "",
         nome: "",
@@ -46,7 +45,6 @@ export default {
             model: "nome",
             type: "input",
             inputType: "text",
-            featured: true,
             required: true,
             placeholder: "Insira o nome completo do cliente"
           },
@@ -55,7 +53,6 @@ export default {
             model: "nif",
             type: "input",
             inputType: "text",
-            featured: true,
             required: true,
             placeholder: "Insira o Número de Identificação Fiscal do cliente"
           },
@@ -64,7 +61,6 @@ export default {
             model: "morada",
             type: "input",
             inputType: "text",
-            featured: true,
             required: true,
             placeholder: "Insira a morada do cliente"
           },
@@ -73,7 +69,6 @@ export default {
             model: "telemovel",
             type: "input",
             inputType: "text",
-            featured: true,
             required: true,
             placeholder: "Insira o número de telemóvel do cliente"
           },
@@ -82,7 +77,6 @@ export default {
             model: "email",
             type: "input",
             inputType: "email",
-            featured: true,
             required: true,
             placeholder: "Insira do endereço de e-mail do cliente"
           }
@@ -97,23 +91,25 @@ export default {
   },
 
   methods: {
-    
     // adicionar um cliente
     guardar() {
-      axios.get("/adicionarcliente", {
+      axios.post("/adicionarcliente", {},
+        {
           params: {
             nome: this.model.nome,
             nif: this.model.nif,
             morada: this.model.morada,
             telemovel: this.model.telemovel,
             email: this.model.email
-          }})
-        .then(function(response) {
-          console.log(response);
-        })
-        .catch(function(error) {
-          console.log(error);
-        })
+          }
+        }
+      )
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      })
     }
   }
 };
