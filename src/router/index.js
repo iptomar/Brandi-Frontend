@@ -8,10 +8,12 @@ import EditarCliente from '@/components/EditarCliente'
 import AdicionarCliente from '@/components/AdicionarCliente'
 import AdicionarObjecto from '@/components/AdicionarObjecto'
 import EliminarObjeto from '@/components/EliminarObjeto'
+import EditarObjeto from '@/components/EditarObjeto'
 import ListarPedidos from '@/components/ListarPedidos'
 import ListarDeslocacoes from '@/components/ListarDeslocacoes'
 import ListarClientes from '@/components/ListarClientes'
 import listarEventos from '@/components/listarEventos'
+
 
 Vue.use(Router)
 
@@ -61,6 +63,11 @@ export default new Router({
       path: '/eliminarobjeto',
       name: 'EliminarObjeto',
       component: EliminarObjeto
+    },
+	{
+      path: '/editarobjeto',
+      name: 'EditarObjeto',
+      component: EditarObjeto
     },
     {
       path: '/listarpedidos',
