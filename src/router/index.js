@@ -3,17 +3,37 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import TecnicalForm from '@/components/TecnicalForm'
-import EliminarCliente from '@/components/EliminarCliente'
-import EditarCliente from '@/components/EditarCliente'
-import AdicionarCliente from '@/components/AdicionarCliente'
-import AdicionarObjecto from '@/components/AdicionarObjecto'
-import EliminarObjeto from '@/components/EliminarObjeto'
-import EditarObjeto from '@/components/EditarObjeto'
-import ListarPedidos from '@/components/ListarPedidos'
-import ListarDeslocacoes from '@/components/ListarDeslocacoes'
+
+// -- LISTAGENS --
 import ListarClientes from '@/components/ListarClientes'
-import listarEventos from '@/components/listarEventos'
-import EditarAnalises from '@/components/EditarAnalises'
+import ListarPedidos from '@/components/ListarPedidos'
+import ListarAnalises from '@/components/ListarAnalises'
+import ListarEventos from '@/components/ListarEventos'
+// import ListarObjetos from '@/components/ListarObjetos'
+// import ListarPropostas from '@/components/ListarPropostas'
+
+// -- ADIÇÕES --
+import AdicionarCliente from '@/components/AdicionarCliente'
+import AdicionarObjeto from '@/components/AdicionarObjeto'
+// import AdicionarPedido from '@/components/AdicionarPedido'
+// import AdicionarAnalise from '@/components/AdicionarAnalise'
+// import AdicionarProposta from '@/components/AdicionarProposta'
+// import AdicionarEvento from '@/components/AdicionarEvento'
+
+// -- EDIÇÕES ---
+import EditarCliente from '@/components/EditarCliente'
+import EditarObjeto from '@/components/EditarObjeto'
+import EditarAnalise from '@/components/EditarAnalise'
+// import EditarPedido from '@/components/EditarPedido'
+// import EditarProposta from '@/components/EditarProposta'
+// import EditarEvento from '@/components/EditarProposta'
+
+// -- ELIMINAÇÕES --
+import EliminarCliente from '@/components/EliminarCliente'
+import EliminarObjeto from '@/components/EliminarObjeto'
+import EliminarAnalise from '@/components/EliminarAnalise'
+// import EliminarPedido from '@/components/EliminarPedido'
+// import EliminarProposta from '@/components/EliminarProposta'
 
 Vue.use(Router)
 
@@ -35,7 +55,22 @@ export default new Router({
       component: Login
     },
     {
-      path: '/editarCliente',
+      path: '/form',
+      name: 'TecnicalForm',
+      component: TecnicalForm
+    },
+    {
+      path: '/listarclientes',
+      name: 'ListarClientes',
+      component: ListarClientes
+    },
+    {
+      path: '/adicionarcliente',
+      name: 'AdicionarCliente',
+      component: AdicionarCliente
+    },
+    {
+      path: '/editarcliente',
       name: 'EditarCliente',
       component: EditarCliente
     },
@@ -45,29 +80,19 @@ export default new Router({
       component: EliminarCliente
     },
     {
-      path: '/adicionarcliente',
-      name: 'AdicionarCliente',
-      component: AdicionarCliente
+      path: '/adicionarobjeto',
+      name: 'AdicionarObjeto',
+      component: AdicionarObjeto
     },
     {
-      path: '/form',
-      name: 'TecnicalForm',
-      component: TecnicalForm
-    },
-    {
-      path: '/adicionarobjectos',
-      name: 'AdicionarObjecto',
-      component: AdicionarObjecto
+      path: '/editarobjeto',
+      name: 'EditarObjeto',
+      component: EditarObjeto
     },
     {
       path: '/eliminarobjeto',
       name: 'EliminarObjeto',
       component: EliminarObjeto
-    },
-	{
-      path: '/editarobjeto',
-      name: 'EditarObjeto',
-      component: EditarObjeto
     },
     {
       path: '/listarpedidos',
@@ -75,24 +100,24 @@ export default new Router({
       component: ListarPedidos
     },
     {
-      path: '/listardeslocacoes',
-      name: 'ListarDeslocacoes',
-      component: ListarDeslocacoes
+      path: '/listaranalises',
+      name: 'ListarAnalises',
+      component: ListarAnalises
     },
     {
-      path: '/listarclientes',
-      name: 'ListarClientes',
-      component: ListarClientes
+      path: '/editaranalise',
+      name: 'EditarAnalise',
+      component: EditarAnalise
     },
     {
-      path: '/eventos',
-      name: 'listarEventos',
-      component: listarEventos
+      path: '/eliminaranalise',
+      name: 'EliminarAnalise',
+      component: EliminarAnalise
     },
-	{
-      path: '/editaranalises',
-      name: 'EditarAnalises',
-      component: EditarAnalises
+    {
+      path: '/listareventos',
+      name: 'ListarEventos',
+      component: ListarEventos
     }
   ]
 })
