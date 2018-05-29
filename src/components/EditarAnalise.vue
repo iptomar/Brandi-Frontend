@@ -1,6 +1,5 @@
 <template>
-    <!--<b-container v-if="auth.logged" class="bv-example-row">-->
-    <b-container class="bv-example-row">
+    <b-container v-if="auth.logged" class="bv-example-row">
         <h1 align="left">Editar Análises Preliminares:</h1>
         <b-row  class="text-center">
             <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>

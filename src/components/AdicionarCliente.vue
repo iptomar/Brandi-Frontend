@@ -8,7 +8,6 @@
   </b-container>
 </template>
 
-
 <script>
 import Vue from "vue";
 import VueFormGenerator from "vue-form-generator";
@@ -29,11 +28,11 @@ export default {
       auth: store.auth,
       error: [],
       model: {
-        id: "",
+        idCliente: "",
         nome: "",
         nif: "",
         morada: "",
-        telemovel: "",
+        contacto: "",
         email: "",
         status: true
       },
@@ -46,7 +45,7 @@ export default {
             type: "input",
             inputType: "text",
             required: true,
-            placeholder: "Insira o nome completo do cliente"
+            placeholder: "Ex.: Joaquim Maria Leitão"
           },
           {
             label: "NIF:",
@@ -54,7 +53,7 @@ export default {
             type: "input",
             inputType: "text",
             required: true,
-            placeholder: "Insira o Número de Identificação Fiscal do cliente"
+            placeholder: "Ex.: 123456789"
           },
           {
             label: "Morada:",
@@ -62,15 +61,15 @@ export default {
             type: "input",
             inputType: "text",
             required: true,
-            placeholder: "Insira a morada do cliente"
+            placeholder: "Ex.: Rua da Paz"
           },
           {
-            label: "Telemóvel:",
-            model: "telemovel",
+            label: "Contacto Telefónico:",
+            model: "contacto",
             type: "input",
             inputType: "text",
             required: true,
-            placeholder: "Insira o número de telemóvel do cliente"
+            placeholder: "Ex.: 910000000"
           },
           {
             label: "E-mail:",
@@ -78,7 +77,7 @@ export default {
             type: "input",
             inputType: "email",
             required: true,
-            placeholder: "Insira do endereço de e-mail do cliente"
+            placeholder: "Ex.: jleitao@gmail.com"
           }
         ]
       },
@@ -99,7 +98,7 @@ export default {
             nome: this.model.nome,
             nif: this.model.nif,
             morada: this.model.morada,
-            telemovel: this.model.telemovel,
+            contacto: this.model.contacto,
             email: this.model.email
           }
         }

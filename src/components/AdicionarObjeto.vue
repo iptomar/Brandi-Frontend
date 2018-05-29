@@ -1,6 +1,6 @@
 <template>
     <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1 align="left">Adicionar Objecto:</h1>
+        <h1 align="left">Adicionar Objeto:</h1>
         <b-row  class="text-center">
             <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
         </b-row>
