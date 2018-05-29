@@ -13,7 +13,7 @@ import ListarPedidos from '@/components/ListarPedidos'
 import ListarDeslocacoes from '@/components/ListarDeslocacoes'
 import ListarClientes from '@/components/ListarClientes'
 import listarEventos from '@/components/listarEventos'
-
+import EditarAnalises from '@/components/EditarAnalises'
 
 Vue.use(Router)
 
@@ -88,6 +88,11 @@ export default new Router({
       path: '/eventos',
       name: 'listarEventos',
       component: listarEventos
+    },
+	{
+      path: '/editaranalises',
+      name: 'EditarAnalises',
+      component: EditarAnalises
     }
   ]
 })
