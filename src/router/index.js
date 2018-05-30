@@ -24,7 +24,7 @@ import AdicionarObjeto from '@/components/AdicionarObjeto'
 import EditarCliente from '@/components/EditarCliente'
 import EditarObjeto from '@/components/EditarObjeto'
 import EditarAnalise from '@/components/EditarAnalise'
-// import EditarPedido from '@/components/EditarPedido'
+import EditarPedido from '@/components/EditarPedido'
 // import EditarProposta from '@/components/EditarProposta'
 // import EditarEvento from '@/components/EditarProposta'
 
@@ -98,6 +98,11 @@ export default new Router({
       path: '/listarpedidos',
       name: 'ListarPedidos',
       component: ListarPedidos
+    },
+    {
+      path: '/editarpedido',
+      name: 'EditarPedido',
+      component: EditarPedido
     },
     {
       path: '/listaranalises',
