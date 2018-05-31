@@ -1,5 +1,13 @@
 <template>
-<b-container class="container">
+<!--
+<b-container fluid>
+    <b-row>
+      <b-col sm="flex" class="border-right">
+        <app-sidemenu></app-sidemenu>
+      </b-col>
+  <b-col>
+-->
+<b-container fluid>
     <b-container class="bv-example-row">
 
         <span>**************** START PÁGINA 6 ****************</span>
@@ -79,6 +87,13 @@
 
     </b-container>
 </b-container>
+<!--
+</b-col>
+</b-row>
+</b-container>
+-->
+</div>
+
 </template>
 <script>
 import Vue from 'vue'
@@ -279,6 +294,7 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
+
 h1,
 h2 {
     font-weight: normal;
@@ -384,6 +400,5 @@ fieldset {
     width: 100%;
 }
 
-</style>
 
 </style>
