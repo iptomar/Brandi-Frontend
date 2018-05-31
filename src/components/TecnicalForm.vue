@@ -1,240 +1,49 @@
 <template>
-<b-container class="container">
-    <b-container class="bv-example-row">
-      <!-- Div for form example -->
-      <b-container class="panel panel-default">
-        <b-container class="panel-heading" > Formulário titulo </b-container>
+  <b-container class="container">
+    <h1>Página 4</h1>
+    <b-container class="container">
+      <b-row class="panel panel-default">
+        <b-container class="panel-heading panel-heading-custom" >EXAMES E ANÁLISES</b-container>
           <b-container class="panel-body">
-              <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
+              <vue-form-generator :schema='pagina_4' :options='formOptions'></vue-form-generator>
           </b-container>
-      </b-container>
-      <h1>Página 4</h1>
-      <b-container class="container">
-        <b-row class="panel panel-default">
-          <b-container class="panel-heading panel-heading-custom" >EXAMES E ANÁLISES</b-container>
-            <b-container class="panel-body">
-                <vue-form-generator :schema='pagina_4' :options='formOptions'></vue-form-generator>
-            </b-container>
-        </b-row>
-      </b-container>
-
-      <span>**************** START PÁGINA 6 ****************</span>
-      <b-container class="container">
-        <b-container class="panel panel-default">
-          <b-container class="panel-heading" > Intervenções anteriores </b-container>
-            <b-container class="panel-body">
-                <vue-form-generator :schema='schema61' :options='formOptions'></vue-form-generator>
-            </b-container>
-        </b-container>
-      </b-container>
-
-      <b-container class="container">
-        <b-container class="panel panel-default">
-          <b-container class="panel-heading" > Observações | Conclusões </b-container>
-            <b-container class="panel-body">
-                <vue-form-generator :schema='schema62' :options='formOptions'></vue-form-generator>
-            </b-container>
-        </b-container>
-      </b-container>
-
-      <b-container class="container">
-        <b-container class="panel panel-default">
-          <b-container class="panel-heading panel-heading-custom" > Vontade expressa do proprietário ou do Dono da obra </b-container>
-            <b-container class="panel-body">
-                <vue-form-generator :schema='schema63' :options='formOptions'></vue-form-generator>
-            </b-container>
-        </b-container>
-      </b-container>
-      <span> **************** END PÁGINA 6 ****************</span>          
-
-    </b-container>   
-</b-container> 
+      </b-row>
+    </b-container>
+  </b-container>
 </template>
+
 <script>
 import Vue from "vue";
 import VueFormGenerator from "vue-form-generator";
+import { FieldArray } from 'vfg-field-array';
 
-Vue.use(VueFormGenerator);
+Vue.component("field-array", FieldArray);
 
 export default {
   components: {
-    "vue-form-generator": VueFormGenerator.component
+    "vue-form-generator": VueFormGenerator.component,
+    "field-array": FieldArray
   },
 
   data() {
     return {
-      model: {
-        id: 1,
-        name: "John Doe",
-        password: "J0hnD03!x4",
-        skills: ["Javascript", "VueJS"],
-        email: "john.doe@gmail.com",
-        status: true
-      },
 
-      schema: {
-        groups: [
-          {
-            legend: "Demo",
-            fields: [
-              {
-                type: "input",
-                inputType: "text",
-                label: "ID (disabled text field)",
-                model: "id",
-                readonly: true,
-                disabled: true
-              },
-              {
-                type: "input",
-                inputType: "text",
-                label: "Name",
-                model: "name",
-                placeholder: "Your name",
-                featured: true,
-                required: true
-              },
-              {
-                type: "input",
-                inputType: "password",
-                label: "Password",
-                model: "password",
-                min: 6, 
-                required: true,
-                hint: "Minimum 6 characters",
-                validator: VueFormGenerator.validators.string
-              },
-              {
-                type: "select",
-                label: "Skills",
-                model: "skills",
-                values: ["Javascript", "VueJS", "CSS3", "HTML5"]
-              },
-              {
-                type: "input",
-                inputType: "email",
-                label: "E-mail",
-                model: "email",
-                placeholder: "Users e-mail address"
-              },
-              {
-                type: "checkbox",
-                label: "Status",
-                model: "status",
-                default: true
-              },
-              {
-                type: "checkbox",
-                label: "Status",
-                model: "status",
-                default: true
-              }
-            ]
-          },
-          {
-            //pagina 7
-            fields: [
-              {
-                type: "radios",
-                label: "Tipo de intervenção proposta pelo conservador-restauro",
-                model: "pcr",
-                values: ["Preservação", "Conservação", "Restauro"]
-              },
-              {
-                type: "textArea",
-                label: "Proposta metodológica de intervenção",
-                model: "estrutura",
-                hint: "Max 255 characters",
-                max: 255,
-                placeholder: "Estrutura:",
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                model: "superficie",
-                hint: "Max 255 characters",
-                max: 255,
-                placeholder: "Superfície:",
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                model: "elementos_acessorios",
-                hint: "Max 255 characters",
-                max: 255,
-                placeholder: "Elementos Acessórios:",
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                label: "Recursos (Materiais | Técnicos | Tecnológicos)",
-                model: "recursos_1",
-                hint: "Max 255 characters",
-                max: 255,
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                model: "recursos_2",
-                hint: "Max 255 characters",
-                max: 255,
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                model: "recursos_3",
-                hint: "Max 255 characters",
-                max: 255,
-                rows: 4,
-                required: true
-              },
-              {
-                type: "textArea",
-                label: "Observações | Conclusões",
-                model: "observações_conclusoes",
-                hint: "Max 255 characters",
-                max: 255,
-                rows: 4,
-                required: true
-              },
-              {
-                type: "input",
-                inputType: "date",
-                label: "Data da Informação da Proposta:",
-                model: "dt1",
-                required: true
-              },
-              {
-                type: "input",
-                inputType: "date",
-                label: "Data da Aceitação da Proposta:",
-                model: "dt2",
-                required: true
-              },
-              {
-                type: "input",
-                inputType: "text",
-                label: "Interlocutores do processo",
-                model: "interlocutores_do_processo",
-                maxlength: 25,
-                required: true,
-                placeholder: "(IPT)(Client)"
-              }
-            ]
-          }
-        ]
-      },
+      // initial model to be populated with data from backend
+      // model: {
+      //   id: 1,
+      //   name: "John Doe",
+      //   password: "J0hnD03!x4",
+      //   skills: ["Javascript", "VueJS"],
+      //   email: "john.doe@gmail.com",
+      //   status: true
+      // },
+
       // pagina 4
       pagina_4: {
         fields: [
           {
             type: "checklist",
-            label: "Objectivo (s) Geral (ais)",
+            label: "Objectivos Gerais",
             model: "objectivos_gerais",
             listBox: true, 
             values: [
@@ -245,6 +54,42 @@ export default {
                 "Datação do objecto e das eventuais intervenções que tenha sido alvo",
                 "Ensaio de produtos e materiais a empregar na intervenção"
             ],
+          },
+          {
+            type: 'array',
+            label: 'Columns',
+            // model: 'columns',
+            inputName: "values",
+            itemContainerComponent: 'field-array-bootstrap-accordion-item',
+            showRemoveButton: true,
+            showModeElementUpButton: true,
+            showModeElementDownButton: true,
+            itemFieldClasses: "form-control",
+            itemContainerClasses: "input-group pb-2",
+            newElementButtonLabelClasses: "btn btn-outline-dark",
+            removeElementButtonClasses: "btn btn-danger input-group-append",
+            moveElementUpButtonClasses: "btn btn-outline-dark input-group-append",
+            moveElementDownButtonClasses: "btn btn-outline-dark input-group-append",
+            newElementButtonLabel: "+ Add Value",
+            itemContainerHeader: function(model, schema, index) {
+              return "Column " + (index + 1) + (model && model.label ? " (" + model.label + ")" : "");
+            },
+            items: {
+              type: 'object',
+              schema: {
+                fields: [{
+                  type: 'input',
+                  inputType: 'text',
+                  label: 'Label',
+                  // model: 'label',
+                },{
+                  type: 'input',
+                  inputType: 'text',
+                  label: 'Field',
+                  // model: 'field',
+                }]
+              }
+            }
           },
           {
             type: "textArea",
@@ -264,94 +109,6 @@ export default {
           }
         ]
       },
-      // START schema para a página 6
-      schema61: {
-        fields: [
-          {
-            type: "textArea",
-            label: "Estrutura",
-            model: "estrutura",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-          },
-          {
-            type: "textArea",
-            label: "Superfície",
-            model: "superficie",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-            //validator: VueFormGenerator.validators.string
-          },
-          {
-            type: "textArea",
-            label: "Elementos Acessórios",
-            model: "elementosacessorios",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-            //validator: VueFormGenerator.validators.string
-          }
-        ]
-      },
-      schema62: {
-        fields: [
-          {
-            type: "textArea",
-            model: "conclusao",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-          }
-        ]
-      },
-      //to add: another check button && seção checkbox on same level
-      schema63: {
-        fields: [
-          {
-            type: "textArea",
-            label: "Tipo de intervenção",
-            model3: "conclusao",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-          },
-          {
-            type: "textArea",
-            label: "Aspectos Específicos",
-            model3: "AspectosEspecificos",
-            readonly: false,
-            featured: true,
-            required: true,
-            disabled: false
-          },
-          {
-            type: "checkbox",
-            label: "Preservação",
-            model3: "Preservacao",
-            default: true
-          },
-          {
-            type: "checkbox",
-            label: "Conservação",
-            model: "Conservacao",
-            default: true
-          },
-          {
-            type: "checkbox",
-            label: "Restauro",
-            model: "Restauro",
-            default: true
-          }
-        ]
-      },
-      // END schema para a página 6
 
       formOptions: {
         validateAfterLoad: true,

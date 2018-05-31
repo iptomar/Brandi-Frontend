@@ -7,8 +7,6 @@ import BootstrapVue from 'bootstrap-vue'
 import 'babel-polyfill'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
-import VueFormGenerator from 'vue-form-generator'
-import 'vue-form-generator/dist/vfg.css'
 
 Vue.config.productionTip = false
 
