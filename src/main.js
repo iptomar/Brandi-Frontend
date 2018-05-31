@@ -10,6 +10,9 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import VueFormGenerator from 'vue-form-generator'
 import 'vue-form-generator/dist/vfg.css'
 
+import SideMenu from '@/components/SideMenu'
+Vue.component('app-sidemenu', SideMenu);
+
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
