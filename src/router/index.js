@@ -26,7 +26,7 @@ import EditarObjeto from '@/components/EditarObjeto'
 import EditarAnalise from '@/components/EditarAnalise'
 import EditarPedido from '@/components/EditarPedido'
 // import EditarProposta from '@/components/EditarProposta'
-// import EditarEvento from '@/components/EditarProposta'
+import EditarEvento from '@/components/EditarProposta'
 
 // -- ELIMINAÇÕES --
 import EliminarCliente from '@/components/EliminarCliente'
@@ -123,6 +123,12 @@ export default new Router({
       path: '/listareventos',
       name: 'ListarEventos',
       component: ListarEventos
+    },
+    {
+      path: '/EditarEventos',
+      name: 'EditarEventos',
+      component: EditarEventos
     }
+	
   ]
 })
