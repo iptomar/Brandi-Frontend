@@ -17,7 +17,7 @@ import AdicionarCliente from '@/components/AdicionarCliente'
 import AdicionarObjeto from '@/components/AdicionarObjeto'
 // import AdicionarPedido from '@/components/AdicionarPedido'
 // import AdicionarAnalise from '@/components/AdicionarAnalise'
-// import AdicionarProposta from '@/components/AdicionarProposta'
+import AdicionarProposta from '@/components/AdicionarProposta'
 // import AdicionarEvento from '@/components/AdicionarEvento'
 
 // -- EDIÇÕES ---
@@ -83,6 +83,11 @@ export default new Router({
       path: '/adicionarobjeto',
       name: 'AdicionarObjeto',
       component: AdicionarObjeto
+    },
+	{
+      path: '/adicionarproposta',
+      name: 'AdicionarProposta',
+      component: AdicionarProposta
     },
     {
       path: '/editarobjeto',
