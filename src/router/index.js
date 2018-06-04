@@ -135,6 +135,11 @@ export default new Router({
       component: EliminarAnalise
     },
     {
+	    path: '/listarobjetos',
+	    name: 'ListarObjetos',
+	    component: listarObjetos
+    },
+    {
       path: '/listareventos',
       name: 'ListarEventos',
       component: ListarEventos
@@ -144,11 +149,10 @@ export default new Router({
       name: 'EditarEvento',
       component: EditarEvento
     },
-	{
-		path: '/listarpropostas',
-		name: 'ListarPropostas',
-		component: ListarPropostas
-	}
-	
+    {
+      path: '/listarpropostas',
+      name: 'ListarPropostas',
+      component: ListarPropostas
+    }
   ]
 })
