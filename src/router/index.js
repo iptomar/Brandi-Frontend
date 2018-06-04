@@ -25,7 +25,7 @@ import EditarCliente from '@/components/EditarCliente'
 import EditarObjeto from '@/components/EditarObjeto'
 import EditarAnalise from '@/components/EditarAnalise'
 //import EditarPedido from '@/components/EditarPedido'
-// import EditarProposta from '@/components/EditarProposta'
+import EditarProposta from '@/components/EditarProposta'
 import EditarEvento from '@/components/EditarEvento'
 
 // -- ELIMINAÇÕES --
@@ -88,6 +88,11 @@ export default new Router({
       path: '/adicionarproposta',
       name: 'AdicionarProposta',
       component: AdicionarProposta
+    },
+		{
+      path: '/editarproposta',
+      name: 'EditarProposta',
+      component: EditarProposta
     },
     {
       path: '/editarobjeto',
