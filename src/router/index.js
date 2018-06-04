@@ -9,8 +9,8 @@ import ListarClientes from '@/components/ListarClientes'
 import ListarPedidos from '@/components/ListarPedidos'
 import ListarAnalises from '@/components/ListarAnalises'
 import ListarEventos from '@/components/ListarEventos'
-// import ListarObjetos from '@/components/ListarObjetos'
-// import ListarPropostas from '@/components/ListarPropostas'
+import ListarObjetos from '@/components/ListarObjetos'
+import ListarPropostas from '@/components/ListarPropostas'
 
 // -- ADIÇÕES --
 import AdicionarCliente from '@/components/AdicionarCliente'
@@ -143,7 +143,12 @@ export default new Router({
       path: '/EditarEvento',
       name: 'EditarEvento',
       component: EditarEvento
-    }
+    },
+	{
+		path: '/listarpropostas',
+		name: 'ListarPropostas',
+		component: ListarPropostas
+	}
 	
   ]
 })
