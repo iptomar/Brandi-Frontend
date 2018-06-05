@@ -2,23 +2,24 @@
     <b-container  v-if="auth.logged"  class="bv-example-row">
     <h1>Lista Deslocações</h1>
     <ul v-if="deslocacao && deslocacao.length">
-     <li v-for="deslocacao of deslocacao" v-bind:key="deslocacao.idDesloc">
+     <li v-for="deslocacao of deslocacao" v-bind:key="deslocacao.idAnalise">
         <table class="tg">
             <tr>
               <th class=""></th>
-              <th class="">Cliente</th>
+              <th class="">Descrição da Análise</th>
+              <th class="">Data da Análise</th>
               <th class="">Local</th>
-              <th class="">KM</th>
-              <th class="">Data</th>
-              <th class="">Início da  Análise</th>
-              <th class="">Fim da Análise</th>  
+              <th class="">Deslocações (Km)</th>
+              <th class="">Início da Análise</th>
+              <th class="">Fim da Análise</th>
+              <th class="">Outras Despesas</th>
             </tr>
             <tr>
-              <td class="">{{deslocacao.idDesloc}}</td>
-              <td class="">{{deslocacao.cliente}}</td>
-              <td class="">{{deslocacao.localDesloc}}</td>
+              <td class="">{{deslocacao.idAnalise}}</td>
+              <td class="">{{deslocacao.descAnalise}}</td>
+              <td class="">{{deslocacao.dataAnalise}}</td>
+              <td class="">{{deslocacao.local}}</td>
               <td class="">{{deslocacao.km}}</td>
-              <td class="">{{deslocacao.dataDesloc}}</td>
               <td class="">{{deslocacao.inicAnalise}}</td>
               <td class="">{{deslocacao.fimAnalise}}</td>
            </tr>
@@ -27,7 +28,7 @@
   </ul>
 
  <ul v-if="errors && errors.length">
-    <li v-for="error of errors" v-bind:key="error.idDesloc">
+    <li v-for="error of errors" v-bind:key="error.idAnalise">
       {{error.message}}
     </li>
   </ul>
