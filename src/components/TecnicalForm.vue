@@ -5,7 +5,18 @@
       <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custom" >EXAMES E ANÁLISES</b-container>
           <b-container class="panel-body">
-              <vue-form-generator :schema='pagina_4' :options='formOptions'></vue-form-generator>
+              <vue-form-generator :schema='pagina_4_1' :options='formOptions'></vue-form-generator>
+              <v-table
+                is-horizontal-resize
+                style="width:100%"
+                :columns="columns"
+                :table-data="tableData"
+                row-hover-color="#eee"
+                row-click-color="#edf7ff"
+                :cell-edit-done="cellEditDone"
+              >
+              </v-table>
+              <vue-form-generator :schema='pagina_4_2' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
           </b-container>
       </b-row>
     </b-container>
@@ -15,14 +26,10 @@
 <script>
 import Vue from "vue";
 import VueFormGenerator from "vue-form-generator";
-import { FieldArray } from 'vfg-field-array';
-
-Vue.component("field-array", FieldArray);
 
 export default {
   components: {
-    "vue-form-generator": VueFormGenerator.component,
-    "field-array": FieldArray
+    "vue-form-generator": VueFormGenerator.component
   },
 
   data() {
@@ -39,7 +46,7 @@ export default {
       // },
 
       // pagina 4
-      pagina_4: {
+      pagina_4_1: {
         fields: [
           {
             type: "checklist",
@@ -54,43 +61,12 @@ export default {
                 "Datação do objecto e das eventuais intervenções que tenha sido alvo",
                 "Ensaio de produtos e materiais a empregar na intervenção"
             ],
-          },
-          {
-            type: 'array',
-            label: 'Columns',
-            // model: 'columns',
-            inputName: "values",
-            itemContainerComponent: 'field-array-bootstrap-accordion-item',
-            showRemoveButton: true,
-            showModeElementUpButton: true,
-            showModeElementDownButton: true,
-            itemFieldClasses: "form-control",
-            itemContainerClasses: "input-group pb-2",
-            newElementButtonLabelClasses: "btn btn-outline-dark",
-            removeElementButtonClasses: "btn btn-danger input-group-append",
-            moveElementUpButtonClasses: "btn btn-outline-dark input-group-append",
-            moveElementDownButtonClasses: "btn btn-outline-dark input-group-append",
-            newElementButtonLabel: "+ Add Value",
-            itemContainerHeader: function(model, schema, index) {
-              return "Column " + (index + 1) + (model && model.label ? " (" + model.label + ")" : "");
-            },
-            items: {
-              type: 'object',
-              schema: {
-                fields: [{
-                  type: 'input',
-                  inputType: 'text',
-                  label: 'Label',
-                  // model: 'label',
-                },{
-                  type: 'input',
-                  inputType: 'text',
-                  label: 'Field',
-                  // model: 'field',
-                }]
-              }
-            }
-          },
+          }
+        ]
+      },
+
+      pagina_4_2: {
+        fields: [
           {
             type: "textArea",
             label: "Interpretação dos Resultados",
@@ -110,11 +86,41 @@ export default {
         ]
       },
 
+      tableData: [
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          {"date":"", "design":"","materials":"","quantity":"","quantity":"","duration":"","tecnico":"","observation":""},
+          
+      ],
+      columns:  [
+          {field: 'date', title:'Data', width: 100, titleAlign: 'center',columnAlign:'center',isEdit:true,
+          formatter: function (rowData,rowIndex,pagingIndex,field) {
+              return `<span class='cell-edit-color'>${rowData[field]}</span>`;
+          },isResize:true},
+          
+          {field: 'design', title: 'Designação do procedimento', width: 230, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true},
+          {field: 'materials', title: 'Materiais e produtos', width: 200, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true},
+          {field: 'quantity', title: 'Quantidades', width: 150, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true},
+          {field: 'duration', title: 'Duração', width: 150, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true},
+          {field: 'tecnico', title: 'Técnico', width: 130, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true},
+          {field: 'observation', title: 'Observações', width: 150, titleAlign: 'center',columnAlign:'center',isEdit:true,isResize:true}
+      ],
+
       formOptions: {
         validateAfterLoad: true,
         validateAfterChanged: true
       }
-    };
+    }
+  },
+  methods: {
+    cellEditDone(newValue,oldValue,rowIndex,rowData,field){
+      this.tableData[rowIndex][field] = newValue;
+    }
   }
 };
 </script>

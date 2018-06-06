@@ -18,10 +18,8 @@
     "babel-polyfill": "^6.26.0",
     "bootstrap": "^4.0.0",
     "bootstrap-vue": "^2.0.0-rc.1",
-    "vfg-field-array": "0.0.0-development",
-    "vfg-field-object": "0.0.0-development",
     "vue": "^2.5.2",
-    "vue-editortable": "^1.1.5",
+    "vue-easytable": "^1.7.1",
     "vue-form-generator": "^2.2.2",
     "vue-router": "^3.0.1"
   },
