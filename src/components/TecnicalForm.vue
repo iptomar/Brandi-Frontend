@@ -1,5 +1,14 @@
 <template>
+
+
   <b-container class="container">
+    <h1>Página 1</h1>
+    <b-row class="panel panel-default">
+        <b-container class="panel-heading panel-heading-custom" >DESIGNAÇÃO DO OBJETO</b-container>
+          <b-container class="panel-body">
+              <vue-form-generator :schema='pagina_1' :options='formOptions'></vue-form-generator>
+          </b-container>
+    </b-row>
     <h1>Página 4</h1>
     <b-container class="container">
       <b-row class="panel panel-default">
@@ -55,9 +64,241 @@ export default {
         password: "J0hnD03!x4",
         skills: ["Javascript", "VueJS"],
         email: "john.doe@gmail.com",
-        status: true
+        status: true,
+      Dseginacao: '',
+      NProcessoLCRM: '', 
+      NProcessoCEARC: '',
+      Coordenacao:'',
+      DataDeAberturaProcesso:'',
+      DataDeEntradanoLCRM:'',
+      DataDeEntradaDoCEARC:'',
+      FotoObjeto:'',
+      FormatoFoto:['png'],
+      SuperCategoria:'',
+      Categoria:'',
+      SubCategoria:'',
+      Localizacao:'', 
+      Proprietario:'',
+      EnderecoPostalDoProprietario:'',
+      EndereçoElectronicoDoProprietario:'',
+      ContactosTelefónicosDoProprietario:'',
+      Dimentcao:'',
+      OutrasDimensões:'',
+      DonoDaObra:'',
+      EnderecoPostalDonoDaObra:'',
+      ContactosTelefonicosDonoDaObra:'',
+      Mecenas:'',
+      EndereçoPostalMecenas:'',
+      ContactosTelefonicosMecenas:'',
+      status: true
       },
 
+      //pagina 1
+
+      pagina_1:{
+           fields: [ { 
+        type: 'input',
+        inputType: 'text',
+        label: 'Deseginação do objeto',
+        model: 'Deseginacao',
+        placeholder: 'Insira a desinação do Objeto',
+        featured: true,
+        required: true
+      }, {
+        type: 'input',
+        inputType: 'text',
+        label: 'Processo LCRM Nº',
+        model: 'NProcessoLCRM',
+        placeholder: 'Insira o numero de processo LCRM',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Processo CEARC Nº',
+        model: 'NProcessoCEARC',
+        placeholder: 'Insira o numero de processo CEARC',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Coordenação/Direção Técnica da Intervenção:',
+        model: 'Coordenacao',
+        placeholder: 'Professor Adjunto | Conservador-restaurador',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'date',
+        label: 'Data de Abertura Processo',
+        model: 'DataDeAberturaProcesso',
+        placeholder: '',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'date',
+        label: 'Data de entrada no LCRM: ',
+        model: 'DataDeEntradanoLCRM',
+        placeholder: '',
+        featured: true,
+        required: false
+      },
+      {
+        type: 'input',
+        inputType: 'date',
+        label: 'Data de entrada do CEARC: ',
+        model: 'DataDeEntradaDoCEARC',
+
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'file',
+        label: 'Registo Fotográfico Identificativo do Objecto: ',
+        model: 'FotoObjeto',
+        featured: true,
+        required: true
+      },{
+        type: 'select',
+        inputType: 'text',
+        label: 'Formato',
+        model: 'FormatoFoto',
+        featured: true,
+        required: true,
+        values: ['JPG', 'PNG','JEPG']
+        
+      },
+      {
+        type: 'input',
+        inputType: 'text',
+        label: 'Super-Categoria',
+        model: 'SuperCategoria',
+        placeholder: 'Insira a super-categoria do objeto',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Categoria',
+        model: 'Categoria',
+        placeholder: 'Insira a categoria do objeto',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'SubCategoria',
+        model: 'SubCategoria',
+        placeholder: 'Insira a Sub-categoria do objeto',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Localização',
+        model: 'Localizacao',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Proprietário',
+        model: 'Proprietario',
+        placeholder: 'Insira o nome do proprietário',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Postal do Proprietário',
+        model: 'EnderecoPostalDoProprietario',
+        placeholder: 'Insira o endereço postal do proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Electronico Proprietário',
+        model: 'EndereçoElectronicoDoProprietario',
+        placeholder: 'Insira o endereço electronico do proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónico Proprietários',
+        model: 'ContactosTelefónicosDoProprietario',
+        placeholder: 'Insira o contacto telefónico proprietário',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Dimenção',
+        model: 'Dimencao',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Outras Dimensões',
+        model: 'OutrasDimensões',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Dono da Obra',
+        model: 'DonoDaObra',
+        placeholder: 'Insira o nome do dono da obra',
+        featured: true,
+        required: true
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereco Postal do Dono da Obra',
+        model: 'EnderecoPostalDonoDaObra',
+         placeholder: 'Insira o endereço postal do dono da obra',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónicos do Dono da Obra',
+        model: 'ContactosTelefonicosDonoDaObra',
+        placeholder: 'Insira o contacto telefónico do dono da obra',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Mecenas',
+        model: 'Mecenas',
+        featured: true,
+        required: false
+      }, {
+        type: 'input',
+        inputType: 'text',
+        label: 'Endereço Postal Mecenas',
+        model: 'EndereçoPostalMecenas',
+         placeholder: 'Insira o endereço postal do Mecenas',
+        featured: true,
+        required: false
+      },{
+        type: 'input',
+        inputType: 'text',
+        label: 'Contactos Telefónicos Mecenas',
+        model: 'ContactosTelefonicosMecenas',
+        placeholder: 'Insira o contacto telefónico do Mecenas',
+        featured: true,
+        required: false
+      },
+      
+   
+      ]
+      },
       // pagina 4
       pagina_4_1: {
         fields: [
