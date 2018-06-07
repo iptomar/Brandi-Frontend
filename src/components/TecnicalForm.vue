@@ -36,21 +36,40 @@
           </b-container>
       </b-row>
     </b-container>
+
+    <h1>Página 5</h1>
+      <b-container class="container">
+        <b-row class="panel panel-default">
+            <b-container class="panel-heading panel-heading-custom" >ESTADO DE CONSERVAÇÃO</b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema51' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema52' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema53' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
+            </b-container>
+        </b-row>
+    </b-container>
+
+
+    
       <h1>Página 6</h1>
       <b-container class="container">
         <b-row class="panel panel-default">
-        <b-container class="panel-heading panel-heading-custom" >INTERVENÇÕES ANTERIORES</b-container>
-        <b-container class="panel-body">
-            <vue-form-generator :schema='schema61' :options='formOptions'></vue-form-generator>
-        </b-container>
-        <b-container class="panel-body">
-          <vue-form-generator :schema='schema62' :options='formOptions'></vue-form-generator>
-        </b-container>
-        <b-container class="panel-body">
-          <vue-form-generator :schema='schema63' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
-        </b-container>
-      </b-row>
-        </b-container>
+            <b-container class="panel-heading panel-heading-custom" >INTERVENÇÕES ANTERIORES</b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema61' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema62' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema63' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
+            </b-container>
+        </b-row>
+    </b-container>
 
     <h1>Página 8</h1>
     <b-container class="container">
@@ -69,6 +88,27 @@
             </b-container>
         </b-container>
     </b-container>
+
+    <h1>Página 9</h1>
+      <b-container class="container">
+        <b-row class="panel panel-default">
+            <b-container class="panel-heading panel-heading-custom" >DOCUMENTAÇÃO PRODUZIDA | RECOLHIDA</b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema91' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema92' :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema93' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
+            </b-container>
+            <b-container class="panel-body">
+            <vue-form-generator :schema='schema94' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
+            </b-container>
+        </b-row>
+    </b-container>
+
+
 
     </b-container>
       
@@ -543,6 +583,55 @@ export default {
           }
         ]
       },
+///////PAGINA 5
+
+
+        schema51: { 
+            fields: [{
+                type: 'textArea',
+                label: "Deterioração Física, Química e Mecânica dos Materiais:",
+                inputType: 'text',
+                model: 'estruturafisica',
+                 placeholder: 'Estrutura'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'superficiefisica',
+                placeholder: 'Superfície'
+            },{
+                type: 'textArea',
+                inputType: 'text',
+                model: 'elementosfisica',
+                placeholder: 'Elementos Acessórios'
+            }]
+            },
+        schema52: { 
+            fields: [{
+                type: 'textArea',
+                label: "Deterioração Biológica dos Materiais:",
+                inputType: 'text',
+                model: 'estruturabiologica',
+                placeholder: 'Estrutura'
+                }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'superficiebiologica',
+                placeholder: 'Superfície'
+                },{
+                type: 'textArea',
+                inputType: 'text',
+                model: 'elementosbiologica',
+                placeholder: 'Elementos Acessórios'
+                }]
+            },
+            schema53: { 
+            fields: [{
+                type: 'textArea',
+                label: "Observações | Conclusões",
+                inputType: 'text',
+                model: 'conclusaoestado'
+                }]
+            },
 
       // START schema para a página 6
       schema61: {
@@ -787,74 +876,6 @@ export default {
             required: true,
             placeholder: "(IPT)(Client)"
           },
-          {
-            label: "Página 9"
-          },
-          {
-            type: "input",
-            required: true,
-            label: "Ref Arquivo",
-            inputType: "text",
-            model: "refarquivo",
-            placeholder: "Referencia"
-          },
-          {
-            type: "textArea",
-            label: "Originais Fotográficos",
-            inputType: "text",
-            model: "originaistipo",
-            placeholder: "Tipo"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "originaisref",
-            placeholder: "Referências"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "originaisautor",
-            placeholder: "Autor"
-          },
-          {
-            type: "textArea",
-            label: "Documentação Gráfica",
-            inputType: "text",
-            model: "doctipo",
-            placeholder: "Tipo"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "docref",
-            placeholder: "Referências"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "docautor",
-            placeholder: "Autor"
-          },
-          {
-            type: "textArea",
-            label: "Exames e Análises",
-            inputType: "text",
-            model: "exametipo",
-            placeholder: "Tipo"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "exameref",
-            placeholder: "Referências"
-          },
-          {
-            type: "textArea",
-            inputType: "text",
-            model: "exameautor",
-            placeholder: "Autor"
-          }
         ]
       },
 
@@ -923,7 +944,76 @@ export default {
                 required: true,
                 disabled: false
             }]
-            },
+            }, ///////////////// Página 9
+      schema91: { 
+            fields: [{
+                type: 'input',
+                label: "Relatório Técnico da Intervenção do LCRM",
+                required: true,
+                inputType: 'text',
+                model: 'refarquivo',
+                placeholder: 'Ref.ª de Arquivo'
+            }
+            ]
+        },
+      schema92: { 
+            fields: [{
+                type: 'textArea',
+                label: "Originais Fotográficos",
+                inputType: 'text',
+                model: 'originaistipo',
+                placeholder: 'Tipo'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'originaisref',
+                placeholder: 'Referências'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'originaisautor',
+                placeholder: 'Autor'
+            }
+            ]
+        },
+          schema93: { 
+            fields: [{
+                type: 'textArea',
+                label: "Documentação Gráfica",
+                inputType: 'text',
+                model: 'doctipo',
+                placeholder: 'Tipo'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'docref',
+                placeholder: 'Referências'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'docautor',
+                placeholder: 'Autor'
+            }]
+        },
+          schema94: { 
+            fields: [{
+                type: 'textArea',
+                label: "Exames e Análises",
+                inputType: 'text',
+                model: 'exametipo',
+                placeholder: 'Tipo'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'exameref',
+                placeholder: 'Referências'
+            }, {
+                type: 'textArea',
+                inputType: 'text',
+                model: 'exameautor',
+                placeholder: 'Autor'
+            }]
+        },    
 
       tableData: [
         {
