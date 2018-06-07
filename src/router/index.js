@@ -14,8 +14,8 @@ import ListarPropostas from '@/components/ListarPropostas'
 
 // -- ADIÇÕES --
 import AdicionarCliente from '@/components/AdicionarCliente'
-import AdicionarObjeto from '@/components/AdicionarObjeto'
-// import AdicionarPedido from '@/components/AdicionarPedido'
+import AdicionarObjeto from '@/components/AdicionarObjeto' 
+import AdicionarPedido from '@/components/AdicionarPedido'
 // import AdicionarAnalise from '@/components/AdicionarAnalise'
 import AdicionarProposta from '@/components/AdicionarProposta'
 // import AdicionarEvento from '@/components/AdicionarEvento'
@@ -24,7 +24,7 @@ import AdicionarProposta from '@/components/AdicionarProposta'
 import EditarCliente from '@/components/EditarCliente'
 import EditarObjeto from '@/components/EditarObjeto'
 import EditarAnalise from '@/components/EditarAnalise'
-//import EditarPedido from '@/components/EditarPedido'
+import EditarPedido from '@/components/EditarPedido'
 import EditarProposta from '@/components/EditarProposta'
 import EditarEvento from '@/components/EditarEvento'
 
@@ -98,12 +98,7 @@ export default new Router({
       path: '/editarobjeto',
       name: 'EditarObjeto',
       component: EditarObjeto
-    },
-    {
-      path: '/editarobjeto',
-      name: 'EditarObjeto',
-      component: EditarObjeto
-    },
+    },   
     {
       path: '/eliminarobjeto',
       name: 'EliminarObjeto',
@@ -114,11 +109,16 @@ export default new Router({
       name: 'ListarPedidos',
       component: ListarPedidos
     },
-    /*{
+    {
+      path: '/adicionarpedido',
+      name: 'AdicionarPedido',
+      component: AdicionarPedido
+    },
+    {
       path: '/editarpedido',
       name: 'EditarPedido',
       component: EditarPedido
-    },*/
+    },
     {
       path: '/listaranalises',
       name: 'ListarAnalises',
@@ -137,7 +137,7 @@ export default new Router({
     {
 	    path: '/listarobjetos',
 	    name: 'ListarObjetos',
-	    component: listarObjetos
+	    component: ListarObjetos
     },
     {
       path: '/listareventos',
