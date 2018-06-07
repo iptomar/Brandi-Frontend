@@ -33,7 +33,7 @@ import EliminarCliente from '@/components/EliminarCliente'
 import EliminarObjeto from '@/components/EliminarObjeto'
 import EliminarAnalise from '@/components/EliminarAnalise'
 import EliminarPedido from '@/components/EliminarPedido'
-// import EliminarProposta from '@/components/EliminarProposta'
+import EliminarProposta from '@/components/EliminarProposta'
 
 Vue.use(Router)
 
@@ -163,6 +163,11 @@ export default new Router({
       path: '/eliminarpedido',
       name: 'EliminarPedido',
       component: EliminarPedido
+    },
+    {
+      path: '/eliminarproposta',
+      name: 'EliminarProposta',
+      component: EliminarProposta
     }
   ]
 })
