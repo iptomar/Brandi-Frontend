@@ -50,9 +50,33 @@
           <vue-form-generator :schema='schema63' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
         </b-container>
       </b-row>
+        </b-container>
+
+    <h1>Página 8</h1>
+    <b-container class="container">
+        <b-container class="panel panel-default">
+          <b-container class="panel-heading" > Intervenção Realizada </b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema81' :options='formOptions'></vue-form-generator>
+            </b-container>
+        </b-container>
       </b-container>
+      <b-container class="container">
+        <b-container class="panel panel-default">
+          <b-container class="panel-heading" > Observações | Conclusões </b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema82' :options='formOptions'></vue-form-generator>
+            </b-container>
+        </b-container>
     </b-container>
+
+    </b-container>
+      
+
+
 </template>
+
+
 
 <script>
 import Vue from "vue";
@@ -820,6 +844,73 @@ export default {
           }
         ]
       },
+
+      //----------- Pagina 8 -------------------------
+      schema81: {
+            fields: [{
+                type: "textArea",
+                label: "Estrutura",
+                model: "Estrutura",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false
+            }, {
+                type: "textArea",
+                label: "Recursos Necessários para a Estrutura",
+                model: "Estrutura_Recursos",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false,
+                
+            }, {
+                type: "textArea",
+                label: "Superfície",
+                model: "Superficie",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false,
+                
+            },{
+                type: "textArea",
+                label: "Recursos Necessários Para a Superfície",
+                model: "Superficie_Recursos",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false
+            }, {
+                type: "textArea",
+                label: "Elementos Acessórios",
+                model: "Elementos",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false,
+                
+            }, {
+                type: "textArea",
+                label: "Recursos Necessários para os Elementos Acessórios",
+                model: "Elementos_Recursos",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false,
+                
+            }]
+            },
+               schema82: {
+            fields: [{
+                type: "textArea",
+                model: "conclusao",
+                readonly: false,
+                featured: true,
+                required: true,
+                disabled: false
+            }]
+            },
 
       tableData: [
         {
