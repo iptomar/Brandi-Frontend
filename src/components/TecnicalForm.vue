@@ -351,7 +351,7 @@ export default {
           type:'select',
           label:'Integrado Em Conjunto',
           model:'IntegradoEmConjunto',
-          values:['sim','não'],
+          values:['Sim','Não'],
           required:false,
         },{
           type: 'input',
