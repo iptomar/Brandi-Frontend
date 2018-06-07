@@ -9,6 +9,13 @@
               <vue-form-generator :schema='pagina_1' :options='formOptions'></vue-form-generator>
           </b-container>
     </b-row>
+    <h1>Página 2 </h1>
+    <b-row class="panel panel-default">
+       <b-container class="panel-heading panel-heading-custon" >BEM INTEGRADO EM CONJUNTO</b-container>
+        <b-container class="panel-body">
+          <vue-form-generator :schema='pagina_2' :options='formOptions'></vue-form-generator>
+        </b-container>
+    </b-row> 
     <h1>Página 4</h1>
     <b-container class="container">
       <b-row class="panel panel-default">
@@ -90,7 +97,29 @@ export default {
       Mecenas:'',
       EndereçoPostalMecenas:'',
       ContactosTelefonicosMecenas:'',
-      status: true
+      status: true,
+      //pagina 2
+      TipoConjunto:'',
+      ElementosConstituintes:'',
+      IntegradoEmConjunto:['Sim', 'Não'],
+      ElementosAcessorios:'',
+      AssinaturaAutoria:'',
+      InscricaoMontagem:'',
+      InscricaoConstr:'',
+      ClassPatrimonial:'',
+      Estilo:'',
+      Epoca: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação'],
+      Qualidade: ['Excelente','Muito Boa','Boa','Regular','Fraca'],
+      Descricao: '',
+      Analogia: '',
+      Conclusoes: '',
+      Autoria: '',
+      Datacao: '',
+      LocalOrigem: '',
+      EstruturaTecnica: '',
+      SuperficieTecnica: '',
+      EstruturaMaterial: '',
+      SuperficieMaterial:''
       },
 
       //pagina 1
@@ -298,6 +327,144 @@ export default {
       
    
       ]
+
+
+      },
+      //pagina 2 
+      pagina_2: {
+        fields: [{
+          type:'input',
+          inputType:'text',
+          label:'Tipo Conjunto',
+          model:'TipoConjunto',
+          required:false,
+          featured:true
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Elementos Constituintes',
+          model:'ElementosConstituintes',
+          required:false,
+        },{
+          type:'select',
+          label:'Integrado Em Conjunto',
+          model:'IntegradoEmConjunto',
+          values:['sim','não'],
+          required:false,
+        },{
+          type: 'input',
+          inputType: 'text',
+          label: 'Elementos Acessorios',
+          model: 'ElementosAcessorios',
+          required: false,
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Assinatura Autoria',
+          model:'AssinaturaAutoria',
+          required: false,
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Inscricoes de Montagem',
+          model:'InscricaoMontagem',
+          required:false,
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Inscricoes de construcao',
+          model:'InscricaoConstr',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Classificacao Patrimonial',
+          model:'ClassPatrimonial',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Estilo',
+          model:'Estilo',
+          required:false,
+        },{
+          type:'select',
+          label:'Epoca',
+          model:'Epoca',
+          values: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação'],
+          required:false
+        },{
+          type:'select',
+          label:'Qualidade',
+          model:'Qualidade',
+          values: ['Excelente','Muito Boa','Boa','Regular','Fraca'],
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Descricao',
+          model:'Descricao',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Analogia',
+          model:'Analogia',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Conclusoes',
+          model:'Conclusoes',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Autoria',
+          model:'Autoria',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Datacao',
+          model:'Datacao',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Local Origem',
+          model:'LocalOrigem',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Estrutura Tecnica',
+          model:'EstruturaTecnica',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Superficie Tecnica',
+          model:'SuperficieTecnica',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Estrutura Material',
+          model:'EstruturaMaterial',
+          required:false
+        },{
+          type:'input',
+          inputType:'text',
+          label:'Superficie Material',
+          model:'SuperficieMaterial',
+          required:false
+        },
+
+        
+        
+        ]
+
       },
       // pagina 4
       pagina_4_1: {
