@@ -32,7 +32,7 @@ import EditarEvento from '@/components/EditarEvento'
 import EliminarCliente from '@/components/EliminarCliente'
 import EliminarObjeto from '@/components/EliminarObjeto'
 import EliminarAnalise from '@/components/EliminarAnalise'
-// import EliminarPedido from '@/components/EliminarPedido'
+import EliminarPedido from '@/components/EliminarPedido'
 // import EliminarProposta from '@/components/EliminarProposta'
 
 Vue.use(Router)
@@ -158,6 +158,11 @@ export default new Router({
       path: '/AdicionarEvento',
       name: 'AdicionarEvento',
       component: AdicionarEvento
+    },
+    {
+      path: '/eliminarpedido',
+      name: 'EliminarPedido',
+      component: EliminarPedido
     }
   ]
 })
