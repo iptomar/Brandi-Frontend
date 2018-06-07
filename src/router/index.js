@@ -14,17 +14,17 @@ import ListarPropostas from '@/components/ListarPropostas'
 
 // -- ADIÇÕES --
 import AdicionarCliente from '@/components/AdicionarCliente'
-import AdicionarObjeto from '@/components/AdicionarObjeto'
-// import AdicionarPedido from '@/components/AdicionarPedido'
+import AdicionarObjeto from '@/components/AdicionarObjeto' 
+import AdicionarPedido from '@/components/AdicionarPedido'
 // import AdicionarAnalise from '@/components/AdicionarAnalise'
 import AdicionarProposta from '@/components/AdicionarProposta'
-// import AdicionarEvento from '@/components/AdicionarEvento'
+import AdicionarEvento from '@/components/AdicionarEvento'
 
 // -- EDIÇÕES ---
 import EditarCliente from '@/components/EditarCliente'
 import EditarObjeto from '@/components/EditarObjeto'
 import EditarAnalise from '@/components/EditarAnalise'
-//import EditarPedido from '@/components/EditarPedido'
+import EditarPedido from '@/components/EditarPedido'
 import EditarProposta from '@/components/EditarProposta'
 import EditarEvento from '@/components/EditarEvento'
 
@@ -32,8 +32,8 @@ import EditarEvento from '@/components/EditarEvento'
 import EliminarCliente from '@/components/EliminarCliente'
 import EliminarObjeto from '@/components/EliminarObjeto'
 import EliminarAnalise from '@/components/EliminarAnalise'
-// import EliminarPedido from '@/components/EliminarPedido'
-// import EliminarProposta from '@/components/EliminarProposta'
+import EliminarPedido from '@/components/EliminarPedido'
+import EliminarProposta from '@/components/EliminarProposta'
 
 Vue.use(Router)
 
@@ -98,12 +98,7 @@ export default new Router({
       path: '/editarobjeto',
       name: 'EditarObjeto',
       component: EditarObjeto
-    },
-    {
-      path: '/editarobjeto',
-      name: 'EditarObjeto',
-      component: EditarObjeto
-    },
+    },   
     {
       path: '/eliminarobjeto',
       name: 'EliminarObjeto',
@@ -114,11 +109,16 @@ export default new Router({
       name: 'ListarPedidos',
       component: ListarPedidos
     },
-    /*{
+    {
+      path: '/adicionarpedido',
+      name: 'AdicionarPedido',
+      component: AdicionarPedido
+    },
+    {
       path: '/editarpedido',
       name: 'EditarPedido',
       component: EditarPedido
-    },*/
+    },
     {
       path: '/listaranalises',
       name: 'ListarAnalises',
@@ -137,7 +137,7 @@ export default new Router({
     {
 	    path: '/listarobjetos',
 	    name: 'ListarObjetos',
-	    component: listarObjetos
+	    component: ListarObjetos
     },
     {
       path: '/listareventos',
@@ -153,6 +153,21 @@ export default new Router({
       path: '/listarpropostas',
       name: 'ListarPropostas',
       component: ListarPropostas
+    },
+    {
+      path: '/AdicionarEvento',
+      name: 'AdicionarEvento',
+      component: AdicionarEvento
+    },
+    {
+      path: '/eliminarpedido',
+      name: 'EliminarPedido',
+      component: EliminarPedido
+    },
+    {
+      path: '/eliminarproposta',
+      name: 'EliminarProposta',
+      component: EliminarProposta
     }
   ]
 })

@@ -1,6 +1,6 @@
 <template>
 <b-container v-if="auth.logged" class="bv-example-row">
-  <h1>Editar Pedido</h1>
+  <h1>Adicionar Pedido</h1>
 
       <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
   <div class="hello">
@@ -12,7 +12,6 @@
         accept="image/jpeg,image/png" 
         size="10" 
         button-class="btn"
-        prefill="http://www.decoracaoonline.org/wp-content/uploads/2015/06/cadeiras-sala-de-jantar.jpg"
         :custom-strings="{
             upload: '<h1></h1>',
             drag: 'Arrastar Fotografia'
@@ -47,6 +46,7 @@ export default {
         titulo: "",
         status: true
       },
+
       schema: {
         fields: [
           {
@@ -59,7 +59,7 @@ export default {
             placeholder: "Titulo do pedido"
           },
           {
-            label: "Descricao:",
+            label: "Descrição:",
             model: "Descricao",
             type: "input",
             inputType: "text",
@@ -79,10 +79,6 @@ export default {
   components: {
     "vue-form-generator": VueFormGenerator.component,
     PictureInput
-  },
-  created() {
-    // vai buscar a informação ao backend sobre o pedido
-    this.model.titulo = "Conjunto Cadeiras";
   },
   methods: {
     enviar() {
@@ -105,10 +101,10 @@ export default {
     onChange(image) {
       console.log("Alterada");
       if (image) {
-        console.log("Fotografia ok");
+        console.log("Fotografia OK");
         this.image = image;
       } else {
-        console.log("Erro, formato invalido");
+        console.log("Erro, no backend");
       }
     }
   }
