@@ -356,7 +356,7 @@ export default {
         },{
           type: 'input',
           inputType: 'text',
-          label: 'Elementos Acessorios',
+          label: 'Elementos Acessórios',
           model: 'ElementosAcessorios',
           placeholder:'Insira os os elementos constituintes',
           required: false,
