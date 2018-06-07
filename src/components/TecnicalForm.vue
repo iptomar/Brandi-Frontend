@@ -361,6 +361,7 @@ export default {
           inputType:'text',
           label:'Tipo Conjunto',
           model:'TipoConjunto',
+          placeholder:'Insira o tipo do conjunto',
           required:false,
           featured:true
         },{
@@ -368,48 +369,55 @@ export default {
           inputType:'text',
           label:'Elementos Constituintes',
           model:'ElementosConstituintes',
+          placeholder:'Insira os elementos constituintes',
           required:false,
         },{
           type:'select',
           label:'Integrado Em Conjunto',
           model:'IntegradoEmConjunto',
-          values:['sim','não'],
+          values:['Sim','Não'],
           required:false,
         },{
           type: 'input',
           inputType: 'text',
-          label: 'Elementos Acessorios',
+          label: 'Elementos Acessórios',
           model: 'ElementosAcessorios',
+          placeholder:'Insira os os elementos constituintes',
           required: false,
         },{
           type:'input',
           inputType:'text',
           label:'Assinatura Autoria',
           model:'AssinaturaAutoria',
+          placeholder:'Insira se tem alguma assinatura de autoria (marcas)',
           required: false,
         },{
           type:'input',
           inputType:'text',
-          label:'Inscricoes de Montagem',
+          label:'Inscrições de Montagem',
           model:'InscricaoMontagem',
+          placeholder:'Insira se tem alguma inscrição de montagem',
           required:false,
         },{
           type:'input',
           inputType:'text',
-          label:'Inscricoes de construcao',
+          label:'Inscrições de construcao',
           model:'InscricaoConstr',
+          placeholder:'Insira se tem alguma inscrição de construção',
           required:false
         },{
           type:'input',
           inputType:'text',
-          label:'Classificacao Patrimonial',
+          label:'Classificação Patrimonial',
           model:'ClassPatrimonial',
+          placeholder:'Insira a classificação patrimonial',
           required:false
         },{
           type:'input',
           inputType:'text',
           label:'Estilo',
           model:'Estilo',
+          placeholder:' Insira aqui o estilo da peça',
           required:false,
         },{
           type:'select',
@@ -426,8 +434,9 @@ export default {
         },{
           type:'input',
           inputType:'text',
-          label:'Descricao',
+          label:'Descrição',
           model:'Descricao',
+          placeholder:'Insira uma breve descrição',
           required:false
         },{
           type:'input',
@@ -438,37 +447,41 @@ export default {
         },{
           type:'input',
           inputType:'text',
-          label:'Conclusoes',
+          label:'Conclusões',
           model:'Conclusoes',
+          placeholder:'Insira uma breve conclusão sobre a peça',
           required:false
         },{
           type:'input',
           inputType:'text',
           label:'Autoria',
           model:'Autoria',
+          placeholder:'Insira a autoria da peça',
           required:false
         },{
           type:'input',
           inputType:'text',
-          label:'Datacao',
+          label:'Datação',
           model:'Datacao',
+          placeholder:'Insira a datação da peça',
           required:false
         },{
           type:'input',
           inputType:'text',
           label:'Local Origem',
           model:'LocalOrigem',
+          placeholder:'Insira o local de origem da peça',
           required:false
         },{
           type:'input',
           inputType:'text',
-          label:'Estrutura Tecnica',
+          label:'Estrutura Técnica',
           model:'EstruturaTecnica',
           required:false
         },{
           type:'input',
           inputType:'text',
-          label:'Superficie Tecnica',
+          label:'Superficie Técnica',
           model:'SuperficieTecnica',
           required:false
         },{
