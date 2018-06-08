@@ -16,6 +16,32 @@
           <vue-form-generator :schema='pagina_2' :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row> 
+    <h1>Página 3</h1>
+            <b-container class="container">
+        <b-container class="panel-default">CONDIÇÕES AMBIENTAIS DO LOCAL DE INSERÇÃO DO BEM CULTURAL</b-container>
+        <vue-form-generator :schema='pagina3_Desc' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container>Ciclos das Estações Climatéricas Anuais | Frio /Húmido | Quente /Seco:</b-container>
+        <vue-form-generator :schema='pagina3_Cic' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container class="panel-default">Radiação | Iluminação</b-container>
+         <vue-form-generator :schema='pagina3_Radi_Natural' :options='formOptions'></vue-form-generator>
+          <vue-form-generator :schema='pagina3_Radi_Artificial' :options='formOptions'></vue-form-generator>
+    </b-container>
+
+    <b-container class="container">
+        <b-container class="panel-default">Poluição</b-container>
+         <vue-form-generator :schema='pagina3_Pol' :options='formOptions'></vue-form-generator>
+    </b-container>
+    
+    <b-container class="container">
+        <b-container class="panel-default">Observações | Conclusões</b-container>
+         <vue-form-generator :schema='pagina3_Con' :options='formOptions'></vue-form-generator>
+    </b-container>
     <h1>Página 4</h1>
     <b-container class="container">
       <b-row class="panel panel-default">
@@ -136,412 +162,663 @@ export default {
         skills: ["Javascript", "VueJS"],
         email: "john.doe@gmail.com",
         status: true,
-      Dseginacao: '',
-      NProcessoLCRM: '', 
-      NProcessoCEARC: '',
-      Coordenacao:'',
-      DataDeAberturaProcesso:'',
-      DataDeEntradanoLCRM:'',
-      DataDeEntradaDoCEARC:'',
-      FotoObjeto:'',
-      FormatoFoto:['png'],
-      SuperCategoria:'',
-      Categoria:'',
-      SubCategoria:'',
-      Localizacao:'', 
-      Proprietario:'',
-      EnderecoPostalDoProprietario:'',
-      EndereçoElectronicoDoProprietario:'',
-      ContactosTelefónicosDoProprietario:'',
-      Dimentcao:'',
-      OutrasDimensões:'',
-      DonoDaObra:'',
-      EnderecoPostalDonoDaObra:'',
-      ContactosTelefonicosDonoDaObra:'',
-      Mecenas:'',
-      EndereçoPostalMecenas:'',
-      ContactosTelefonicosMecenas:'',
-      status: true,
-      //pagina 2
-      TipoConjunto:'',
-      ElementosConstituintes:'',
-      IntegradoEmConjunto:['Sim', 'Não'],
-      ElementosAcessorios:'',
-      AssinaturaAutoria:'',
-      InscricaoMontagem:'',
-      InscricaoConstr:'',
-      ClassPatrimonial:'',
-      Estilo:'',
-      Epoca: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação'],
-      Qualidade: ['Excelente','Muito Boa','Boa','Regular','Fraca'],
-      Descricao: '',
-      Analogia: '',
-      Conclusoes: '',
-      Autoria: '',
-      Datacao: '',
-      LocalOrigem: '',
-      EstruturaTecnica: '',
-      SuperficieTecnica: '',
-      EstruturaMaterial: '',
-      SuperficieMaterial:''
+        Dseginacao: "",
+        NProcessoLCRM: "",
+        NProcessoCEARC: "",
+        Coordenacao: "",
+        DataDeAberturaProcesso: "",
+        DataDeEntradanoLCRM: "",
+        DataDeEntradaDoCEARC: "",
+        FotoObjeto: "",
+        FormatoFoto: ["png"],
+        SuperCategoria: "",
+        Categoria: "",
+        SubCategoria: "",
+        Localizacao: "",
+        Proprietario: "",
+        EnderecoPostalDoProprietario: "",
+        EndereçoElectronicoDoProprietario: "",
+        ContactosTelefónicosDoProprietario: "",
+        Dimentcao: "",
+        OutrasDimensões: "",
+        DonoDaObra: "",
+        EnderecoPostalDonoDaObra: "",
+        ContactosTelefonicosDonoDaObra: "",
+        Mecenas: "",
+        EndereçoPostalMecenas: "",
+        ContactosTelefonicosMecenas: "",
+        status: true,
+        //pagina 2
+        TipoConjunto: "",
+        ElementosConstituintes: "",
+        IntegradoEmConjunto: ["Sim", "Não"],
+        ElementosAcessorios: "",
+        AssinaturaAutoria: "",
+        InscricaoMontagem: "",
+        InscricaoConstr: "",
+        ClassPatrimonial: "",
+        Estilo: "",
+        Epoca: [
+          "Coevo",
+          "Tardio",
+          "Outra Época",
+          "Réplica",
+          "Reprodução",
+          "Falsificação"
+        ],
+        Qualidade: ["Excelente", "Muito Boa", "Boa", "Regular", "Fraca"],
+        Descricao: "",
+        Analogia: "",
+        Conclusoes: "",
+        Autoria: "",
+        Datacao: "",
+        LocalOrigem: "",
+        EstruturaTecnica: "",
+        SuperficieTecnica: "",
+        EstruturaMaterial: "",
+        SuperficieMaterial: ""
       },
 
       //pagina 1
 
-      pagina_1:{
-           fields: [ { 
-        type: 'input',
-        inputType: 'text',
-        label: 'Deseginação do objeto',
-        model: 'Deseginacao',
-        placeholder: 'Insira a desinação do Objeto',
-        featured: true,
-        required: true
-      }, {
-        type: 'input',
-        inputType: 'text',
-        label: 'Processo LCRM Nº',
-        model: 'NProcessoLCRM',
-        placeholder: 'Insira o numero de processo LCRM',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Processo CEARC Nº',
-        model: 'NProcessoCEARC',
-        placeholder: 'Insira o numero de processo CEARC',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Coordenação/Direção Técnica da Intervenção:',
-        model: 'Coordenacao',
-        placeholder: 'Professor Adjunto | Conservador-restaurador',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'date',
-        label: 'Data de Abertura Processo',
-        model: 'DataDeAberturaProcesso',
-        placeholder: '',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'date',
-        label: 'Data de entrada no LCRM: ',
-        model: 'DataDeEntradanoLCRM',
-        placeholder: '',
-        featured: true,
-        required: false
-      },
-      {
-        type: 'input',
-        inputType: 'date',
-        label: 'Data de entrada do CEARC: ',
-        model: 'DataDeEntradaDoCEARC',
+      pagina_1: {
+        fields: [
+          {
+            type: "input",
+            inputType: "text",
+            label: "Deseginação do objeto",
+            model: "Deseginacao",
+            placeholder: "Insira a desinação do Objeto",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Processo LCRM Nº",
+            model: "NProcessoLCRM",
+            placeholder: "Insira o numero de processo LCRM",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Processo CEARC Nº",
+            model: "NProcessoCEARC",
+            placeholder: "Insira o numero de processo CEARC",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Coordenação/Direção Técnica da Intervenção:",
+            model: "Coordenacao",
+            placeholder: "Professor Adjunto | Conservador-restaurador",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "date",
+            label: "Data de Abertura Processo",
+            model: "DataDeAberturaProcesso",
+            placeholder: "",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "date",
+            label: "Data de entrada no LCRM: ",
+            model: "DataDeEntradanoLCRM",
+            placeholder: "",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "date",
+            label: "Data de entrada do CEARC: ",
+            model: "DataDeEntradaDoCEARC",
 
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'file',
-        label: 'Registo Fotográfico Identificativo do Objecto: ',
-        model: 'FotoObjeto',
-        featured: true,
-        required: true
-      },{
-        type: 'select',
-        inputType: 'text',
-        label: 'Formato',
-        model: 'FormatoFoto',
-        featured: true,
-        required: true,
-        values: ['JPG', 'PNG','JEPG']
-        
-      },
-      {
-        type: 'input',
-        inputType: 'text',
-        label: 'Super-Categoria',
-        model: 'SuperCategoria',
-        placeholder: 'Insira a super-categoria do objeto',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Categoria',
-        model: 'Categoria',
-        placeholder: 'Insira a categoria do objeto',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'SubCategoria',
-        model: 'SubCategoria',
-        placeholder: 'Insira a Sub-categoria do objeto',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Localização',
-        model: 'Localizacao',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Proprietário',
-        model: 'Proprietario',
-        placeholder: 'Insira o nome do proprietário',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Endereço Postal do Proprietário',
-        model: 'EnderecoPostalDoProprietario',
-        placeholder: 'Insira o endereço postal do proprietário',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Endereço Electronico Proprietário',
-        model: 'EndereçoElectronicoDoProprietario',
-        placeholder: 'Insira o endereço electronico do proprietário',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Contactos Telefónico Proprietários',
-        model: 'ContactosTelefónicosDoProprietario',
-        placeholder: 'Insira o contacto telefónico proprietário',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Dimenção',
-        model: 'Dimencao',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Outras Dimensões',
-        model: 'OutrasDimensões',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Dono da Obra',
-        model: 'DonoDaObra',
-        placeholder: 'Insira o nome do dono da obra',
-        featured: true,
-        required: true
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Endereco Postal do Dono da Obra',
-        model: 'EnderecoPostalDonoDaObra',
-         placeholder: 'Insira o endereço postal do dono da obra',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Contactos Telefónicos do Dono da Obra',
-        model: 'ContactosTelefonicosDonoDaObra',
-        placeholder: 'Insira o contacto telefónico do dono da obra',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Mecenas',
-        model: 'Mecenas',
-        featured: true,
-        required: false
-      }, {
-        type: 'input',
-        inputType: 'text',
-        label: 'Endereço Postal Mecenas',
-        model: 'EndereçoPostalMecenas',
-         placeholder: 'Insira o endereço postal do Mecenas',
-        featured: true,
-        required: false
-      },{
-        type: 'input',
-        inputType: 'text',
-        label: 'Contactos Telefónicos Mecenas',
-        model: 'ContactosTelefonicosMecenas',
-        placeholder: 'Insira o contacto telefónico do Mecenas',
-        featured: true,
-        required: false
-      },
-      
-   
-      ]
-
-
-      },
-      //pagina 2 
-      pagina_2: {
-        fields: [{
-          type:'input',
-          inputType:'text',
-          label:'Tipo Conjunto',
-          model:'TipoConjunto',
-          placeholder:'Insira o tipo do conjunto',
-          required:false,
-          featured:true
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Elementos Constituintes',
-          model:'ElementosConstituintes',
-          placeholder:'Insira os elementos constituintes',
-          required:false,
-        },{
-          type:'select',
-          label:'Integrado Em Conjunto',
-          model:'IntegradoEmConjunto',
-          values:['Sim','Não'],
-          required:false,
-        },{
-          type: 'input',
-          inputType: 'text',
-          label: 'Elementos Acessórios',
-          model: 'ElementosAcessorios',
-          placeholder:'Insira os os elementos constituintes',
-          required: false,
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Assinatura Autoria',
-          model:'AssinaturaAutoria',
-          placeholder:'Insira se tem alguma assinatura de autoria (marcas)',
-          required: false,
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Inscrições de Montagem',
-          model:'InscricaoMontagem',
-          placeholder:'Insira se tem alguma inscrição de montagem',
-          required:false,
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Inscrições de construcao',
-          model:'InscricaoConstr',
-          placeholder:'Insira se tem alguma inscrição de construção',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Classificação Patrimonial',
-          model:'ClassPatrimonial',
-          placeholder:'Insira a classificação patrimonial',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Estilo',
-          model:'Estilo',
-          placeholder:' Insira aqui o estilo da peça',
-          required:false,
-        },{
-          type:'select',
-          label:'Epoca',
-          model:'Epoca',
-          values: ['Coevo','Tardio','Outra Época','Réplica','Reprodução','Falsificação'],
-          required:false
-        },{
-          type:'select',
-          label:'Qualidade',
-          model:'Qualidade',
-          values: ['Excelente','Muito Boa','Boa','Regular','Fraca'],
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Descrição',
-          model:'Descricao',
-          placeholder:'Insira uma breve descrição',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Analogia',
-          model:'Analogia',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Conclusões',
-          model:'Conclusoes',
-          placeholder:'Insira uma breve conclusão sobre a peça',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Autoria',
-          model:'Autoria',
-          placeholder:'Insira a autoria da peça',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Datação',
-          model:'Datacao',
-          placeholder:'Insira a datação da peça',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Local Origem',
-          model:'LocalOrigem',
-          placeholder:'Insira o local de origem da peça',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Estrutura Técnica',
-          model:'EstruturaTecnica',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Superficie Técnica',
-          model:'SuperficieTecnica',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Estrutura Material',
-          model:'EstruturaMaterial',
-          required:false
-        },{
-          type:'input',
-          inputType:'text',
-          label:'Superficie Material',
-          model:'SuperficieMaterial',
-          required:false
-        },
-
-        
-        
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "file",
+            label: "Registo Fotográfico Identificativo do Objecto: ",
+            model: "FotoObjeto",
+            featured: true,
+            required: true
+          },
+          {
+            type: "select",
+            inputType: "text",
+            label: "Formato",
+            model: "FormatoFoto",
+            featured: true,
+            required: true,
+            values: ["JPG", "PNG", "JEPG"]
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Super-Categoria",
+            model: "SuperCategoria",
+            placeholder: "Insira a super-categoria do objeto",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Categoria",
+            model: "Categoria",
+            placeholder: "Insira a categoria do objeto",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "SubCategoria",
+            model: "SubCategoria",
+            placeholder: "Insira a Sub-categoria do objeto",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Localização",
+            model: "Localizacao",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Proprietário",
+            model: "Proprietario",
+            placeholder: "Insira o nome do proprietário",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Endereço Postal do Proprietário",
+            model: "EnderecoPostalDoProprietario",
+            placeholder: "Insira o endereço postal do proprietário",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Endereço Electronico Proprietário",
+            model: "EndereçoElectronicoDoProprietario",
+            placeholder: "Insira o endereço electronico do proprietário",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Contactos Telefónico Proprietários",
+            model: "ContactosTelefónicosDoProprietario",
+            placeholder: "Insira o contacto telefónico proprietário",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Dimenção",
+            model: "Dimencao",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Outras Dimensões",
+            model: "OutrasDimensões",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Dono da Obra",
+            model: "DonoDaObra",
+            placeholder: "Insira o nome do dono da obra",
+            featured: true,
+            required: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Endereco Postal do Dono da Obra",
+            model: "EnderecoPostalDonoDaObra",
+            placeholder: "Insira o endereço postal do dono da obra",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Contactos Telefónicos do Dono da Obra",
+            model: "ContactosTelefonicosDonoDaObra",
+            placeholder: "Insira o contacto telefónico do dono da obra",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Mecenas",
+            model: "Mecenas",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Endereço Postal Mecenas",
+            model: "EndereçoPostalMecenas",
+            placeholder: "Insira o endereço postal do Mecenas",
+            featured: true,
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Contactos Telefónicos Mecenas",
+            model: "ContactosTelefonicosMecenas",
+            placeholder: "Insira o contacto telefónico do Mecenas",
+            featured: true,
+            required: false
+          }
         ]
-
+      },
+      //pagina 2
+      pagina_2: {
+        fields: [
+          {
+            type: "input",
+            inputType: "text",
+            label: "Tipo Conjunto",
+            model: "TipoConjunto",
+            placeholder: "Insira o tipo do conjunto",
+            required: false,
+            featured: true
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Elementos Constituintes",
+            model: "ElementosConstituintes",
+            placeholder: "Insira os elementos constituintes",
+            required: false
+          },
+          {
+            type: "select",
+            label: "Integrado Em Conjunto",
+            model: "IntegradoEmConjunto",
+            values: ["Sim", "Não"],
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Elementos Acessórios",
+            model: "ElementosAcessorios",
+            placeholder: "Insira os os elementos constituintes",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Assinatura Autoria",
+            model: "AssinaturaAutoria",
+            placeholder: "Insira se tem alguma assinatura de autoria (marcas)",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Inscrições de Montagem",
+            model: "InscricaoMontagem",
+            placeholder: "Insira se tem alguma inscrição de montagem",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Inscrições de construcao",
+            model: "InscricaoConstr",
+            placeholder: "Insira se tem alguma inscrição de construção",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Classificação Patrimonial",
+            model: "ClassPatrimonial",
+            placeholder: "Insira a classificação patrimonial",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Estilo",
+            model: "Estilo",
+            placeholder: " Insira aqui o estilo da peça",
+            required: false
+          },
+          {
+            type: "select",
+            label: "Epoca",
+            model: "Epoca",
+            values: [
+              "Coevo",
+              "Tardio",
+              "Outra Época",
+              "Réplica",
+              "Reprodução",
+              "Falsificação"
+            ],
+            required: false
+          },
+          {
+            type: "select",
+            label: "Qualidade",
+            model: "Qualidade",
+            values: ["Excelente", "Muito Boa", "Boa", "Regular", "Fraca"],
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Descrição",
+            model: "Descricao",
+            placeholder: "Insira uma breve descrição",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Analogia",
+            model: "Analogia",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Conclusões",
+            model: "Conclusoes",
+            placeholder: "Insira uma breve conclusão sobre a peça",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Autoria",
+            model: "Autoria",
+            placeholder: "Insira a autoria da peça",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Datação",
+            model: "Datacao",
+            placeholder: "Insira a datação da peça",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Local Origem",
+            model: "LocalOrigem",
+            placeholder: "Insira o local de origem da peça",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Estrutura Técnica",
+            model: "EstruturaTecnica",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Superficie Técnica",
+            model: "SuperficieTecnica",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Estrutura Material",
+            model: "EstruturaMaterial",
+            required: false
+          },
+          {
+            type: "input",
+            inputType: "text",
+            label: "Superficie Material",
+            model: "SuperficieMaterial",
+            required: false
+          }
+        ]
+      },
+      pagina3_Cic: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Temperatura",
+            model: "Temperatura",
+            hint: "Max 10 characters",
+            placeholder: "Temperatura(Valores Médios em ºC)",
+            max: 10,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Humidade Relativa",
+            model: "Humidade Relativa",
+            hint: "Max 10 characters",
+            placeholder: "Humidade Relativa(Valores Médios em %)",
+            max: 10,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Período do Ano",
+            model: "Período do Ano",
+            hint: "Max 10 characters",
+            placeholder: "Período do Ano(Início / Fim – em meses)",
+            max: 10,
+            rows: 1,
+            required: true
+          }
+        ]
+      },
+      pagina3_Radi_Natural: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Tipo:",
+            model: "Tipo:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor de Iluminância (lux):",
+            model: "Valor de Iluminância (lux):",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 20,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor de U.V Medidos:",
+            model: "Valor de U.V Medidos:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor Real de U.V:",
+            model: "Valor Real de U.V:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "UV=(0.3(Medida UV) x 10000)/(50 (Lux)) = 60uW/Lúmen",
+            model: "Valor Real de U.V:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          }
+        ]
+      },
+      pagina3_Radi_Artificial: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Tipo:",
+            model: "Tipo:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor de Iluminância (lux):",
+            model: "Valor de Iluminância (lux):",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 20,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor de U.V Medidos:",
+            model: "Valor de U.V Medidos:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Valor Real de U.V:",
+            model: "Valor Real de U.V:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "UV=(0.3(Medida UV) x 10000)/(50 (Lux)) = 60uW/Lúmen",
+            model: "Valor Real de U.V:",
+            hint: "Max 50 characters",
+            placeholder: "Tipo:",
+            max: 50,
+            rows: 1,
+            required: true
+          }
+        ]
+      },
+      pagina3_Desc: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Descrição",
+            model: "Descricao",
+            hint: "Max 255 characters",
+            placeholder: "Descrição:",
+            max: 255,
+            rows: 4,
+            required: true
+          }
+        ]
+      },
+      pagina3_Pol: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Agentes_Poluidores",
+            model: "Agentes_Poluidores",
+            hint: "Max 255 characters",
+            placeholder: "Agentes Poluidores:",
+            max: 255,
+            rows: 4,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Fontes | Origem",
+            model: "Fontes_Origem",
+            hint: "Max 255 characters",
+            placeholder: "Fontes | Origem",
+            max: 255,
+            rows: 4,
+            required: true
+          },
+          {
+            type: "textArea",
+            label: "Resultados:",
+            model: "Resultados",
+            hint: "Max 255 characters",
+            placeholder: "Resultados:",
+            max: 255,
+            rows: 4,
+            required: true
+          }
+        ]
+      },
+      pagina3_Con: {
+        fields: [
+          {
+            type: "textArea",
+            hint: "Max 255 characters",
+            //placeholder: "Resultados:",
+            max: 255,
+            rows: 4,
+            required: true
+          }
+        ]
       },
       // pagina 4
       pagina_4_1: {
@@ -583,55 +860,64 @@ export default {
           }
         ]
       },
-///////PAGINA 5
+      ///////PAGINA 5
 
-
-        schema51: { 
-            fields: [{
-                type: 'textArea',
-                label: "Deterioração Física, Química e Mecânica dos Materiais:",
-                inputType: 'text',
-                model: 'estruturafisica',
-                 placeholder: 'Estrutura'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'superficiefisica',
-                placeholder: 'Superfície'
-            },{
-                type: 'textArea',
-                inputType: 'text',
-                model: 'elementosfisica',
-                placeholder: 'Elementos Acessórios'
-            }]
-            },
-        schema52: { 
-            fields: [{
-                type: 'textArea',
-                label: "Deterioração Biológica dos Materiais:",
-                inputType: 'text',
-                model: 'estruturabiologica',
-                placeholder: 'Estrutura'
-                }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'superficiebiologica',
-                placeholder: 'Superfície'
-                },{
-                type: 'textArea',
-                inputType: 'text',
-                model: 'elementosbiologica',
-                placeholder: 'Elementos Acessórios'
-                }]
-            },
-            schema53: { 
-            fields: [{
-                type: 'textArea',
-                label: "Observações | Conclusões",
-                inputType: 'text',
-                model: 'conclusaoestado'
-                }]
-            },
+      schema51: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Deterioração Física, Química e Mecânica dos Materiais:",
+            inputType: "text",
+            model: "estruturafisica",
+            placeholder: "Estrutura"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "superficiefisica",
+            placeholder: "Superfície"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "elementosfisica",
+            placeholder: "Elementos Acessórios"
+          }
+        ]
+      },
+      schema52: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Deterioração Biológica dos Materiais:",
+            inputType: "text",
+            model: "estruturabiologica",
+            placeholder: "Estrutura"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "superficiebiologica",
+            placeholder: "Superfície"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "elementosbiologica",
+            placeholder: "Elementos Acessórios"
+          }
+        ]
+      },
+      schema53: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Observações | Conclusões",
+            inputType: "text",
+            model: "conclusaoestado"
+          }
+        ]
+      },
 
       // START schema para a página 6
       schema61: {
@@ -875,145 +1161,162 @@ export default {
             maxlength: 25,
             required: true,
             placeholder: "(IPT)(Client)"
-          },
+          }
         ]
       },
 
       //----------- Pagina 8 -------------------------
       schema81: {
-            fields: [{
-                type: "textArea",
-                label: "Estrutura",
-                model: "Estrutura",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false
-            }, {
-                type: "textArea",
-                label: "Recursos Necessários para a Estrutura",
-                model: "Estrutura_Recursos",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false,
-                
-            }, {
-                type: "textArea",
-                label: "Superfície",
-                model: "Superficie",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false,
-                
-            },{
-                type: "textArea",
-                label: "Recursos Necessários Para a Superfície",
-                model: "Superficie_Recursos",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false
-            }, {
-                type: "textArea",
-                label: "Elementos Acessórios",
-                model: "Elementos",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false,
-                
-            }, {
-                type: "textArea",
-                label: "Recursos Necessários para os Elementos Acessórios",
-                model: "Elementos_Recursos",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false,
-                
-            }]
-            },
-               schema82: {
-            fields: [{
-                type: "textArea",
-                model: "conclusao",
-                readonly: false,
-                featured: true,
-                required: true,
-                disabled: false
-            }]
-            }, ///////////////// Página 9
-      schema91: { 
-            fields: [{
-                type: 'input',
-                label: "Relatório Técnico da Intervenção do LCRM",
-                required: true,
-                inputType: 'text',
-                model: 'refarquivo',
-                placeholder: 'Ref.ª de Arquivo'
-            }
-            ]
-        },
-      schema92: { 
-            fields: [{
-                type: 'textArea',
-                label: "Originais Fotográficos",
-                inputType: 'text',
-                model: 'originaistipo',
-                placeholder: 'Tipo'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'originaisref',
-                placeholder: 'Referências'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'originaisautor',
-                placeholder: 'Autor'
-            }
-            ]
-        },
-          schema93: { 
-            fields: [{
-                type: 'textArea',
-                label: "Documentação Gráfica",
-                inputType: 'text',
-                model: 'doctipo',
-                placeholder: 'Tipo'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'docref',
-                placeholder: 'Referências'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'docautor',
-                placeholder: 'Autor'
-            }]
-        },
-          schema94: { 
-            fields: [{
-                type: 'textArea',
-                label: "Exames e Análises",
-                inputType: 'text',
-                model: 'exametipo',
-                placeholder: 'Tipo'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'exameref',
-                placeholder: 'Referências'
-            }, {
-                type: 'textArea',
-                inputType: 'text',
-                model: 'exameautor',
-                placeholder: 'Autor'
-            }]
-        },    
+        fields: [
+          {
+            type: "textArea",
+            label: "Estrutura",
+            model: "Estrutura",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          },
+          {
+            type: "textArea",
+            label: "Recursos Necessários para a Estrutura",
+            model: "Estrutura_Recursos",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          },
+          {
+            type: "textArea",
+            label: "Superfície",
+            model: "Superficie",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          },
+          {
+            type: "textArea",
+            label: "Recursos Necessários Para a Superfície",
+            model: "Superficie_Recursos",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          },
+          {
+            type: "textArea",
+            label: "Elementos Acessórios",
+            model: "Elementos",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          },
+          {
+            type: "textArea",
+            label: "Recursos Necessários para os Elementos Acessórios",
+            model: "Elementos_Recursos",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          }
+        ]
+      },
+      schema82: {
+        fields: [
+          {
+            type: "textArea",
+            model: "conclusao",
+            readonly: false,
+            featured: true,
+            required: true,
+            disabled: false
+          }
+        ]
+      }, ///////////////// Página 9
+      schema91: {
+        fields: [
+          {
+            type: "input",
+            label: "Relatório Técnico da Intervenção do LCRM",
+            required: true,
+            inputType: "text",
+            model: "refarquivo",
+            placeholder: "Ref.ª de Arquivo"
+          }
+        ]
+      },
+      schema92: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Originais Fotográficos",
+            inputType: "text",
+            model: "originaistipo",
+            placeholder: "Tipo"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "originaisref",
+            placeholder: "Referências"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "originaisautor",
+            placeholder: "Autor"
+          }
+        ]
+      },
+      schema93: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Documentação Gráfica",
+            inputType: "text",
+            model: "doctipo",
+            placeholder: "Tipo"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "docref",
+            placeholder: "Referências"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "docautor",
+            placeholder: "Autor"
+          }
+        ]
+      },
+      schema94: {
+        fields: [
+          {
+            type: "textArea",
+            label: "Exames e Análises",
+            inputType: "text",
+            model: "exametipo",
+            placeholder: "Tipo"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "exameref",
+            placeholder: "Referências"
+          },
+          {
+            type: "textArea",
+            inputType: "text",
+            model: "exameautor",
+            placeholder: "Autor"
+          }
+        ]
+      },
 
       tableData: [
         {
