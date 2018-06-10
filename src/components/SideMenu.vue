@@ -1,6 +1,6 @@
 <template>
   <b-nav vertical fill pills>
-    <vue-tree-navigation :items="items" class="left-menu text-left mt-4 mr-5" text-variant="white" />
+    <vue-tree-navigation :items="items" class="left-menu text-left mt-4 mr-6" text-variant="white" />
   </b-nav>
 </template>
 
@@ -15,6 +15,14 @@
           return {
             items: [
               { name: 'Home', route: 'home' },
+              { name: 'Gestão de Oportunidades', children: [
+                { name: 'Clientes', route: 'listarclientes'},
+                { name: 'Objetos', route: 'listarobjetos'},
+                { name: 'Pedidos', route: 'listarpedidos'},
+                { name: 'Análises', route: 'listaranalises'},
+                { name: 'Propostas', route: 'listarpropostas'},
+                { name: 'Eventos', route: 'listareventos'},
+              ]},
               { name: 'Formulário', route: 'form', children: [
                   { name: 'Pagina 1', element: 'pg1' },
                   { name: 'Pagina 2', element: 'pg2', children: [

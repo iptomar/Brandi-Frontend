@@ -1,38 +1,36 @@
- <template>
-    <b-container  v-if="auth.logged"  class="bv-example-row">
-    <h1>Lista Deslocações</h1>
-    <ul v-if="deslocacao && deslocacao.length">
-     <li v-for="deslocacao of deslocacao" v-bind:key="deslocacao.idAnalise">
-        <table class="tg">
-            <tr>
-              <th class=""></th>
-              <th class="">Descrição da Análise</th>
-              <th class="">Data da Análise</th>
-              <th class="">Local</th>
-              <th class="">Deslocações (Km)</th>
-              <th class="">Início da Análise</th>
-              <th class="">Fim da Análise</th>
-              <th class="">Outras Despesas</th>
-            </tr>
-            <tr>
-              <td class="">{{deslocacao.idAnalise}}</td>
-              <td class="">{{deslocacao.descAnalise}}</td>
-              <td class="">{{deslocacao.dataAnalise}}</td>
-              <td class="">{{deslocacao.local}}</td>
-              <td class="">{{deslocacao.km}}</td>
-              <td class="">{{deslocacao.inicAnalise}}</td>
-              <td class="">{{deslocacao.fimAnalise}}</td>
-           </tr>
-        </table>
-    </li>
-  </ul>
+<template>
+  <b-container  v-if="auth.logged"  class="bv-example-row">
+  <h1>Lista de Análises</h1>
+  <ul v-if="analises && analises.length">
+    <li v-for="analise of analises" v-bind:key="analise.idAnalise">
+      <table class="tg">
+          <tr>
+            <th class="">Descrição da Análise</th>
+            <th class="">Data da Análise</th>
+            <th class="">Local</th>
+            <th class="">Deslocações (Km)</th>
+            <th class="">Início da Análise</th>
+            <th class="">Fim da Análise</th>
+            <th class="">Outras Despesas</th>
+          </tr>
+          <tr>
+            <td class="">{{deslocacao.descAnalise}}</td>
+            <td class="">{{deslocacao.dataAnalise}}</td>
+            <td class="">{{deslocacao.local}}</td>
+            <td class="">{{deslocacao.km}}</td>
+            <td class="">{{deslocacao.inicAnalise}}</td>
+            <td class="">{{deslocacao.fimAnalise}}</td>
+          </tr>
+      </table>
+  </li>
+</ul>
 
- <ul v-if="errors && errors.length">
-    <li v-for="error of errors" v-bind:key="error.idAnalise">
-      {{error.message}}
-    </li>
-  </ul>
-    </b-container>
+<ul v-if="errors && errors.length">
+  <li v-for="error of errors" v-bind:key="error.idAnalise">
+    {{error.message}}
+  </li>
+</ul>
+  </b-container>
 </template>
 
 <script>
@@ -48,16 +46,16 @@ export default {
     data() {
       return {
         auth: store.auth,
-        deslocacao: [],
+        analises: [],
         errors: []
      }
     },
   created() { // informações das deslocações
-    var url = "/deslocacoes"
+    var url = "/listaranalises"
     axios.get(url
     ).then(response => {
-      this.deslocacao = response.data;
-      console.log(this.deslocacao);
+      this.analises = response.data;
+      console.log(this.analises);
     }).catch(e => {
       this.errors.push(e)
   })

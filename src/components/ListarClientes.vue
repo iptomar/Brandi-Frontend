@@ -1,21 +1,34 @@
 <template>
-   <b-container class="bv-example-row">
-        <b-row class="text-center">
-            <div v-for="(value) in clientes" class="listar">
-              Nome : {{value.nome}} 
-              <br/>
-              Morada : {{value.morada}}
-              <br/>
-              Telefone : {{value.contato}}
-              <br/>
-              Email : {{value.email}}
-              <br/>
-              NIF : {{value.NIF}}
-              <br/>
-            </div>
-        </b-row>
-    </b-container>
+  <b-container  v-if="auth.logged"  class="bv-example-row">
+  <h1>Lista de Clientes</h1>
+  <ul v-if="clientes && clientes.length">
+    <li v-for="cliente of clientes" v-bind:key="cliente.idCliente">
+      <table class="tg">
+          <tr>
+            <th class=""></th>
+            <th class="">Nome</th>
+            <th class="">NIF</th>
+            <th class="">Morada</th>
+            <th class="">Contacto</th>
+            <th class="">E-mail</th>
+          </tr>
+          <tr>
+            <td class="">{{cliente.nome}}</td>
+            <td class="">{{cliente.nif}}</td>
+            <td class="">{{cliente.morada}}</td>
+            <td class="">{{cliente.contacto}}</td>
+            <td class="">{{cliente.email}}</td>
+          </tr>
+      </table>
+  </li>
+</ul>
 
+<ul v-if="errors && errors.length">
+  <li v-for="error of errors" v-bind:key="error.idCliente">
+    {{error.message}}
+  </li>
+</ul>
+  </b-container>
 </template>
 
 <script>
@@ -36,7 +49,7 @@ export default {
      }
     },      
   created() {    
-    var url = "/clientes/"
+    var url = "/listarclientes"
     axios.get(url
     ).then(response => {
       this.clientes = response.data

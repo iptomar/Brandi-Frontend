@@ -1,17 +1,32 @@
 <template>
-   <b-container class="bv-example-row">
-        <b-row class="text-center">
-            <div v-for="(value) in eventos" class="listar">
-              Evento : {{value.evento}} 
-              <br/>
-              Descrição : {{value.descricao}}
-              <br/>
-              Data de criação : {{value.time}}
-              <br/>
-            </div>
-        </b-row>
-    </b-container>
+  <b-container  v-if="auth.logged"  class="bv-example-row">
+  <h1>Lista de Eventos</h1>
+  <ul v-if="eventos && eventos.length">
+    <li v-for="evento of eventos" v-bind:key="evento.idEvento">
+      <table class="tg">
+          <tr>
+            <th class=""></th>
+            <th class="">Data do Evento</th> 
+            <th class="">Tipo</th>
+            <th class="">Descrição</th>
+          </tr>
+          <tr>
+            <td class="">{{evento.data_evento}}</td>
+            <td class="">{{evento.tipo}}</td>
+            <td class="">{{evento.descricao}}</td>
+          </tr>
+      </table>
+  </li>
+</ul>
+
+<ul v-if="errors && errors.length">
+  <li v-for="error of errors" v-bind:key="error.idEvento">
+    {{error.message}}
+  </li>
+</ul>
+  </b-container>
 </template>
+
 
 <script>
 import Vue from 'vue'
@@ -35,7 +50,7 @@ export default {
       }
     },      
   created() {    
-    var url = "/eventos/"
+    var url = "/listareventos"
     axios.get(url
     ).then(response => {
       this.eventos = response.data
@@ -48,6 +63,7 @@ export default {
   }
 
 </script>
+
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
