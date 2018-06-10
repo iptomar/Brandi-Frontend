@@ -22,7 +22,8 @@
     "vue-easytable": "^1.7.1",
     "vue-form-generator": "^2.2.2",
     "vue-router": "^3.0.1",
-    "vue-tree-navigation": "^3.0.0"
+    "vue-tree-navigation": "^3.0.0",
+    "vue-picture-input": "^2.1.6",
   },
   "devDependencies": {
     "autoprefixer": "^7.2.6",

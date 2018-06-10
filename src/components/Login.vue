@@ -1,12 +1,14 @@
 <template>
 <div class="hello">
+	<h1>Autenticação</h1>
+	<br/>
   <div class="container">
-    <label for="uname"><b>Username</b></label>
+    <label for="uname"><b>Nome de Utilizador:</b></label>
     <input type="text" v-model="username" placeholder="Enter Username" name="uname" required>
-
-    <label for="psw"><b>Password</b></label>
+	<br>
+    <label for="psw"><b>Password:</b></label>	
     <input type="password" v-model="password" placeholder="Enter Password" name="psw" required>
-
+	<br>
     <b-button v-on:click="login">Login</b-button>
 
     <h1>{{ msg }}</h1>
