@@ -1,30 +1,15 @@
 <template>
   <div class="hello">
-    PSI 2018
+      <p class="border-top pt-4 pb-4 mb-0">IPT</p>
   </div>
 </template>
 
 <script>
 export default {
   name: 'Footer'
-
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
