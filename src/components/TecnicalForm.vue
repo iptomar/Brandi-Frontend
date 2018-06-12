@@ -172,7 +172,60 @@
             </b-container>
         </b-row>
     </b-container>
+    <h1>Página 10</h1>
+    <b-container class="container">
+        <b-row class="panel panel-default">
+            <b-container class="panel-heading panel-heading-custom">FONTES</b-container>
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema101' :options='formOptions'></vue-form-generator>
+            </b-container>  
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema102' :options='formOptions'></vue-form-generator>
+            </b-container>            
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema103' :options='formOptions'></vue-form-generator>
+            </b-container>  
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema104' :options='formOptions'></vue-form-generator>
+            </b-container>      
+            <b-container class="panel-body">
+                <vue-form-generator :schema='schema105' :options='formOptions'></vue-form-generator>
+            </b-container>                            
+            <b-container class="panel-body">
 
+        <b-container class="container">
+            <b-container class="panel panel-default">
+                <b-row class="panel-body">
+                    <!--  <b-table striped hover :items="items72" :fields="fields72" :schema='schema72l' :options='formOptions'></b-table>
+                        -->
+                    <b-container class="panel-heading panel-heading-custom">CONSTITUIÇÃO DA EQUIPA</b-container>
+                    <b-col>
+                        <p class="card-text">Nome do Técnico</p>                        
+                        <vue-form-generator :schema='schema106' :options='formOptions'></vue-form-generator>
+                    </b-col>
+
+                    <b-col>
+                        <p class="card-text">Funções Desempenhadas</p>
+                        <vue-form-generator :schema='schema107' :options='formOptions'></vue-form-generator>
+                    </b-col>
+                    <b-col>
+                        <p class="card-text">Habilitações(Escolares/Académicas)</p>                       
+                         
+                        <vue-form-generator :schema='schema108' :options='formOptions'></vue-form-generator>
+                    </b-col>                    
+                </b-row>
+            </b-container>
+        </b-container>
+
+
+                                           
+            </b-container>         
+        
+
+        </b-row>
+           
+        
+    </b-container>
 
 
 </b-container>
@@ -1263,7 +1316,169 @@ export default {
                     }
                 ]
             },
-
+            schema101: {
+                fields: [{
+                        type: "textArea",
+                        label: "Arquivísticas | Documentais",
+                        inputType: "text",
+                        model: "arquivDoc",
+                        placeholder: "Autor/Título/Local/Editor/Data/Página (s) "
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "arquivTipo",
+                        placeholder: "Tipo"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "arquivLocal",
+                        placeholder: "Localização"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "arquivCota",
+                        placeholder: "Cota"
+                    }                    
+                ]
+            },            
+            schema102: {
+                fields: [{
+                        type: "textArea",
+                        label: "Iconográficas",
+                        inputType: "text",
+                        model: "iconDoc",
+                        placeholder: "Autor/Título/Local/Editor/Data/Página (s) "
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "iconTipo",
+                        placeholder: "Tipo"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "iconLocal",
+                        placeholder: "Localização"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "iconCota",
+                        placeholder: "Cota"
+                    }                    
+                ]
+            }, 
+            schema103: {
+                fields: [{
+                        type: "textArea",
+                        label: "Bibliográficas",
+                        inputType: "text",
+                        model: "biblioDoc",
+                        placeholder: "Autor/Título/Local/Editor/Data/Página (s) "
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "biblioTipo",
+                        placeholder: "Tipo"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "biblioLocal",
+                        placeholder: "Localização"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "biblioCota",
+                        placeholder: "Cota"
+                    }                    
+                ]
+            },
+            schema104: {
+                fields: [{
+                        type: "textArea",
+                        label: "Eletrónicas",
+                        inputType: "text",
+                        model: "electroDoc",
+                        placeholder: "Autor/Título/Local/Editor/Data/Página (s)/Sítio na Internet"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "electroTipo",
+                        placeholder: "Tipo de Fonte"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "electroData",
+                        placeholder: "Data da Consulta"
+                    }                   
+                ]
+            },
+            schema105: {
+                fields: [{
+                        type: "textArea",
+                        label: "Outras Fontes",
+                        inputType: "text",
+                        model: "outraDoc",
+                        placeholder: "Autor/Título/Local/Editor/Data/Página (s)"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "outraTipo",
+                        placeholder: "Tipo"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "outraData",
+                        placeholder: "Localização"
+                    },
+                    {
+                        type: "textArea",
+                        inputType: "text",
+                        model: "outraData",
+                        placeholder: "Cota"
+                    }                                    
+                ]
+            },              
+            schema106: {
+                fields: [{
+                        type: "textArea",
+                        inputType: "text",
+                        model: "nomeTecnino",
+                        rows: 4
+                    },                                   
+                ]
+            },
+            schema107: {
+                fields: [{
+                        type: "textArea",
+                        inputType: "text",
+                        model: "funcao",
+                        rows: 4
+                    },                                   
+                ]
+            },
+            schema108: {
+                fields: [{
+                        type: "textArea",
+                        inputType: "text",
+                        model: "nivel",
+                        rows: 4
+                    },                                   
+                ]
+            },                     
+                               
+            
             tableData: [{
                     date: "",
                     design: "",
