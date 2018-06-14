@@ -1,31 +1,32 @@
 <template>
-<b-container v-if="auth.logged" class="bv-example-row">
-  <h1>Adicionar Pedido</h1>
-
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
-  <div class="hello">
-        <picture-input 
-        ref="pictureInput"
-        width='200' 
-        height="200" 
-        margin="16" 
-        accept="image/jpeg,image/png" 
-        size="10" 
-        button-class="btn"
-        :custom-strings="{
-            upload: '<h1></h1>',
-            drag: 'Arrastar Fotografia'
-        }"
-        @change="onChange">
-        </picture-input>
-        <br >
-    <b-button @click="enviar" v-bind:class="{ disabled: !image }">
-    Guardar
-    </b-button>
-    </div>
-
-</b-container>
+    <!-- <b-container v-if="auth.logged" class="container"> -->
+    <b-container class="container">
+    <h1>Adicionar Pedido</h1>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+        <div class="hello">
+          <picture-input 
+            ref="pictureInput"
+            width='200' 
+            height="200" 
+            margin="16" 
+            accept="image/jpeg,image/png" 
+            size="10" 
+            button-class="btn"
+            :custom-strings="{
+                upload: '<h1></h1>',
+                drag: 'Arrastar Fotografia'
+            }"
+            @change="onChange">
+          </picture-input>
+        </div>
+      </b-container>
+    </b-row>
+    <b-button variant="primary" @click="enviar" v-bind:class="{ disabled: !image }">Guardar</b-button>
+  </b-container>
 </template>
+
 <script>
 import PictureInput from "vue-picture-input";
 import Vue from "vue";
@@ -50,22 +51,22 @@ export default {
       schema: {
         fields: [
           {
-            label: "Titulo:",
+            label: "Titulo do Pedido",
             model: "titulo",
             type: "input",
             inputType: "text",
             featured: true,
             required: true,
-            placeholder: "Titulo do pedido"
+            placeholder: "Ex.: Restauro da cadeira do Século XIX"
           },
           {
-            label: "Descrição:",
+            label: "Descrição do Pedido",
             model: "Descricao",
             type: "input",
             inputType: "text",
             featured: true,
             required: true,
-            placeholder: "Descricao do pedido"
+            placeholder: "Ex.: Neste restauro pretende-se..."
           }
         ]
       },
@@ -95,7 +96,7 @@ export default {
             console.error(err);
           });
       }
-      this.$router.replace("/ListarClientes");
+      this.$router.replace("/listarpedidos");
     },
 
     onChange(image) {
@@ -112,22 +113,13 @@ export default {
 </script>
 
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+
+h1 {
+  font-weight: bold;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.btn-primary {
+  margin-bottom: 20px;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

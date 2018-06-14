@@ -1,11 +1,14 @@
 <template>
-    <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1 align="left">Adicionar Evento:</h1>
-        <b-row  class="text-center">
-            <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
-        </b-row>
-      <b-button v-on:click="guardar">Guardar</b-button>
-    </b-container>    
+    <!-- <b-container v-if="auth.logged" class="container"> -->
+    <b-container class="container">
+    <h1>Adicionar Evento</h1>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+      </b-container>
+    </b-row>
+    <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+  </b-container>
 </template>
 
 <script>
@@ -37,23 +40,23 @@ export default {
           {
             type: "input",
             inputType: "text",
-            label: "Tipo:",
+            label: "Tipo de Evento",
             model: "tipo",
             required: true,
-            placeholder: "Designação do Objecto"
+            placeholder: "Ex.: Receção do documento XPTO do Cliente"
           },
           {
-            label: "Descrição:",
+            label: "Descrição do Evento",
             model: "descricao",
             type: "textArea",
-			hint: "Máximo 200 caracteres.",
-			max: 200,
-			rows: 4,
+			      hint: "Máx.: 200 caracteres",
+			      max: 200,
+			      rows: 4,
             required: true,
-            placeholder: "Insira a descrição do evento"
+            placeholder: "Ex.: O documento XPTO contém informações acerca..."
           },
           {
-            label: "Data do evento:",
+            label: "Data do Evento",
             model: "data_evento",
             type: "input",
             inputType: "date",
@@ -93,24 +96,14 @@ export default {
 };
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+
+h1 {
+  font-weight: bold;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.btn-primary {
+  margin-bottom: 20px;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

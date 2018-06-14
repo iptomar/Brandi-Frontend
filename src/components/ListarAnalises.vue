@@ -1,10 +1,9 @@
  <template>
     <b-container   class="bv-example-row">
-    <h1>Lista Deslocações</h1>
+    <h1>Lista de Análises Preliminares</h1>
     <table class="table table-hover table-dark">
         <thead>
             <tr>
-              <th scope="col"></th>
               <th scope="col">Descrição da Análise</th>
               <th scope="col">Data da Análise</th>
               <th scope="col">Local</th>
@@ -15,15 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr v-for="deslocacao of deslocacao" v-bind:key="deslocacao.idAnalise">
-              <td>{{deslocacao.idAnalise}}</td>
-              <td>{{deslocacao.descAnalise}}</td>
-              <td>{{deslocacao.dataAnalise}}</td>
-              <td>{{deslocacao.localAnalise}}</td>
-              <td>{{deslocacao.km}}</td>
-              <td>{{deslocacao.inicAnalise}}</td>
-              <td>{{deslocacao.fimAnalise}}</td>
-              <td>{{deslocacao.outrasDespesas}}</td>
+            <tr v-for="analise of analises" v-bind:key="analise.idAnalise">
+              <td>{{analise.descAnalise}}</td>
+              <td>{{analise.dataAnalise}}</td>
+              <td>{{analise.localAnalise}}</td>
+              <td>{{analise.km}}</td>
+              <td>{{analise.inicAnalise}}</td>
+              <td>{{analise.fimAnalise}}</td>
+              <td>{{analise.outrasDespesas}}</td>
               <td><button type="button" class="btn btn-warning">Editar</button></td>
               <td><button type="button" class="btn btn-danger">Arquivar</button></td>
             </tr>
@@ -50,16 +48,16 @@ export default {
     data() {
       return {
         auth: store.auth,
-        deslocacao: [],
+        analises: [],
         errors: []
      }
     },
   created() { // informações das deslocações
-    var url = "/deslocacoes"
+    var url = "/listaranalises"
     axios.get(url
     ).then(response => {
-      this.deslocacao = response.data;
-      console.log(this.deslocacao);
+      this.analises = response.data;
+      console.log(this.analises);
     }).catch(e => {
       this.errors.push(e)
   })

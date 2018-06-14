@@ -4,7 +4,6 @@
         <table class="table table-hover table-dark">
             <thead>
                 <tr>
-                <th scope="col"></th>
                 <th scope="col">Nome</th>
                 <th scope="col">Morada</th>
                 <th scope="col">Contacto</th>
@@ -13,13 +12,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(value) in clientes" >
-                <td>{{value.id}}</td>
-                <td>{{value.nome}}</td>
-                <td>{{value.morada}}</td>
-                <td>{{value.contato}}</td>
-                <td>{{value.email}}</td>
-                <td>{{value.NIF}}</td>
+                <tr v-for="cliente of clientes" v-bind:key="cliente.idCliente">
+                <td>{{cliente.nome}}</td>
+                <td>{{cliente.morada}}</td>
+                <td>{{cliente.contato}}</td>
+                <td>{{cliente.email}}</td>
+                <td>{{cliente.NIF}}</td>
                 <td><button type="button" class="btn btn-warning">Editar</button></td>
                 <td><button type="button" class="btn btn-danger">Arquivar</button></td>
             </tr>
@@ -53,7 +51,7 @@ export default {
      }
     },
   created() {
-    var url = "/clientes/"
+    var url = "/listarclientes/"
     axios.get(url
     ).then(response => {
       this.clientes = response.data
