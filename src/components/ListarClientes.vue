@@ -1,34 +1,38 @@
 <template>
-  <b-container  v-if="auth.logged"  class="bv-example-row">
-  <h1>Lista de Clientes</h1>
-  <ul v-if="clientes && clientes.length">
-    <li v-for="cliente of clientes" v-bind:key="cliente.idCliente">
-      <table class="tg">
-          <tr>
-            <th class=""></th>
-            <th class="">Nome</th>
-            <th class="">NIF</th>
-            <th class="">Morada</th>
-            <th class="">Contacto</th>
-            <th class="">E-mail</th>
-          </tr>
-          <tr>
-            <td class="">{{cliente.nome}}</td>
-            <td class="">{{cliente.nif}}</td>
-            <td class="">{{cliente.morada}}</td>
-            <td class="">{{cliente.contacto}}</td>
-            <td class="">{{cliente.email}}</td>
-          </tr>
-      </table>
-  </li>
-</ul>
+   <b-container class="bv-example-row">
+    <h1>Lista dos Clientes</h1>
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                <th scope="col"></th>
+                <th scope="col">Nome</th>
+                <th scope="col">Morada</th>
+                <th scope="col">Contacto</th>
+                <th scope="col">Email</th>
+                <th scope="col">Número de Identificação Fiscal (NIF) </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(value) in clientes" >
+                <td>{{value.id}}</td>
+                <td>{{value.nome}}</td>
+                <td>{{value.morada}}</td>
+                <td>{{value.contato}}</td>
+                <td>{{value.email}}</td>
+                <td>{{value.NIF}}</td>
+                <td><button type="button" class="btn btn-warning">Editar</button></td>
+                <td><button type="button" class="btn btn-danger">Arquivar</button></td>
+            </tr>
+            </tbody>
+        </table>
 
-<ul v-if="errors && errors.length">
-  <li v-for="error of errors" v-bind:key="error.idCliente">
-    {{error.message}}
-  </li>
-</ul>
-  </b-container>
+        <ul v-if="errors && errors.length">
+          <li v-for="error of errors" v-bind:key="error.id">
+              {{error.message}}
+          </li>
+        </ul>
+    </b-container>
+
 </template>
 
 <script>
@@ -41,15 +45,15 @@ import axios from 'axios'
 Vue.use(VueFormGenerator)
 
 export default {
-    data() {      
-      return {      
+    data() {
+      return {
         auth: store.auth,
         clientes: [],
         errors: []
      }
-    },      
-  created() {    
-    var url = "/listarclientes"
+    },
+  created() {
+    var url = "/clientes/"
     axios.get(url
     ).then(response => {
       this.clientes = response.data
@@ -90,4 +94,8 @@ text-align: left;
 width:400px;
 
 }
+
+td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;font-weight:bold;}
+
 </style>
