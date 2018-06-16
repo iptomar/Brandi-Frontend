@@ -1,6 +1,5 @@
 <template>
-    <!-- <b-container v-if="auth.logged" class="container"> -->
-    <b-container class="container">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Cliente</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -21,7 +20,6 @@ import axios from "axios";
 Vue.use(VueFormGenerator);
 
 export default {
-  
   components: {
     "vue-form-generator": VueFormGenerator.component
   },
@@ -93,32 +91,33 @@ export default {
   },
 
   methods: {
-    // adicionar um cliente
     guardar() {
-      axios.post("/adicionarcliente", {},
-        {
-          params: {
-            nome: this.model.nome,
-            nif: this.model.nif,
-            morada: this.model.morada,
-            contacto: this.model.contacto,
-            email: this.model.email
+      axios
+        .post(
+          "/adicionarcliente",
+          {},
+          {
+            params: {
+              nome: this.model.nome,
+              nif: this.model.nif,
+              morada: this.model.morada,
+              contacto: this.model.contacto,
+              email: this.model.email
+            }
           }
-        }
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
+        )
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -126,5 +125,4 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
 </style>

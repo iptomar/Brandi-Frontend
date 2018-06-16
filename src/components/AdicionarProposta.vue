@@ -1,6 +1,5 @@
 <template>
-    <!-- <b-container v-if="auth.logged" class="container"> -->
-    <b-container class="container">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Proposta</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -21,7 +20,6 @@ import axios from "axios";
 Vue.use(VueFormGenerator);
 
 export default {
-  
   components: {
     "vue-form-generator": VueFormGenerator.component
   },
@@ -47,10 +45,7 @@ export default {
             label: "Aceitação/Rejeição Proposta",
             model: "aceitacao_proposta",
             type: "select",
-            values: [
-              "Aceite",
-              "Recusada"
-            ],
+            values: ["Aceite", "Recusada"],
             required: true
           },
           {
@@ -113,32 +108,34 @@ export default {
 
   methods: {
     guardarProposta() {
-      axios.post("/adicionarproposta", {},
-        {
-          params: {
-            aceitacao_proposta: this.model.aceitacao_proposta,
-            justificacao_recusa: this.model.justificacao_recusa,
-            descricao: this.model.descricao,
-            data_elaboracao: this.model.data_elaboracao,
-            data_envio: this.model.data_envio,
-			id_pedido: this.model.id_pedido,
-            id_coordenador: this.model.id_coordenador
+      axios
+        .post(
+          "/adicionarproposta",
+          {},
+          {
+            params: {
+              aceitacao_proposta: this.model.aceitacao_proposta,
+              justificacao_recusa: this.model.justificacao_recusa,
+              descricao: this.model.descricao,
+              data_elaboracao: this.model.data_elaboracao,
+              data_envio: this.model.data_envio,
+              id_pedido: this.model.id_pedido,
+              id_coordenador: this.model.id_coordenador
+            }
           }
-        }
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
+        )
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -146,5 +143,4 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
 </style>

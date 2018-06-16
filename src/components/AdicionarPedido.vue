@@ -1,12 +1,11 @@
 <template>
-    <!-- <b-container v-if="auth.logged" class="container"> -->
-    <b-container class="container">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Pedido</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
         <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
         <div class="hello">
-          <picture-input 
+            <picture-input 
             ref="pictureInput"
             width='200' 
             height="200" 
@@ -83,7 +82,7 @@ export default {
   },
   methods: {
     enviar() {
-        //  faz o post para api da foto
+      //  faz o post para api da foto
       if (this.image) {
         FormDataPost("/cliente/foto", this.image)
           .then(response => {
@@ -113,7 +112,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -121,5 +119,4 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
 </style>

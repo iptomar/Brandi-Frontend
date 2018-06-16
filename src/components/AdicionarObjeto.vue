@@ -1,6 +1,5 @@
 <template>
-    <!-- <b-container v-if="auth.logged" class="container"> -->
-    <b-container class="container">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Objeto</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -71,7 +70,6 @@ export default {
     };
   },
   methods: {
-    // adicionar objecto
     guardar() {
       axios
         .post(
@@ -81,7 +79,7 @@ export default {
             params: {
               designacao: this.model.designacao,
               tipologia: this.model.tipologia,
-              localizacao: this.model.localizacao,
+              localizacao: this.model.localizacao
             }
           }
         )
@@ -96,7 +94,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -104,5 +101,4 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
 </style>

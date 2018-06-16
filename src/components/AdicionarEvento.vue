@@ -1,6 +1,5 @@
 <template>
-    <!-- <b-container v-if="auth.logged" class="container"> -->
-    <b-container class="container">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Evento</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -49,9 +48,9 @@ export default {
             label: "Descrição do Evento",
             model: "descricao",
             type: "textArea",
-			      hint: "Máx.: 200 caracteres",
-			      max: 200,
-			      rows: 4,
+            hint: "Máx.: 200 caracteres",
+            max: 200,
+            rows: 4,
             required: true,
             placeholder: "Ex.: O documento XPTO contém informações acerca..."
           },
@@ -72,7 +71,6 @@ export default {
     };
   },
   methods: {
-    // adicionar objecto
     guardar() {
       axios
         .post(
@@ -82,7 +80,7 @@ export default {
             params: {
               descricao: this.model.descricao,
               data_evento: this.model.data_evento,
-              tipo: this.model.tipo,
+              tipo: this.model.tipo
             }
           }
         )
@@ -97,7 +95,6 @@ export default {
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -105,5 +102,4 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
 </style>
