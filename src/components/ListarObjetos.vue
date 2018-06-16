@@ -1,22 +1,32 @@
 <template>
-    <b-container v-if="auth.logged" class="bv-example-row">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista de Objetos</h1>
-    <ul v-if="objetos && objetos.length">    
-     <li v-for="objeto of objetos" v-bind:key="objeto.idObjeto">
-        <p>
-          {{objeto.idObjeto}}: {{objeto.tipologia}} - {{objeto.localizacao}} - {{objeto.designacao}} - {{objeto.idProprietario}} 
-          <b-button v-on:click=editar(objeto.idObjeto)>Editar</b-button>
-          <b-button v-on:click=apagar(objeto.idObjeto)>Apagar</b-button>
-        </p>
-    </li>
-  </ul>
- 
- <ul v-if="errors && errors.length">
-    <li v-for="error of errors" v-bind:key="error.id">
-      {{error.message}}
-    </li>
-  </ul>
-    </b-container>
+    <table class="table table-hover table-dark">
+      <thead>
+        <tr>
+          <th scope="col">Tipologia</th>
+          <th scope="col">Localização</th>
+          <th scope="col">Designação</th>
+          <th scope="col">Proprietário</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="objeto of objetos" v-bind:key="objeto.idObjeto">
+          <td>{{objeto.tipologia}}</td>
+          <td>{{objeto.localizacao}}</td>
+          <td>{{objeto.designacao}}</td>
+          <td>{{objeto.idProprietario}}</td>
+          <td><button type="button" class="btn btn-warning" v-on:click=editar(objeto.idObjeto)>Editar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=arquivar(objeto.idObjeto)>Arquivar</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <ul v-if="errors && errors.length">
+      <li v-for="error of errors" v-bind:key="error.id">
+        {{error.message}}
+      </li>
+    </ul>
+  </b-container>
 </template>
 
 <script>
@@ -38,7 +48,7 @@ export default {
   },
 
   created() {
-    var url = "/listarobjetos";
+    var url = "/listarobjetos/";
     axios
       .post(url)
       .then(response => {
@@ -61,7 +71,6 @@ export default {
 };
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
@@ -79,5 +88,28 @@ li {
 
 a {
   color: #42b983;
+}
+
+td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+  font-weight: bold;
 }
 </style>

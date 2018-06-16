@@ -1,11 +1,13 @@
 <template>
-    <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1 align="left">Adicionar Objeto:</h1>
-        <b-row  class="text-center">
-            <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
-        </b-row>
-      <b-button v-on:click="guardar">Guardar</b-button>
-    </b-container>    
+  <b-container v-if="auth.logged" class="container">
+    <h1>Adicionar Objeto</h1>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+      </b-container>
+    </b-row>
+    <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+  </b-container>
 </template>
 
 <script>
@@ -37,13 +39,13 @@ export default {
           {
             type: "input",
             inputType: "text",
-            label: "Designação:",
+            label: "Designação do Objeto",
             model: "designacao",
             required: true,
-            placeholder: "Designação do Objecto"
+            placeholder: "Ex.: Cadeira do Século XIX"
           },
           {
-            label: "Tipologia:",
+            label: "Tipologia",
             model: "tipologia",
             type: "input",
             inputType: "text",
@@ -68,7 +70,6 @@ export default {
     };
   },
   methods: {
-    // adicionar objecto
     guardar() {
       axios
         .post(
@@ -78,7 +79,7 @@ export default {
             params: {
               designacao: this.model.designacao,
               tipologia: this.model.tipologia,
-              localizacao: this.model.localizacao,
+              localizacao: this.model.localizacao
             }
           }
         )
@@ -92,24 +93,12 @@ export default {
 };
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
-h1,
-h2 {
-  font-weight: normal;
+h1 {
+  font-weight: bold;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.btn-primary {
+  margin-bottom: 20px;
 }
 </style>

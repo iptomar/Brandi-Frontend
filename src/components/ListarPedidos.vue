@@ -1,22 +1,21 @@
 <template>
-    <b-container v-if="auth.logged" class="bv-example-row">
-    <h1>Lista de Pedidos</h1>
+  <b-container v-if="auth.logged" class="bv-example-row">
+  <h1>Lista de Pedidos</h1>
     <ul v-if="pedidos && pedidos.length">    
-     <li v-for="pedido of pedidos" v-bind:key="pedido.idPedido">
-        <p>
-          {{pedido.idPedido}}: {{pedido.titulo}} - {{pedido.foto}} - {{pedido.data}} - {{pedido.cliente}} 
-          <b-button v-on:click=editar(pedido.idPedido)>Editar</b-button>
-          <b-button v-on:click=apagar(pedido.idPedido)>Apagar</b-button>
-        </p>
-    </li>
-  </ul>
- 
- <ul v-if="errors && errors.length">
-    <li v-for="error of errors" v-bind:key="error.id">
-      {{error.message}}
-    </li>
-  </ul>
-    </b-container>
+      <li v-for="pedido of pedidos" v-bind:key="pedido.idPedido">
+      <p>
+        {{pedido.idPedido}}: {{pedido.titulo}} - {{pedido.foto}} - {{pedido.data}} - {{pedido.cliente}} 
+        <b-button v-on:click=editar(pedido.idPedido)>Editar</b-button>
+        <b-button v-on:click=apagar(pedido.idPedido)>Apagar</b-button>
+      </p>
+      </li>
+    </ul>
+    <ul v-if="errors && errors.length">
+      <li v-for="error of errors" v-bind:key="error.id">
+        {{error.message}}
+      </li>
+    </ul>
+  </b-container>
 </template>
 
 <script>
@@ -38,7 +37,7 @@ export default {
   },
 
   created() {
-    var url = "/listarpedidos";
+    var url = "/listarpedidos/";
     axios
       .post(url)
       .then(response => {
@@ -49,8 +48,6 @@ export default {
       });
   },
   methods: {
-    // editar pedido
-
     editar(num) {
       this.$router.push({ path: "/editarpedido", query: { id: num } });
     },
@@ -61,7 +58,6 @@ export default {
 };
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {

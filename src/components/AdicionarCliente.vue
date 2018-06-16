@@ -1,10 +1,12 @@
 <template>
-  <b-container v-if="auth.logged" class="bv-example-row">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Cliente</h1>
-    <b-row class="text-center">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+      </b-container>
     </b-row>
-    <b-button v-on:click="guardar">Guardar</b-button>
+    <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
   </b-container>
 </template>
 
@@ -18,7 +20,6 @@ import axios from "axios";
 Vue.use(VueFormGenerator);
 
 export default {
-  
   components: {
     "vue-form-generator": VueFormGenerator.component
   },
@@ -40,7 +41,7 @@ export default {
       schema: {
         fields: [
           {
-            label: "Nome Completo:",
+            label: "Nome Completo",
             model: "nome",
             type: "input",
             inputType: "text",
@@ -48,7 +49,7 @@ export default {
             placeholder: "Ex.: Joaquim Maria Leitão"
           },
           {
-            label: "NIF:",
+            label: "NIF",
             model: "nif",
             type: "input",
             inputType: "text",
@@ -56,7 +57,7 @@ export default {
             placeholder: "Ex.: 123456789"
           },
           {
-            label: "Morada:",
+            label: "Morada",
             model: "morada",
             type: "input",
             inputType: "text",
@@ -64,7 +65,7 @@ export default {
             placeholder: "Ex.: Rua da Paz"
           },
           {
-            label: "Contacto Telefónico:",
+            label: "Contacto Telefónico",
             model: "contacto",
             type: "input",
             inputType: "text",
@@ -72,7 +73,7 @@ export default {
             placeholder: "Ex.: 910000000"
           },
           {
-            label: "E-mail:",
+            label: "E-mail",
             model: "email",
             type: "input",
             inputType: "email",
@@ -90,35 +91,38 @@ export default {
   },
 
   methods: {
-    // adicionar um cliente
     guardar() {
-      axios.post("/adicionarcliente", {},
-        {
-          params: {
-            nome: this.model.nome,
-            nif: this.model.nif,
-            morada: this.model.morada,
-            contacto: this.model.contacto,
-            email: this.model.email
+      axios
+        .post(
+          "/adicionarcliente",
+          {},
+          {
+            params: {
+              nome: this.model.nome,
+              nif: this.model.nif,
+              morada: this.model.morada,
+              contacto: this.model.contacto,
+              email: this.model.email
+            }
           }
-        }
-      )
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      })
+        )
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
-  text-align: left;
 }
 
+.btn-primary {
+  margin-bottom: 20px;
+}
 </style>
