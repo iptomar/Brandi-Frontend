@@ -1,23 +1,25 @@
 <template>
   <b-container  v-if="auth.logged"  class="bv-example-row">
   <h1>Lista de Eventos</h1>
-  <ul v-if="eventos && eventos.length">
-    <li v-for="evento of eventos" v-bind:key="evento.idEvento">
-      <table class="tg">
+      <table class="table table-hover table-dark">
+        <thead>
           <tr>
-            <th class=""></th>
-            <th class="">Data do Evento</th> 
-            <th class="">Tipo</th>
-            <th class="">Descrição</th>
+            <th scope="col">Data do Evento</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Descrição</th>
           </tr>
-          <tr>
-            <td class="">{{evento.data_evento}}</td>
-            <td class="">{{evento.tipo}}</td>
-            <td class="">{{evento.descricao}}</td>
+        </thead>
+        <tbody>
+          <tr v-for="evento of eventos" v-bind:key="evento.idEvento">
+            <td>{{evento.data_evento}}</td>
+            <td>{{evento.tipo}}</td>
+            <td>{{evento.descricao}}</td>
+            <td><button type="button" class="btn btn-warning">Editar</button></td>
+            <td><button type="button" class="btn btn-danger">Arquivar</button></td>
           </tr>
+        </tbody>
       </table>
-  </li>
-</ul>
+
 
 <ul v-if="errors && errors.length">
   <li v-for="error of errors" v-bind:key="error.idEvento">
@@ -48,8 +50,8 @@ export default {
         eventos: [],
         errors: []
       }
-    },      
-  created() {    
+    },
+  created() {
     var url = "/listareventos"
     axios.get(url
     ).then(response => {
@@ -91,4 +93,7 @@ text-align: left;
 width:400px;
 
 }
+td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;font-weight:bold;}
+
 </style>
