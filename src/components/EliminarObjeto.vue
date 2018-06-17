@@ -1,7 +1,8 @@
 <template>
-    <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1>Quer Mesmo Apagar o objeto?</h1>
+    <b-container v-if="auth.logged" class="bv-example-row">
+        <h1>Quer mesmo apagar o objeto selecionado?</h1>
         <b-button v-on:click=apagar()>Sim</b-button>
+		<b-button v-on:click=cancelar()>Não</b-button>
     </b-container>
 </template>
 
@@ -40,16 +41,24 @@ export default {
           console.log(error);
         });
       this.$router.replace("/ListarObjeto");
-    }
+    },
+	
+	cancelar() {
+		this.$router.replace("/ListarObjeto");
+	}
+	
   }
 };
 </script>
 
-<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
   font-weight: normal;
+}
+
+h1{
+  margin: 80px 0 40px;
 }
 
 ul {
@@ -64,5 +73,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+.btn-secondary {
+    margin-bottom: 40px;
 }
 </style>
