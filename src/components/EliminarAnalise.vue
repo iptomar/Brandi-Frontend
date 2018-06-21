@@ -2,6 +2,7 @@
     <b-container  v-if="auth.logged"  class="bv-example-row">
         <h1>Quer mesmo apagar a análise preliminar?</h1>
         <b-button v-on:click=apagar()>Sim</b-button>
+        <b-button v-on:click=cancelar()>Não</b-button>
     </b-container>
 </template>
 
@@ -40,6 +41,10 @@ export default {
           console.log(error);
         });
       this.$router.replace("/ListarAnalises");
+    },
+  
+    cancelar() {
+      this.$router.replace("/ListarAnalises");
     }
   }
 };
@@ -50,6 +55,10 @@ export default {
 h1,
 h2 {
   font-weight: normal;
+}
+
+h1{
+  margin: 80px 0 40px;
 }
 
 ul {
@@ -65,4 +74,9 @@ li {
 a {
   color: #42b983;
 }
+
+.btn-secondary {
+    margin-bottom: 40px;
+}
+</style>
 </style>
