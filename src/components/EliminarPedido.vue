@@ -1,8 +1,16 @@
 <template>
     <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1>Quer Mesmo Apagar o Pedido?</h1>
-        <b-button v-on:click=apagar()>Sim</b-button>
-        <b-button v-on:click=cancelar()>Não</b-button>
+		<table style="width:100%">
+          <tr>
+            <th><h1>Quer mesmo arquivar o Pedido?</h1></th>
+          </tr>
+          <tr>
+            <td>
+			<b-button style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
+			<b-button style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
+			</td>        
+          </tr>
+		</table>
     </b-container>
 </template>
 
@@ -74,7 +82,9 @@ li {
 a {
   color: #42b983;
 }
-
+tr{
+  height: 85px;
+}
 .btn-secondary {
     margin-bottom: 40px;
 }
