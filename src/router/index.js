@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Login from '@/components/Login'
 import TecnicalForm from '@/components/TecnicalForm'
+import FolhaDeObra from '@/components/FolhaDeObra'
 
 // -- LISTAGENS --
 import ListarClientes from '@/components/ListarClientes'
@@ -59,6 +60,11 @@ export default new Router({
       name: 'TecnicalForm',
       component: TecnicalForm
     },
+    {
+      path: '/FolhaDeObra',
+      name: 'FolhaDeObra',
+      component: FolhaDeObra
+    }    ,
     {
       path: '/listarclientes',
       name: 'ListarClientes',

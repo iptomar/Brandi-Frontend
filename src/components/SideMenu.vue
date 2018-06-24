@@ -35,6 +35,7 @@
                   { name: 'Pagina 9', element: 'pg9' },
                   { name: 'Pagina 10', element: 'pg10' }
               ]},
+            { name: 'Folha De Obra', route: 'FolhaDeObra' },
             ],
           };
         },
