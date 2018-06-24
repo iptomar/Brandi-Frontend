@@ -1,20 +1,20 @@
 <template>
-<b-container class="container">
-    <h1>Página 1</h1>
+<b-container class="mainC container">
+    <h1 id="pg1">Página 1</h1>
     <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custom">DESIGNAÇÃO DO OBJETO</b-container>
         <b-container class="panel-body">
             <vue-form-generator :schema='pagina_1' :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row>
-    <h1>Página 2 </h1>
+    <h1 id="pg2">Página 2 </h1>
     <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custon">BEM INTEGRADO EM CONJUNTO</b-container>
         <b-container class="panel-body">
             <vue-form-generator :schema='pagina_2' :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row>
-    <h1>Página 3</h1>
+    <h1 id="pg3">Página 3</h1>
     <b-container class="container">
         <b-container class="panel-default">CONDIÇÕES AMBIENTAIS DO LOCAL DE INSERÇÃO DO BEM CULTURAL</b-container>
         <vue-form-generator :schema='pagina3_Desc' :options='formOptions'></vue-form-generator>
@@ -40,7 +40,7 @@
         <b-container class="panel-default">Observações | Conclusões</b-container>
         <vue-form-generator :schema='pagina3_Con' :options='formOptions'></vue-form-generator>
     </b-container>
-    <h1>Página 4</h1>
+    <h1 id="pg4">Página 4</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
             <b-container class="panel-heading panel-heading-custom">EXAMES E ANÁLISES</b-container>
@@ -53,7 +53,7 @@
         </b-row>
     </b-container>
 
-    <h1>Página 5</h1>
+    <h1 id="pg5">Página 5</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
             <b-container class="panel-heading panel-heading-custom">ESTADO DE CONSERVAÇÃO</b-container>
@@ -71,7 +71,7 @@
 
 
 
-    <h1>Página 6</h1>
+    <h1 id="pg6">Página 6</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
             <b-container class="panel-heading panel-heading-custom">INTERVENÇÕES ANTERIORES</b-container>
@@ -87,8 +87,8 @@
         </b-row>
     </b-container>
 
-    <h1>Página 7</h1>
-    <b-container class="container">
+    <h1 id="pg7">Página 7</h1>
+    <b-container>
         <b-container class="container">
             <b-row class="panel panel-default">
                 <b-container class="panel-heading"> Tipo de intervenção proposta pelo conservador-restauro </b-container>
@@ -136,7 +136,7 @@
 
     </b-container>
 
-    <h1>Página 8</h1>
+    <h1 id="pg8">Página 8</h1>
     <b-container class="container">
         <b-container class="panel panel-default">
             <b-container class="panel-heading"> Intervenção Realizada </b-container>
@@ -154,7 +154,7 @@
         </b-container>
     </b-container>
 
-    <h1>Página 9</h1>
+    <h1 id="pg9">Página 9</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
             <b-container class="panel-heading panel-heading-custom">DOCUMENTAÇÃO PRODUZIDA | RECOLHIDA</b-container>
@@ -172,35 +172,35 @@
             </b-container>
         </b-row>
     </b-container>
-    <h1>Página 10</h1>
+    <h1 id="pg10">Página 10</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
             <b-container class="panel-heading panel-heading-custom">FONTES</b-container>
             <b-container class="panel-body">
                 <vue-form-generator :schema='schema101' :options='formOptions'></vue-form-generator>
-            </b-container>  
+            </b-container>
             <b-container class="panel-body">
                 <vue-form-generator :schema='schema102' :options='formOptions'></vue-form-generator>
-            </b-container>            
+            </b-container>
             <b-container class="panel-body">
                 <vue-form-generator :schema='schema103' :options='formOptions'></vue-form-generator>
-            </b-container>  
+            </b-container>
             <b-container class="panel-body">
                 <vue-form-generator :schema='schema104' :options='formOptions'></vue-form-generator>
-            </b-container>      
+            </b-container>
             <b-container class="panel-body">
                 <vue-form-generator :schema='schema105' :options='formOptions'></vue-form-generator>
-            </b-container>                            
+            </b-container>
             <b-container class="panel-body">
 
         <b-container class="container">
             <b-container class="panel panel-default">
-                <b-row class="panel-body">
+                <b-row>
                     <!--  <b-table striped hover :items="items72" :fields="fields72" :schema='schema72l' :options='formOptions'></b-table>
                         -->
                     <b-container class="panel-heading panel-heading-custom">CONSTITUIÇÃO DA EQUIPA</b-container>
                     <b-col>
-                        <p class="card-text">Nome do Técnico</p>                        
+                        <p class="card-text">Nome do Técnico</p>
                         <vue-form-generator :schema='schema106' :options='formOptions'></vue-form-generator>
                     </b-col>
 
@@ -209,22 +209,22 @@
                         <vue-form-generator :schema='schema107' :options='formOptions'></vue-form-generator>
                     </b-col>
                     <b-col>
-                        <p class="card-text">Habilitações(Escolares/Académicas)</p>                       
-                         
+                        <p class="card-text">Habilitações(Escolares/Académicas)</p>
+
                         <vue-form-generator :schema='schema108' :options='formOptions'></vue-form-generator>
-                    </b-col>                    
+                    </b-col>
                 </b-row>
             </b-container>
         </b-container>
 
 
-                                           
-            </b-container>         
-        
+
+            </b-container>
+
 
         </b-row>
-           
-        
+
+
     </b-container>
 
 
@@ -1341,9 +1341,9 @@ export default {
                         inputType: "text",
                         model: "arquivCota",
                         placeholder: "Cota"
-                    }                    
+                    }
                 ]
-            },            
+            },
             schema102: {
                 fields: [{
                         type: "textArea",
@@ -1369,9 +1369,9 @@ export default {
                         inputType: "text",
                         model: "iconCota",
                         placeholder: "Cota"
-                    }                    
+                    }
                 ]
-            }, 
+            },
             schema103: {
                 fields: [{
                         type: "textArea",
@@ -1397,7 +1397,7 @@ export default {
                         inputType: "text",
                         model: "biblioCota",
                         placeholder: "Cota"
-                    }                    
+                    }
                 ]
             },
             schema104: {
@@ -1419,7 +1419,7 @@ export default {
                         inputType: "text",
                         model: "electroData",
                         placeholder: "Data da Consulta"
-                    }                   
+                    }
                 ]
             },
             schema105: {
@@ -1447,16 +1447,16 @@ export default {
                         inputType: "text",
                         model: "outraData",
                         placeholder: "Cota"
-                    }                                    
+                    }
                 ]
-            },              
+            },
             schema106: {
                 fields: [{
                         type: "textArea",
                         inputType: "text",
                         model: "nomeTecnino",
                         rows: 4
-                    },                                   
+                    },
                 ]
             },
             schema107: {
@@ -1465,7 +1465,7 @@ export default {
                         inputType: "text",
                         model: "funcao",
                         rows: 4
-                    },                                   
+                    },
                 ]
             },
             schema108: {
@@ -1474,11 +1474,11 @@ export default {
                         inputType: "text",
                         model: "nivel",
                         rows: 4
-                    },                                   
+                    },
                 ]
-            },                     
-                               
-            
+            },
+
+
             tableData: [{
                     date: "",
                     design: "",
@@ -1732,9 +1732,7 @@ fieldset {
     border-top-right-radius: 3px;
 }
 
-.panel-body {
-    padding: 15px;
-}
+
 
 .form-control {
     width: 100%;
@@ -1752,5 +1750,8 @@ fieldset {
 
 .field-checklist .wrapper {
     width: 100%;
+}
+.mainC{
+  padding: 60px 0;
 }
 </style>
