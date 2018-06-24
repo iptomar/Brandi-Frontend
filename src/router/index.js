@@ -17,7 +17,7 @@ import ListarPropostas from '@/components/ListarPropostas'
 import AdicionarCliente from '@/components/AdicionarCliente'
 import AdicionarObjeto from '@/components/AdicionarObjeto' 
 import AdicionarPedido from '@/components/AdicionarPedido'
-// import AdicionarAnalise from '@/components/AdicionarAnalise'
+import AdicionarAnalise from '@/components/AdicionarAnalise'
 import AdicionarProposta from '@/components/AdicionarProposta'
 import AdicionarEvento from '@/components/AdicionarEvento'
 
@@ -59,6 +59,11 @@ export default new Router({
       path: '/form',
       name: 'TecnicalForm',
       component: TecnicalForm
+    },
+    {
+      path: '/pedidos',
+      name: 'PedidosMaterial',
+      component: PedidosMaterial
     },
     {
       path: '/listarclientes',
@@ -169,10 +174,11 @@ export default new Router({
       path: '/eliminarproposta',
       name: 'EliminarProposta',
       component: EliminarProposta
-    },{
-      path: '/pedidos',
-      name: 'PedidosMaterial',
-      component: PedidosMaterial
+    },
+    {
+      path: '/adicionaranalise',
+      name: 'AdicionarAnalise',
+      component: AdicionarAnalise
     }
   ]
 })

@@ -6,7 +6,7 @@
     <div class="side-menu" v-bind:class="{ active: sideMenu.isOpen }">
         <app-sidemenu></app-sidemenu>
     </div>
-    <main class="mTop">
+    <main>
 
         <router-view/>
         <app-footer></app-footer>
@@ -57,8 +57,8 @@ export default {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     z-index: 10;
-    background-color: #6c757d;
-    color: white;
+    color: #fff;
+    background-color: rgba(108, 117, 125, 0.8);
 
     -webkit-transition: all 300ms ease-in-out;
     transition: all 300ms ease-in-out;
@@ -69,7 +69,4 @@ export default {
     left: 0;
 }
 
-.mTop {
-    margin-top: 55px;
-}
 </style>
