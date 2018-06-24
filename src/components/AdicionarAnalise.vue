@@ -1,6 +1,6 @@
 <template>
   <b-container class="bv-example-row">
-    <h1>Adicionar Proposta</h1>
+    <h1>Adicionar Análise</h1>
     <b-row class="text-center">
       <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
     </b-row>
