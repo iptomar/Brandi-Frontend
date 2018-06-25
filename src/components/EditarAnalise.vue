@@ -1,6 +1,6 @@
 <template>
     <b-container v-if="auth.logged" class="bv-example-row">
-        <h1 align="left">Editar Análises Preliminares:</h1>
+        <h1>Editar Análises Preliminares:</h1>
          <b-row class="panel panel-default">
           <b-container class="panel-body">
             <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
@@ -180,7 +180,11 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
-h1,
+
+h1 {
+  font-weight: bold;
+}
+
 h2 {
   font-weight: normal;
 }

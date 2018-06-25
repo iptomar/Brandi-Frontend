@@ -141,7 +141,6 @@ export default {
 
 h1 {
   font-weight: bold;
-  text-align: left;
 }
 
 </style>
