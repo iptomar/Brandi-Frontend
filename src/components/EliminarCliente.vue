@@ -1,7 +1,15 @@
 <template>
     <b-container  v-if="auth.logged"  class="bv-example-row">
-        <h1>Quer Mesmo Apagar o Cliente?</h1>
-        <b-button v-on:click=apagar()>Sim</b-button>
+		<table style="width:100%">
+          <tr>
+            <th><h1>Quer mesmo arquivar o Cliente?</h1></th>
+          </tr>
+          <tr >
+            <td><b-button style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
+			<b-button style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
+			</td> 
+          </tr>
+        </table>
     </b-container>
 </template>
 
@@ -40,6 +48,10 @@ export default {
           console.log(error);
         });
       this.$router.replace("/ListarClientes");
+    },
+
+    cancelar() {
+      this.$router.replace("/ListarClientes");
     }
   }
 };
@@ -52,6 +64,10 @@ h2 {
   font-weight: normal;
 }
 
+h1{
+  margin: 80px 0 40px;
+}
+
 ul {
   list-style-type: none;
   padding: 0;
@@ -61,8 +77,14 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-
+tr{
+  height: 85px;
+}
 a {
   color: #42b983;
+}
+
+.btn-secondary {
+    margin-bottom: 40px;
 }
 </style>

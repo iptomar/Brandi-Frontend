@@ -1,7 +1,6 @@
 <template>
   <div class="hello">
-    HOME
-    <h1>{{ auth.logged }}</h1>
+    <div class="bg"></div>
   </div>
 </template>
 
@@ -33,4 +32,11 @@ li {
 a {
   color: #42b983;
 }
+.bg {
+  background-image: url('../assets/bg.jpg');
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
 </style>

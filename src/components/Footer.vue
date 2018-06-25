@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-      <p class="border-top pt-4 pb-4 mb-0">IPT</p>
+  <div class="hello bg-light">
+      <p class="border-top pt-4 pb-4 mb-0">Copyright © {{ new Date().getFullYear() }} Laboratório de Conservação e Restauro - Instituto Politécnico de Tomar</p>
   </div>
 </template>
 
@@ -10,6 +10,13 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+div {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-weight: bold;
+}
+
 </style>
