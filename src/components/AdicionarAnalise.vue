@@ -108,7 +108,7 @@ export default {
   },
 
   methods: {
-    guardarProposta() {
+    guardar() {
       axios
         .post(
           "/adicionaranalise",

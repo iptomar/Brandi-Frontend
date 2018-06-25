@@ -116,7 +116,11 @@ export default {
 </script>
 
 <style scoped>
-h1,
+
+h1 {
+  font-weight: bold;
+}
+
 h2 {
   font-weight: normal;
 }
