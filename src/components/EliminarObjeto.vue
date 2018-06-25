@@ -48,11 +48,11 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.$router.replace("/ListarObjeto");
+      this.$router.replace("/listarobjetos");
     },
 	
 	cancelar() {
-		this.$router.replace("/ListarObjeto");
+		this.$router.replace("/listarobjetos");
 	}
 	
   }
