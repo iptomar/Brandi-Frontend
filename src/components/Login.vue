@@ -5,11 +5,11 @@
 		<div class="horizontalCenter">
 
     <label for="uname"><b>Nome de Utilizador:</b></label>
-    <input type="text" v-model="username" placeholder="Enter Username" name="uname" required>
+    <input type="text" v-model="username" placeholder="Introduza o nome de utilizador..." name="uname" required>
     <label for="psw"><b>Password:</b></label>
-    <input type="password" v-model="password" placeholder="Enter Password" name="psw" required>
-    <b-button variant="outline-primary" class="button" v-on:click="login">Login</b-button>
-    <span>{{ msg }}</span>
+    <input type="password" v-model="password" placeholder="Introduza a password..." name="psw" required>
+    <b-button variant="outline-primary" class="button" v-on:click="login">Entrar</b-button>
+    <span class="errorMsg">{{ msg }}</span>
     <label></label>
   </div>
 	</div>
@@ -48,7 +48,7 @@ export default {
               path: 'home'
             })
           } else {
-            this.msg = 'Login failed'
+            this.msg = 'Autenticação falhada!'
           }
         })
         .catch(error => console.log(error))
@@ -57,7 +57,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
@@ -77,6 +76,11 @@ li {
 a {
   color: #42b983;
 }
+
+.errorMsg {
+ color: red;  
+}
+
 .bg {
   background-image: url('../assets/bg.jpg');
   background-size: cover;
