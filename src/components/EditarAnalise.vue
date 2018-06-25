@@ -1,11 +1,15 @@
 <template>
     <b-container v-if="auth.logged" class="bv-example-row">
         <h1 align="left">Editar Análises Preliminares:</h1>
-        <b-row  class="text-center">
-            <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
+         <b-row class="panel panel-default">
+          <b-container class="panel-body">
+            <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+          </b-container>
         </b-row>
-      <b-button v-on:click="update">Guardar</b-button>
+        <b-button v-on:click="update">Guardar</b-button>
     </b-container>
+
+
 </template>
 
 <script>

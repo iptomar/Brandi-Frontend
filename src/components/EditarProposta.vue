@@ -1,8 +1,10 @@
 <template>
   <b-container class="bv-example-row">
     <h1>Editar Proposta</h1>
-    <b-row class="text-center">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+      </b-container>
     </b-row>
     <b-button v-on:click="guardarProposta">Guardar</b-button>
   </b-container>
