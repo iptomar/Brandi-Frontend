@@ -5,45 +5,49 @@
 </template>
 
 <script>
-    import Vue from 'vue'
-    import VueTreeNavigation from 'vue-tree-navigation'
-    Vue.use(VueTreeNavigation)
+import Vue from "vue";
+import VueTreeNavigation from "vue-tree-navigation";
+Vue.use(VueTreeNavigation);
 
-      export default {
-
-        data() {
-          return {
-            items: [
-              { name: 'Home', route: 'home' },
-              { name: 'Gestão de Oportunidades', children: [
-                { name: 'Clientes', route: 'listarclientes'},
-                { name: 'Objetos', route: 'listarobjetos'},
-                { name: 'Pedidos', route: 'listarpedidos'},
-                { name: 'Análises', route: 'listaranalises'},
-                { name: 'Propostas', route: 'listarpropostas'},
-                { name: 'Eventos', route: 'listareventos'},
-              ]},
-              { name: 'Formulário', route: 'form', children: [
-                  { name: 'Pagina 1', element: 'pg1' },
-                  { name: 'Pagina 2', element: 'pg2' },
-                  { name: 'Pagina 3', element: 'pg3' },
-                  { name: 'Pagina 4', element: 'pg4' },
-                  { name: 'Pagina 5', element: 'pg5' },
-                  { name: 'Pagina 6', element: 'pg6' },
-                  { name: 'Pagina 7', element: 'pg7' },
-                  { name: 'Pagina 8', element: 'pg8' },
-                  { name: 'Pagina 9', element: 'pg9' },
-                  { name: 'Pagina 10', element: 'pg10' }
-              ]},
-            ],
-          };
+export default {
+  data() {
+    return {
+      items: [
+        { name: "Home", route: "home" },
+        {
+          name: "Gestão de Oportunidades",
+          children: [
+            { name: "Clientes", route: "listarclientes" },
+            { name: "Objetos", route: "listarobjetos" },
+            { name: "Pedidos", route: "listarpedidos" },
+            { name: "Análises", route: "listaranalises" },
+            { name: "Propostas", route: "listarpropostas" },
+            { name: "Eventos", route: "listareventos" }
+          ]
         },
-      };
+        {
+          name: "Formulário",
+          route: "form",
+          children: [
+            { name: "Pagina 1", element: "pg1" },
+            { name: "Pagina 2", element: "pg2" },
+            { name: "Pagina 3", element: "pg3" },
+            { name: "Pagina 4", element: "pg4" },
+            { name: "Pagina 5", element: "pg5" },
+            { name: "Pagina 6", element: "pg6" },
+            { name: "Pagina 7", element: "pg7" },
+            { name: "Pagina 8", element: "pg8" },
+            { name: "Pagina 9", element: "pg9" },
+            { name: "Pagina 10", element: "pg10" }
+          ]
+        }
+      ]
+    };
+  }
+};
 </script>
 <style>
-
 .side-menu a {
-    color: #fff;
+  color: #fff;
 }
-
 </style>
