@@ -1,10 +1,12 @@
 <template>
-  <b-container class="bv-example-row">
+  <b-container v-if="auth.logged" class="container">
     <h1>Adicionar Análise</h1>
-    <b-row class="text-center">
-      <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+    <b-row class="panel panel-default">
+      <b-container class="panel-body">
+        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+      </b-container>
     </b-row>
-    <b-button v-on:click="guardarProposta">Adicionar</b-button>
+    <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
   </b-container>
 </template>
 
@@ -138,6 +140,10 @@ export default {
 <style scoped>
 h1 {
   font-weight: bold;
-  text-align: left;
 }
+
+.btn-primary {
+  margin-bottom: 20px;
+}
+
 </style>
