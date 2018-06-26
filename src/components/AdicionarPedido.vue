@@ -22,7 +22,9 @@
         </div>
       </b-container>
     </b-row>
+    <br >
     <b-button variant="primary" @click="enviar" v-bind:class="{ disabled: !image }">Guardar</b-button>
+    <b-button variant="primary" @click="voltar" v-bind:class="{ disabled: !image }">Voltar</b-button>
   </b-container>
 </template>
 
@@ -40,10 +42,13 @@ export default {
   name: "app",
   data() {
     return {
+      token: store.token,
       auth: store.auth,
       error: [],
       model: {
         titulo: "",
+        descricao: "",
+        foto: "",
         status: true
       },
 
@@ -60,7 +65,7 @@ export default {
           },
           {
             label: "Descrição do Pedido",
-            model: "Descricao",
+            model: "descricao",
             type: "input",
             inputType: "text",
             featured: true,
@@ -81,20 +86,33 @@ export default {
     PictureInput
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listarpedidos" });
+    },
+
     enviar() {
-      //  faz o post para api da foto
-      if (this.image) {
-        FormDataPost("/cliente/foto", this.image)
-          .then(response => {
-            if (response.data.success) {
-              this.image = "";
-              console.log("OK");
-            }
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
+      axios
+        .post(
+          "/adicionarpedido",
+          {},
+          {
+            headers: {
+              authorization: this.token
+            },
+            params: {
+              id: this.model.id,
+              Titulo: this.model.titulo,
+              Descricao: this.model.descricao,
+              Fotografia: this.model.foto
+            },            
+          }
+        )
+        .then(function(response) {
+          console.log("success", response.data);
+        })
+        .catch(function(response) {
+          console.log("error", response);
+        });
       this.$router.replace("/listarpedidos");
     },
 

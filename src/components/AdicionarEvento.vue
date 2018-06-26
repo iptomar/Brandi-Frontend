@@ -7,6 +7,7 @@
       </b-container>
     </b-row>
     <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+    <b-button variant="primary" @click="voltar">Voltar</b-button>
   </b-container>
 </template>
 
@@ -26,11 +27,11 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
         id: "",
-        descricao: "",
-        data_evento: "",
+        descricao: "",        
         tipo: "",
         status: true
       },
@@ -53,13 +54,6 @@ export default {
             rows: 4,
             required: true,
             placeholder: "Ex.: O documento XPTO contém informações acerca..."
-          },
-          {
-            label: "Data do Evento",
-            model: "data_evento",
-            type: "input",
-            inputType: "date",
-            required: true
           }
         ]
       },
@@ -71,15 +65,21 @@ export default {
     };
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listareventos" });
+    },
     guardar() {
       axios
         .post(
           "/adicionarEvento",
           {},
           {
+            headers: {
+              authorization: this.token
+            },          
             params: {
               descricao: this.model.descricao,
-              data_evento: this.model.data_evento,
+              //data_evento: this.model.data_evento,
               tipo: this.model.tipo
             }
           }

@@ -18,7 +18,8 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
-      auth: store.auth
+      auth: store.auth,
+      token: store.token
     };
   },
   methods: {
@@ -26,9 +27,12 @@ export default {
     apagar() {
       axios
         .post(
-          "/apagar",
+          "/eliminarcliente",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
               id: this.$route.query.id
             }
@@ -57,7 +61,7 @@ h2 {
   font-weight: normal;
 }
 
-h1{
+h1 {
   margin: 80px 0 40px;
 }
 
@@ -76,6 +80,6 @@ a {
 }
 
 .btn-secondary {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 </style>

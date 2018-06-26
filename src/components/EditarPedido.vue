@@ -3,6 +3,7 @@
   <h1>Editar Pedido</h1>
 
       <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+  <hr >
   <div class="hello">
         <picture-input 
         ref="pictureInput"
@@ -12,20 +13,22 @@
         accept="image/jpeg,image/png" 
         size="10" 
         button-class="btn"
-        prefill="http://www.decoracaoonline.org/wp-content/uploads/2015/06/cadeiras-sala-de-jantar.jpg"
+        prefill=""
         :custom-strings="{
             upload: '<h1></h1>',
             drag: 'Arrastar Fotografia'
         }"
         @change="onChange">
         </picture-input>
-        <br >
-    <b-button @click="enviar" v-bind:class="{ disabled: !image }">
-    Guardar
-    </b-button>
+    <hr>
+     
+    <b-button @click="enviar" variant="primary" >Guardar</b-button>
+    <b-button @click="voltar" variant="primary" >Voltar</b-button>
+    
     </div>
-
+<br>
 </b-container>
+
 </template>
 <script>
 import PictureInput from "vue-picture-input";
@@ -41,10 +44,16 @@ export default {
   name: "app",
   data() {
     return {
+      token: store.token,
       auth: store.auth,
       error: [],
       model: {
         titulo: "",
+        descricao: "",
+        cliente: 0,
+        fotografia:
+          "https://c1.quickcachr.fotos.sapo.pt/i/G0f06fdc2/21076306_74Pe2.jpeg",
+        tempo: "",
         status: true
       },
       schema: {
@@ -60,7 +69,7 @@ export default {
           },
           {
             label: "Descricao:",
-            model: "Descricao",
+            model: "descricao",
             type: "input",
             inputType: "text",
             featured: true,
@@ -82,24 +91,62 @@ export default {
   },
   created() {
     // vai buscar a informação ao backend sobre o pedido
-    this.model.titulo = "Conjunto Cadeiras";
+
+    axios
+      .post(
+        "/pedido",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          },
+          params: {
+            id: this.$route.query.id
+          }
+        }
+      )
+      .then(response => {
+        this.model.titulo = response.data.Pedido.Titulo;
+        this.model.descricao = response.data.Pedido.Descricao;
+        this.model.fotografia = response.data.Pedido.Fotografia;
+        this.model.cliente = response.data.Pedido.ID_Cliente;
+        this.model.tempo = response.data.Pedido.Data_Realizacao_Pedido;
+      })
+      .catch(e => {
+        this.error.push(e);
+      });
+    console.log("erro" + this.model.titulo);
   },
   methods: {
     enviar() {
-        //  faz o post para api da foto
-      if (this.image) {
-        FormDataPost("/cliente/foto", this.image)
-          .then(response => {
-            if (response.data.success) {
-              this.image = "";
-              console.log("OK");
+      //  faz o post para api da foto
+      axios
+        .post(
+          "/editarpedido",
+          {},
+          {
+            params: {
+              id: this.$route.query.id,
+              Titulo: this.model.titulo,
+              Fotografia: this.model.fotografia,
+              Descricao: this.model.descricao,
+              ID_Cliente: this.model.cliente,
+              Data_Realizacao_Pedido: this.model.tempo
+            },
+            headers: {
+              authorization: this.token,
+              "Content-Type": "application/json"
             }
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
-      this.$router.replace("/ListarClientes");
+          }
+        )
+        .then(function(response) {
+          console.log("success", response.data);
+        })
+        .catch(function(response) {
+          console.log("error", response);
+        });
+
+      this.$router.replace("/ListarPedidos");
     },
 
     onChange(image) {
@@ -110,6 +157,9 @@ export default {
       } else {
         console.log("Erro, formato invalido");
       }
+    },
+    voltar() {
+      this.$router.replace({ path: "/listarpedidos" });
     }
   }
 };

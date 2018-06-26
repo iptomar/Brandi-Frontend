@@ -1,6 +1,8 @@
 <template>
   <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista dos Clientes</h1>
+    <button type="button" class="btn" v-on:click=novo()>Novo Cliente</button>
+    <hr >    
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -15,11 +17,11 @@
         <tr v-for="cliente of clientes" v-bind:key="cliente.idCliente">
           <td>{{cliente.nome}}</td>
           <td>{{cliente.morada}}</td>
-          <td>{{cliente.contato}}</td>
+          <td>{{cliente.contacto}}</td>
           <td>{{cliente.email}}</td>
-          <td>{{cliente.NIF}}</td>
-          <td><button type="button" class="btn btn-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-danger">Arquivar</button></td>
+          <td>{{cliente.nif}}</td>
+          <td><button type="button" class="btn btn-warning" v-on:click=editar(cliente.id)>Editar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=apagar(cliente.id)>Arquivar</button></td>          
         </tr>
       </tbody>
     </table>
@@ -43,24 +45,42 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
+      token: store.token,
       auth: store.auth,
       clientes: [],
       errors: []
     };
   },
   created() {
-    var url = "/listarclientes/";
     axios
-      .get(url)
+      .post(
+        "/listarclientes",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.clientes = response.data;
-        console.log(clientes);
+        this.clientes = response.data.clientes;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
+   
   },
-  methods: {}
+  methods: {
+    // editar utilizador
+    editar(num) {
+      this.$router.push({ path: "/editarCliente", query: { id: num } });
+    },
+    // apagar utilizador
+    apagar(num) {
+      this.$router.push({ path: "/EliminarCliente", query: { id: num } });
+    },
+    novo() {
+      this.$router.push({ path: "/AdicionarCliente" });
+    }
+  }
 };
 </script>
 

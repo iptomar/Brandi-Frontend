@@ -1,8 +1,10 @@
 <template>
     <b-container  v-if="auth.logged"  class="bv-example-row">
         <h1>Quer Mesmo Apagar o Pedido?</h1>
-        <b-button v-on:click=apagar()>Sim</b-button>
-        <b-button v-on:click=cancelar()>Não</b-button>
+        <hr >
+        <b-button variant="primary" v-on:click=apagar()>Sim</b-button>
+        <b-button variant="primary" v-on:click=cancelar()>Não</b-button>
+        <hr >
     </b-container>
 </template>
 
@@ -18,6 +20,7 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
+      token: store.token,
       auth: store.auth
     };
   },
@@ -26,9 +29,11 @@ export default {
     apagar() {
       axios
         .post(
-          "/apagar",
+          "/EliminarPedido",
           {},
-          {
+          {headers: {
+              authorization: this.token
+            },
             params: {
               id: this.$route.query.id
             }

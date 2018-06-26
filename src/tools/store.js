@@ -8,6 +8,7 @@ export default new Vue({
     auth: {
       logged: false,
       user: null,
+      token: '',
       default: true
     }
   }

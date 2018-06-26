@@ -5,6 +5,7 @@
             <vue-form-generator :schema='schema' :model='model' :options='formOptions'></vue-form-generator>
         </b-row>
       <b-button v-on:click="update">Guardar</b-button>
+     <b-button variant="primary" @click="voltar">Voltar</b-button>
     </b-container>
 </template>
 
@@ -24,11 +25,11 @@ export default {
   data() {
     return {
       error: [],
+      token: store.token,
       auth: store.auth,
       model: {
-        id_evento: "",
+        id: 0,
         descricao: "",
-        dataEvento: "",
         tipo: "",
         status: true
       },
@@ -41,14 +42,6 @@ export default {
             model: "descricao",
             required: true,
             placeholder: "Descrição do evento"
-          },
-          {
-            label: "Data:",
-            model: "dataEvento",
-            type: "input",
-            inputType: "date",
-            required: true,
-            placeholder: "Data do Evento"
           },
           {
             label: "Tipo:",
@@ -69,49 +62,57 @@ export default {
   },
   created() {
     // vai buscar a informação ao backend sobre o evento
-
-    var evento = this.$route.query.id;
-
-    var url = "/eventos/" + evento;
     axios
-      .post(url)
+      .post(
+        "/evento",
+        {},
+        {
+          headers: {
+            authorization: this.token,
+            "Content-Type": "application/json"
+          },
+          params: {
+            id: this.$route.query.id
+          }
+        }
+      )
       .then(response => {
-        this.model.id_evento = response.data[0].id_evento;
-        this.model.descricao = response.data[0].descricao;
-        this.model.dataEvento = response.data[0].dataEvento;
-        this.model.tipo = response.data[0].tipo;
+        this.model.descricao = response.data.evento.Descricao;
+        this.model.tipo = response.data.evento.Tipo;
+        console.log("success", response.data);
       })
-      .catch(e => {
-        this.error.push(e);
+      .catch(function(response) {
+        console.log("error", response);
       });
   },
   methods: {
     // editar utilizador
+    voltar() {
+      this.$router.replace({ path: "/listareventos" });
+    },
     update() {
       axios
         .post(
-          "/editar",
+          "/editarevento",
           {},
           {
             params: {
-              id_evento: this.model.id_evento,
+              id: this.$route.query.id,
               descricao: this.model.descricao,
-              dataEvento: this.model.dataEvento,
               tipo: this.model.tipo
             },
             headers: {
-              "Content-Type": "application/json"
+              authorization: this.token
             }
           }
         )
         .then(function(response) {
-          //Object.assign(this.$data,this.$options.data.call(this))
           console.log("success", response.data);
         })
         .catch(function(response) {
           console.log("error", response);
         });
-      this.$router.replace({ path: "/eventos" });
+      this.$router.replace({ path: "/listareventos" });
     }
   }
 };

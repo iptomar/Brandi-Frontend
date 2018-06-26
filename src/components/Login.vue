@@ -4,10 +4,10 @@
 	<br/>
   <div class="container">
     <label for="uname"><b>Nome de Utilizador:</b></label>
-    <input type="text" v-model="username" placeholder="Enter Username" name="uname" required>
+    <input type="text" v-model="username" placeholder="Enter Username" name="username" required>
 	<br>
     <label for="psw"><b>Password:</b></label>	
-    <input type="password" v-model="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" v-model="password" placeholder="Enter Password" name="password" required>
 	<br>
     <b-button v-on:click="login">Login</b-button>
 
@@ -19,43 +19,53 @@
 </template>
 
 <script>
-import isLoggedMixin from '../mixins/logged'
-import store from '../tools/store'
+import isLoggedMixin from "../mixins/logged";
+import store from "../tools/store";
+import axios from "axios";
 
 export default {
-  name: 'Login',
+  name: "Login",
   mixins: [isLoggedMixin],
-  data () {
+  data() {
     return {
-      username: null,
-      password: null,
-      msg: '',
+      token: undefined,
+      msg: "",
       auth: store.auth
-    }
+      
+    };
   },
-  created () {
+  created() {
     if (this.auth.logged === true) {
       this.$router.push({
-        path: 'home'
-      })
+        path: "home"
+      });
     }
   },
   methods: {
-    login () {
-      this.checkIfLogged(this.username, this.password)
-        .then(response => {
-          if (response === true) {
-            this.$router.push({
-              path: 'home'
-            })
-          } else {
-            this.msg = 'Login failed'
+    login() {
+      axios
+        .post(
+          "/login",
+          {},
+          {
+            params: {
+              username: this.username,
+              password: this.password
+            }
           }
+        )
+        .then(response => {
+          this.token = response.data.token;
+          this.checkIfLogged(this.token)          
         })
-        .catch(error => console.log(error))
+
+        .catch(function(error) {
+          console.log(error);
+        });
+      this.$router.push({ path: "home" });
     }
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
