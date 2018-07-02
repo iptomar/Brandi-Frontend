@@ -1,13 +1,16 @@
 <template>
   <b-nav vertical fill pills>
-    <vue-tree-navigation :items="items" class="left-menu text-left mt-4 mr-6" text-variant="white" />
+    <vue-tree-navigation :items="items" class="left-menu text-left mt-4 mr-6" text-variant="white"/>
   </b-nav>
 </template>
 
 <script>
     import Vue from 'vue'
     import VueTreeNavigation from 'vue-tree-navigation'
-    Vue.use(VueTreeNavigation)
+    import Scrollspy from 'vue2-scrollspy';
+
+    Vue.use(VueTreeNavigation);
+    Vue.use(Scrollspy);
 
       export default {
 
@@ -23,8 +26,8 @@
                 { name: 'Propostas', route: 'listarpropostas'},
                 { name: 'Eventos', route: 'listareventos'},
               ]},
-              { name: 'Formulário', route: 'form', children: [
-                  { name: 'Pagina 1', element: 'pg1' },
+              { name: 'Formulário', route: 'form', scrollspy:"v-scroll-spy-active v-scroll-spy-link", children: [
+                  { name: 'Pagina 1', element: 'pg1',scrollspy:"v-scroll-spy-active v-scroll-spy-link" },
                   { name: 'Pagina 2', element: 'pg2' },
                   { name: 'Pagina 3', element: 'pg3' },
                   { name: 'Pagina 4', element: 'pg4' },

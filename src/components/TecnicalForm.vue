@@ -1,5 +1,8 @@
 <template>
+
 <b-container class="mainC container">
+    <div v-scroll-spy>
+    <div>
     <h1 id="pg1">Página 1</h1>
     <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custom">DESIGNAÇÃO DO OBJETO</b-container>
@@ -7,6 +10,8 @@
             <vue-form-generator :schema='pagina_1' :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row>
+    </div>
+    <div>
     <h1 id="pg2">Página 2 </h1>
     <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custon">BEM INTEGRADO EM CONJUNTO</b-container>
@@ -14,6 +19,8 @@
             <vue-form-generator :schema='pagina_2' :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row>
+    </div>
+    <div>
     <h1 id="pg3">Página 3</h1>
     <b-container class="container">
         <b-container class="panel-default">CONDIÇÕES AMBIENTAIS DO LOCAL DE INSERÇÃO DO BEM CULTURAL</b-container>
@@ -40,6 +47,8 @@
         <b-container class="panel-default">Observações | Conclusões</b-container>
         <vue-form-generator :schema='pagina3_Con' :options='formOptions'></vue-form-generator>
     </b-container>
+    </div>
+    <div>
     <h1 id="pg4">Página 4</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
@@ -52,7 +61,8 @@
             </b-container>
         </b-row>
     </b-container>
-
+    </div>
+    <div>
     <h1 id="pg5">Página 5</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
@@ -69,8 +79,8 @@
         </b-row>
     </b-container>
 
-
-
+    </div>
+    <div>
     <h1 id="pg6">Página 6</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
@@ -86,7 +96,8 @@
             </b-container>
         </b-row>
     </b-container>
-
+    </div>
+    <div>
     <h1 id="pg7">Página 7</h1>
     <b-container>
         <b-container class="container">
@@ -135,7 +146,8 @@
         </b-container>
 
     </b-container>
-
+    </div>
+    <div>
     <h1 id="pg8">Página 8</h1>
     <b-container class="container">
         <b-container class="panel panel-default">
@@ -153,7 +165,8 @@
             </b-container>
         </b-container>
     </b-container>
-
+    </div>
+    <div>
     <h1 id="pg9">Página 9</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
@@ -172,6 +185,8 @@
             </b-container>
         </b-row>
     </b-container>
+    </div>
+    <div>
     <h1 id="pg10">Página 10</h1>
     <b-container class="container">
         <b-row class="panel panel-default">
@@ -216,19 +231,16 @@
                 </b-row>
             </b-container>
         </b-container>
-
-
-
-            </b-container>
-
-
-        </b-row>
-
-
     </b-container>
-
-
-</b-container>
+    </b-row>
+    </b-container>
+    </div>
+        <div class="button_Teste">
+            <b-button variant="sucess-primary" class="button" size="lg" v-on:click="Fucntion">Cancelar</b-button>
+            <b-button variant="outline-success" class="button" size="lg" v-on:click="Fucntion">Submeter</b-button>
+        </div>
+        </div>
+    </b-container>
 </template>
 
 
@@ -1753,5 +1765,10 @@ fieldset {
 }
 .mainC{
   padding: 60px 0;
+}
+
+.button_Teste {
+    margin-bottom: 25px;
+    padding: 15px;
 }
 </style>
