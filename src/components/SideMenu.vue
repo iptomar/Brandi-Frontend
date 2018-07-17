@@ -13,7 +13,10 @@ export default {
   data() {
     return {
       items: [
-        { name: "Home", route: "home" },
+        {
+          name: "Home",
+          route: "home"
+        },
         {
           name: "Gestão de Oportunidades",
           children: [
@@ -27,22 +30,12 @@ export default {
         },
         {
           name: "Formulário",
-          route: "form",
-          children: [
-            { name: "Pagina 1", element: "pg1" },
-            { name: "Pagina 2", element: "pg2" },
-            { name: "Pagina 3", element: "pg3" },
-            { name: "Pagina 4", element: "pg4" },
-            { name: "Pagina 5", element: "pg5" },
-            { name: "Pagina 6", element: "pg6" },
-            { name: "Pagina 7", element: "pg7" },
-            { name: "Pagina 8", element: "pg8" },
-            { name: "Pagina 9", element: "pg9" },
-            { name: "Pagina 10", element: "pg10" }
-          ]
+          route: "form"
         }
       ]
     };
+  },
+  methods: {  
   }
 };
 </script>

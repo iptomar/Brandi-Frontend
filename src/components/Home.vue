@@ -5,20 +5,25 @@
 </template>
 
 <script>
-import store from '../tools/store'
+import store from "../tools/store";
 export default {
-  name: 'Home',
-  data () {
+  name: "Home",
+  data() {
     return {
-      auth: store.auth
-    }
+      auth: store.auth,
+      sideMenu: store.sideMenu
+    };
+  },
+  created() {
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 ul {
@@ -33,10 +38,9 @@ a {
   color: #42b983;
 }
 .bg {
-  background-image: url('../assets/bg.jpg');
+  background-image: url("../assets/bg.jpg");
   background-size: cover;
   width: 100%;
   height: 100vh;
 }
-
 </style>
