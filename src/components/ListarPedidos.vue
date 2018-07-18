@@ -22,6 +22,7 @@
                 <td>{{pedido.Descricao}}</td>
                 <td><button type="button" class="btn btn-warning" v-on:click=editar(pedido.id)>Editar</button></td>
                 <td><button type="button" class="btn btn-danger" v-on:click=apagar(pedido.id)>Arquivar</button></td>
+                <td><button type="button" class="btn btn-green" v-on:click=criar_Objeto(pedido.id)>Criar Objeto</button></td>
             </tr>
             </tbody>
         </table>
@@ -78,7 +79,11 @@ export default {
     apagar(num) {
       this.$router.push({ path: "/eliminarpedido", query: { id: num } });
     },
-    novo() {
+    criar_Objeto(){
+      this.sideMenu.isOpen = !this.sideMenu.isOpen;
+      this.$router.push({ path: "/form" });
+    },
+    novo() {      
       this.$router.push({ path: "/adicionarpedido" });
     }
   }

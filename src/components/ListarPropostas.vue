@@ -1,19 +1,28 @@
 <template>
     <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista de Propostas</h1>
+     <hr>
+     <button type="button" class="btn" v-on:click=novo()>Nova proposta</button>
+    <hr >    
     <table class="table table-hover table-dark">
             <thead>
                 <tr>
                 <th scope="col">Descrição</th>
                 <th scope="col">Data Envio</th>
-                <th scope="col">Aceitação</th>
+                <th scope="col">Aceitação Proposta</th>
+                <th scope="col">Justificação da Recusa</th>
+                <th scope="col">Pedido</th>
+                <th scope="col">Coordenador</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="proposta of propostas" v-bind:key="proposta.idProposta">
-                <td>{{proposta.descricao}}</td>
-                <td>{{proposta.dataEnvio}}</td>
-                <td>{{proposta.aceitacao}}</td>
+                <td>{{proposta.Descricao}}</td>
+                <td>{{proposta.Data_Envio_Proposta}}</td>
+                <td>{{proposta.Aceitação_Proposta}}</td>
+                <td>{{proposta.Justificacao_Recusa}}</td>
+                <td>{{proposta.ID_Pedido}}</td>
+                <td>{{proposta.ID_Coordenador}}</td>
                 <td><button type="button" class="btn btn-warning" v-on:click=editar(proposta.idproposta)>Editar</button></td>
                 <td><button type="button" class="btn btn-danger" v-on:click=arquivar(proposta.idproposta)>Arquivar</button></td>
             </tr>
@@ -40,21 +49,29 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
+      sideMenu: store.sideMenu,
       propostas: [],
       errors: []
     };
   },
 
   created() {
-    var url = "/listarpropostas/";
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
     axios
-      .post(url)
+      .post(
+        "/listarPropostas",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.propostas = response.data;
+        this.propostas = response.data.propostas;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
   },
   methods: {
     editar(num) {
@@ -86,9 +103,29 @@ a {
   color: #42b983;
 }
 
-td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;font-weight:bold;}
-.bv-example-row{
-  padding: 70px  0px
+td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+  font-weight: bold;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

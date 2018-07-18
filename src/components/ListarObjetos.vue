@@ -4,20 +4,31 @@
     <table class="table table-hover table-dark">
       <thead>
         <tr>
-          <th scope="col">Tipologia</th>
-          <th scope="col">Localização</th>
-          <th scope="col">Designação</th>
           <th scope="col">Proprietário</th>
+          <th scope="col">Pedido</th>
+          <th scope="col">Designação</th>
+          <th scope="col">Processo LCRM</th>
+          <th scope="col">Processo CEARC</th>
+          <th scope="col">Coordenação</th>
+          <th scope="col">Data de Abertura do Processo</th>
+          <th scope="col">Data de Entrada LCRM</th>
+          <th scope="col">Data de Entrada CEARC</th>         
         </tr>
       </thead>
       <tbody>
         <tr v-for="objeto of objetos" v-bind:key="objeto.idObjeto">
-          <td>{{objeto.tipologia}}</td>
-          <td>{{objeto.localizacao}}</td>
-          <td>{{objeto.designacao}}</td>
-          <td>{{objeto.idProprietario}}</td>
-          <td><button type="button" class="btn btn-warning" v-on:click=editar(objeto.idObjeto)>Editar</button></td>
-          <td><button type="button" class="btn btn-danger" v-on:click=arquivar(objeto.idObjeto)>Arquivar</button></td>
+          <td>{{objeto.ID_Proprietario}}</td>
+          <td>{{objeto.ID_Pedido}}</td>
+          <td>{{objeto.Designacao}}</td>
+          <td>{{objeto.ProcessoLCRM}}</td>
+          <td>{{objeto.ProcessoCEARC}}</td>
+          <td>{{objeto.Coordenacao}}</td>
+          <td>{{objeto.Data_Abertura_Processo}}</td>
+          <td>{{objeto.Data_Entrada_LCRM}}</td>
+          <td>{{objeto.Data_Entrada_CEARC}}</td>
+          
+          <td><button type="button" class="btn btn-warning" v-on:click=editar(objeto.id)>Editar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=arquivar(objeto.id)>Arquivar</button></td>
         </tr>
       </tbody>
     </table>
@@ -41,6 +52,8 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
+      token: store.token,
+      sideMenu: store.sideMenu,
       auth: store.auth,
       objetos: [],
       errors: []
@@ -48,26 +61,23 @@ export default {
   },
 
   created() {
-    var url = "/listarobjetos/";
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
     axios
-      .post(url)
+      .post(
+        "/listarobjetos",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.objetos = response.data;
+        this.objetos = response.data.objetos;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
   },
-  methods: {
-    // editar objeto
-
-    editar(num) {
-      this.$router.push({ path: "/editarobjeto", query: { id: num } });
-    },
-    apagar(num) {
-      this.$router.push({ path: "/eliminarobjeto", query: { id: num } });
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -112,7 +122,7 @@ th {
   border-color: black;
   font-weight: bold;
 }
-.bv-example-row{
-  padding: 70px  0px
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

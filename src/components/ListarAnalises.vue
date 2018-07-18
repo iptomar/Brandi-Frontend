@@ -1,6 +1,9 @@
 <template>
   <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista de Análises Preliminares</h1>
+    <hr>
+    <button type="button" class="btn" v-on:click=novo()>Nova Analise</button>
+    <hr>
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -11,19 +14,21 @@
           <th scope="col">Início da Análise</th>
           <th scope="col">Fim da Análise</th>
           <th scope="col">Outras Despesas</th>
+          <th scope="col">Objeto</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="analise of analises" v-bind:key="analise.idAnalise">
-          <td>{{analise.descAnalise}}</td>
-          <td>{{analise.dataAnalise}}</td>
-          <td>{{analise.localAnalise}}</td>
-          <td>{{analise.km}}</td>
-          <td>{{analise.inicAnalise}}</td>
-          <td>{{analise.fimAnalise}}</td>
-          <td>{{analise.outrasDespesas}}</td>
-          <td><button type="button" class="btn btn-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-danger">Arquivar</button></td>
+          <td>{{analise.Descricao_Analise}}</td>
+          <td>{{analise.Data_Realizacao_Analise}}</td>
+          <td>{{analise.Locao_realizacao_Analise}}</td>
+          <td>{{analise.Distancia_Deslocacao}}</td>
+          <td>{{analise.Inicio_Analise}}</td>
+          <td>{{analise.Fim_Analise}}</td>
+          <td>{{analise.Outras_Despesas}}</td>
+          <td>{{analise.ID_Objecto}}</td>
+          <td><button type="button" class="btn btn-warning" v-on:click=editar(analise.id)>Editar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=apagar(analise.id)>Arquivar</button></td>      
         </tr>
       </tbody>
     </table>
@@ -47,22 +52,43 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
+      token: store.token,
+      sideMenu: store.sideMenu,
       auth: store.auth,
       analises: [],
       errors: []
     };
   },
   created() {
-    var url = "/listaranalises/";
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
     axios
-      .get(url)
+      .post(
+        "/listar_analises_preliminares",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.analises = response.data;
-        console.log(this.analises);
+        this.analises = response.data.analises_preliminares;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
+  },
+  methods: {
+    // editar analise
+    editar(num) {
+      this.$router.push({ path: "/Editar_analises_preliminares", query: { id: num } });
+    },
+    // apagar analise
+    apagar(num) {
+      this.$router.push({ path: "/Eliminar_analises_preliminares", query: { id: num } });
+    },
+    // adicionar analise
+    novo() {
+      this.$router.push({ path: "/Adicionar_analises_preliminares" });
+    }
   }
 };
 </script>
@@ -109,7 +135,7 @@ th {
   border-color: black;
   font-weight: bold;
 }
-.bv-example-row{
-  padding: 70px  0px
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>
