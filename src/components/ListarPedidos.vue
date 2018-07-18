@@ -1,23 +1,27 @@
 <template>
     <b-container v-if="auth.logged" class="bv-example-row">
-    <h1>Lista de Pedidos</h1>
+    
+    <h1>Lista de Pedidos</h1>    
+    <hr>
+    <button variant="primary" type="button" class="btn" v-on:click="novo()">Criar Pedido</button>
+    <hr >
       <table class="table table-hover table-dark">
             <thead>
                 <tr>
                 <th scope="col">Nome</th>
                 <th scope="col">Cliente</th>
                 <th scope="col">Data</th>
-                <th scope="col">Fotografia</th>
+                <th scope="col">Descrição</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="pedido of pedidos" v-bind:key="pedido.idPedido">
-                <td>{{pedido.titulo}}</td>
-                <td>{{pedido.cliente}}</td>
-                <td>{{pedido.data}}</td>
-                <td>{{pedido.foto}}</td>
-                <td><button type="button" class="btn btn-warning" v-on:click=editar(pedido.idPedido)>Editar</button></td>
-                <td><button type="button" class="btn btn-danger" v-on:click=arquivar(pedido.idPedido)>Arquivar</button></td>
+                <td>{{pedido.Titulo}}</td>
+                <td>{{pedido.ID_Cliente}}</td>
+                <td>{{pedido.Data_Realizacao_Pedido}}</td>
+                <td>{{pedido.Descricao}}</td>
+                <td><button type="button" class="btn btn-warning" v-on:click=editar(pedido.id)>Editar</button></td>
+                <td><button type="button" class="btn btn-danger" v-on:click=apagar(pedido.id)>Arquivar</button></td>
             </tr>
             </tbody>
         </table>
@@ -43,21 +47,29 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
+      sideMenu: store.sideMenu,
       pedidos: [],
       errors: []
     };
   },
 
   created() {
-    var url = "/listarpedidos/";
-    axios
-      .post(url)
-      .then(response => {
-        this.pedidos = response.data;
+     this.sideMenu.isOpen = !this.sideMenu.isOpen;
+  axios
+      .post(
+        "/listarpedidos",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
+      .then(response => {        
+        this.pedidos = response.data.pedidos_clientes;      
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
   },
   methods: {
     editar(num) {
@@ -65,6 +77,9 @@ export default {
     },
     apagar(num) {
       this.$router.push({ path: "/eliminarpedido", query: { id: num } });
+    },
+    novo() {
+      this.$router.push({ path: "/adicionarpedido" });
     }
   }
 };
@@ -87,6 +102,10 @@ li {
 
 a {
   color: #42b983;
+}
+
+.bv-example-row{
+  padding: 70px  0px
 }
 
 td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}

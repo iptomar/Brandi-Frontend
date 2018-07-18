@@ -1,21 +1,26 @@
 <template>
   <b-container  v-if="auth.logged"  class="bv-example-row">
     <h1>Lista de Eventos</h1>
+    <hr>
+    <button type="button" class="btn" v-on:click=novo()>Novo Evento</button>
+    <hr>
     <table class="table table-hover table-dark">
       <thead>
         <tr>
           <th scope="col">Data do Evento</th>
           <th scope="col">Tipo</th>
           <th scope="col">Descrição</th>
+          <th scope="col">Pedido</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="evento of eventos" v-bind:key="evento.idEvento">
-          <td>{{evento.data_evento}}</td>
-          <td>{{evento.tipo}}</td>
-          <td>{{evento.descricao}}</td>
-          <td><button type="button" class="btn btn-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-danger">Arquivar</button></td>
+          <td>{{evento.Data_Evento}}</td>
+          <td>{{evento.Tipo}}</td>
+          <td>{{evento.Descricao}}</td>
+          <td>{{evento.ID_Pedido}}</td>
+           <td><button type="button" v-on:click=editar(evento.id) class="btn btn-warning">Editar</button></td>
+          <td><button type="button" v-on:click=voltar() class="btn btn-danger">Arquivar</button></td>
         </tr>
       </tbody>
     </table>
@@ -44,21 +49,41 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
+      sideMenu: store.sideMenu,
       eventos: [],
       errors: []
     };
   },
   created() {
-    var url = "/listareventos/";
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
     axios
-      .get(url)
+      .post(
+        "/listareventos",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.eventos = response.data;
-        console.log(eventos);
+        this.eventos = response.data.eventos;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
+  },
+  methods: {
+    // editar utilizador
+    editar(num) {
+      this.$router.push({ path: "/editarevento", query: { id: num } });
+    },
+    // apagar utilizador
+    apagar(num) {
+      this.$router.push({ path: "/Eliminarevento", query: { id: num } });
+    },
+    novo() {
+      this.$router.push({ path: "/adicionarevento" });
+    }
   }
 };
 </script>
@@ -108,5 +133,8 @@ th {
   word-break: normal;
   border-color: black;
   font-weight: bold;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

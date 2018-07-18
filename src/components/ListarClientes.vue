@@ -1,6 +1,9 @@
 <template>
   <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista dos Clientes</h1>
+    <hr>
+    <button type="button" class="btn" v-on:click=novo()>Novo Cliente</button>
+    <hr>
     <table class="table table-hover table-dark">
       <thead>
         <tr>
@@ -15,11 +18,11 @@
         <tr v-for="cliente of clientes" v-bind:key="cliente.idCliente">
           <td>{{cliente.nome}}</td>
           <td>{{cliente.morada}}</td>
-          <td>{{cliente.contato}}</td>
+          <td>{{cliente.contacto}}</td>
           <td>{{cliente.email}}</td>
-          <td>{{cliente.NIF}}</td>
-          <td><button type="button" class="btn btn-warning">Editar</button></td>
-          <td><button type="button" class="btn btn-danger">Arquivar</button></td>
+          <td>{{cliente.nif}}</td>
+          <td><button type="button" class="btn btn-warning" v-on:click=editar(cliente.id)>Editar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=apagar(cliente.id)>Arquivar</button></td>      
         </tr>
       </tbody>
     </table>
@@ -44,23 +47,43 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
+      sideMenu: store.sideMenu,
       clientes: [],
       errors: []
     };
   },
   created() {
-    var url = "/listarclientes/";
-    axios
-      .get(url)
+    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+   axios
+      .post(
+        "/listarclientes",
+        {},
+        {
+          headers: {
+            authorization: this.token
+          }
+        }
+      )
       .then(response => {
-        this.clientes = response.data;
-        console.log(clientes);
+        this.clientes = response.data.clientes;
       })
-      .catch(e => {
-        this.errors.push(e);
-      });
+      .catch(function(error) {});
+   
   },
-  methods: {}
+  methods: { 
+    // editar utilizador
+    editar(num) {
+      this.$router.push({ path: "/editarCliente", query: { id: num } });
+    },
+    // apagar utilizador
+    apagar(num) {
+      this.$router.push({ path: "/EliminarCliente", query: { id: num } });
+    },
+    novo() {
+      this.$router.push({ path: "/AdicionarCliente" });
+    }
+  }
 };
 </script>
 
@@ -110,5 +133,9 @@ th {
   word-break: normal;
   border-color: black;
   font-weight: bold;
+}
+
+.bv-example-row{
+  padding: 70px  0px
 }
 </style>

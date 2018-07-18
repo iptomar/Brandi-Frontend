@@ -2,15 +2,17 @@ import store from '../tools/store'
 
 var isLoggedMixin = {
   methods: {
-    checkIfLogged (username, password) {
+    checkIfLogged(token) {
       return new Promise((resolve, reject) => {
-        if (username === 'test' && password === 'test') {
+        if (token === undefined) {
+          store.auth.logged = false
+          resolve(false)
+        } else {
+          store.token = token
           store.auth.default = false
           store.auth.logged = true
           resolve(true)
-        } else {
-          store.auth.logged = false
-          resolve(false)
+
         }
       })
     }

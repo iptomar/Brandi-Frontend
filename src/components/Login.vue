@@ -5,9 +5,9 @@
 		<div class="horizontalCenter">
 
     <label for="uname"><b>Nome de Utilizador:</b></label>
-    <input type="text" v-model="username" placeholder="Introduza o nome de utilizador..." name="uname" required>
+    <input type="text" v-model="username" placeholder="Introduza o nome de utilizador..." name="username" required>
     <label for="psw"><b>Password:</b></label>
-    <input type="password" v-model="password" placeholder="Introduza a password..." name="psw" required>
+    <input type="password" v-model="password" placeholder="Introduza a password..." name="password" required>
     <b-button variant="outline-primary" class="button" v-on:click="login">Entrar</b-button>
     <span class="errorMsg">{{ msg }}</span>
     <label></label>
@@ -20,14 +20,14 @@
 <script>
 import isLoggedMixin from '../mixins/logged'
 import store from '../tools/store'
+import axios from "axios";
 
 export default {
   name: 'Login',
   mixins: [isLoggedMixin],
   data () {
     return {
-      username: null,
-      password: null,
+      token: undefined,
       msg: '',
       auth: store.auth
     }
@@ -41,17 +41,26 @@ export default {
   },
   methods: {
     login () {
-      this.checkIfLogged(this.username, this.password)
-        .then(response => {
-          if (response === true) {
-            this.$router.push({
-              path: 'home'
-            })
-          } else {
-            this.msg = 'Autenticação falhada!'
+    axios
+        .post(
+          "/login",
+          {},
+          {
+            params: {
+              username: this.username,
+              password: this.password
+            }
           }
+        )
+        .then(response => {           
+          this.token = response.data.token;          
+          this.checkIfLogged(this.token)          
         })
-        .catch(error => console.log(error))
+
+        .catch(function(error) {
+          console.log(error);
+        });
+      this.$router.push({ path: "home" });
     }
   }
 }

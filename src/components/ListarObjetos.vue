@@ -112,4 +112,7 @@ th {
   border-color: black;
   font-weight: bold;
 }
+.bv-example-row{
+  padding: 70px  0px
+}
 </style>

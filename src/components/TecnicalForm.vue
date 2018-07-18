@@ -1,7 +1,7 @@
 <template>
 
 
-   <b-container class="mainC container">
+   <b-container v-if="auth.logged" class="mainC container">
 
   <b-row class="panel panel-default">
   <div>
@@ -283,6 +283,8 @@ export default {
 
   data() {
     return {
+      token: store.token,
+      auth: store.auth,
       sideMenu: store.sideMenu,
       model: {
         id: 1,
