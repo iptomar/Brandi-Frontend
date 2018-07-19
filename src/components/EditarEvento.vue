@@ -6,7 +6,8 @@
             <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
           </b-container>
         </b-row>
-      <b-button v-on:click="update">Guardar</b-button>
+      <b-button variant="primary" v-on:click="update">Guardar</b-button>
+      <b-button variant="primary" v-on:click="voltar">Voltar</b-button>
     </b-container>
 </template>
 
@@ -26,11 +27,13 @@ export default {
   data() {
     return {
       error: [],
+      token: store.token,
       auth: store.auth,
       model: {
         id_evento: "",
         descricao: "",
         dataEvento: "",
+        pedido: "",
         tipo: "",
         status: true
       },
@@ -43,14 +46,6 @@ export default {
             model: "descricao",
             required: true,
             placeholder: "Descrição do evento"
-          },
-          {
-            label: "Data:",
-            model: "dataEvento",
-            type: "input",
-            inputType: "date",
-            required: true,
-            placeholder: "Data do Evento"
           },
           {
             label: "Tipo:",
@@ -74,46 +69,58 @@ export default {
 
     var evento = this.$route.query.id;
 
-    var url = "/eventos/" + evento;
+    var url = "/evento";
     axios
-      .post(url)
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            authorization: this.token
+          },
+          params: {
+            id: this.$route.query.id
+          }
+        }
+      )
       .then(response => {
-        this.model.id_evento = response.data[0].id_evento;
-        this.model.descricao = response.data[0].descricao;
-        this.model.dataEvento = response.data[0].dataEvento;
-        this.model.tipo = response.data[0].tipo;
+        this.model.id = response.data.evento.id;
+        this.model.descricao = response.data.evento.Descricao;
+        this.model.tipo = response.data.evento.Tipo;
       })
       .catch(e => {
         this.error.push(e);
       });
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listareventos" });
+    },
     // editar utilizador
     update() {
       axios
         .post(
-          "/editar",
+          "/editarevento",
           {},
           {
             params: {
-              id_evento: this.model.id_evento,
+              id: this.$route.query.id,
               descricao: this.model.descricao,
-              dataEvento: this.model.dataEvento,
-              tipo: this.model.tipo
+              tipo: this.model.tipo,
+              pedido: this.model.pedido
             },
             headers: {
-              "Content-Type": "application/json"
+              authorization: this.token
             }
           }
         )
         .then(function(response) {
-          //Object.assign(this.$data,this.$options.data.call(this))
           console.log("success", response.data);
         })
         .catch(function(response) {
           console.log("error", response);
         });
-      this.$router.replace({ path: "/eventos" });
+      this.$router.replace({ path: "/listareventos" });
     }
   }
 };
@@ -121,7 +128,6 @@ export default {
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -142,5 +148,8 @@ li {
 
 a {
   color: #42b983;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

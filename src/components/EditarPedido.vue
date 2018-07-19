@@ -12,7 +12,7 @@
         accept="image/jpeg,image/png" 
         size="10" 
         button-class="btn"
-        prefill="http://www.decoracaoonline.org/wp-content/uploads/2015/06/cadeiras-sala-de-jantar.jpg"
+        prefill=""
         :custom-strings="{
             upload: '<h1></h1>',
             drag: 'Arrastar Fotografia'
@@ -20,9 +20,8 @@
         @change="onChange">
         </picture-input>
         <br >
-    <b-button @click="enviar" v-bind:class="{ disabled: !image }">
-    Guardar
-    </b-button>
+    <b-button @click="enviar()" variant="primary">Guardar</b-button>
+     <b-button variant="primary" @click="voltar">Voltar</b-button>    
     </div>
 
 </b-container>
@@ -42,9 +41,11 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
         titulo: "",
+        descricao: "",
         status: true
       },
       schema: {
@@ -60,7 +61,7 @@ export default {
           },
           {
             label: "Descricao:",
-            model: "Descricao",
+            model: "descricao",
             type: "input",
             inputType: "text",
             featured: true,
@@ -82,12 +83,58 @@ export default {
   },
   created() {
     // vai buscar a informação ao backend sobre o pedido
-    this.model.titulo = "Conjunto Cadeiras";
+    var url = "/pedido";
+    axios
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            authorization: this.token
+          },
+          params: {
+            id: this.$route.query.id
+          }
+        }
+      )
+      .then(response => {
+        this.model.titulo = response.data.pedido.Titulo;
+        this.model.descricao = response.data.pedido.Descricao;
+      })
+      .catch(e => {
+        this.error.push(e);
+      });
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listarpedidos" });
+    },
     enviar() {
-        //  faz o post para api da foto
-      if (this.image) {
+      axios
+        .post(
+          "/editarpedido",
+          {},
+          {
+            params: {
+              id: this.$route.query.id,
+              Titulo: this.model.titulo,
+              Descricao: this.model.descricao
+            },
+            headers: {
+              authorization: this.token
+            }
+          }
+        )
+        .then(function(response) {
+          console.log("success", response.data);
+        })
+        .catch(function(response) {
+          console.log("error", response);
+        });
+      this.$router.replace({ path: "/listarpedidos" });
+
+      //  faz o post para api da foto
+      /*if (this.image) {
         FormDataPost("/cliente/foto", this.image)
           .then(response => {
             if (response.data.success) {
@@ -98,8 +145,7 @@ export default {
           .catch(err => {
             console.error(err);
           });
-      }
-      this.$router.replace("/ListarClientes");
+      }     
     },
 
     onChange(image) {
@@ -109,14 +155,13 @@ export default {
         this.image = image;
       } else {
         console.log("Erro, formato invalido");
-      }
+      }*/
     }
   }
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
@@ -137,5 +182,8 @@ li {
 
 a {
   color: #42b983;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

@@ -6,7 +6,8 @@
             <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
           </b-container>
         </b-row>
-      <b-button v-on:click="update">Guardar</b-button>
+      <b-button variant="primary" v-on:click="update">Guardar</b-button>
+      <b-button variant="primary" @click="voltar">Voltar</b-button>
     </b-container>    
 </template>
 
@@ -26,6 +27,7 @@ export default {
   data() {
     return {
       error: [],
+      token: store.token,
       auth: store.auth,
       model: {
         id: "",
@@ -91,51 +93,68 @@ export default {
   created() {
     // vai buscar a informação ao backend sobre o cliente
 
-    var cliente = this.$route.query.id;
+    //var cliente = this.$route.query.id;
 
-    var url = "/clientes/" + cliente;
+    var url = "/cliente";
     axios
-      .post(url)
+      .post(
+        url,
+        {},
+        {
+          headers: {
+            authorization: this.token
+          },
+          params: {
+            id: this.$route.query.id
+          }
+        }
+      )
       .then(response => {
-        this.model.id = response.data[0].id;
-        this.model.nome = response.data[0].Nome;
-        this.model.contato = response.data[0].Contato;
-        this.model.NIF = response.data[0].NIF;
-        this.model.morada = response.data[0].Morada;
-        this.model.email = response.data[0].Email;
+        this.model.id_evento = response.data.cliente.id;
+        this.model.nome = response.data.cliente.nome;
+        this.model.contato = response.data.cliente.contacto;
+        this.model.NIF = response.data.cliente.nif;
+        this.model.morada = response.data.cliente.morada;
+        this.model.email = response.data.cliente.email;
       })
       .catch(e => {
         this.error.push(e);
       });
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listarclientes" });
+    },
     // editar utilizador
     update() {
       axios
         .post(
-          "/editar",
+          "/editarcliente",
           {},
           {
             params: {
               id: this.model.id,
               nome: this.model.nome,
-              NIF: this.model.NIF,
+              nif: this.model.NIF,
               morada: this.model.morada,
               email: this.model.email,
-              contato: this.model.contato
+              contacto: this.model.contato
             },
             headers: {
+              authorization: this.token,
               "Content-Type": "application/json"
             }
           }
         )
         .then(function(response) {
-          //Object.assign(this.$data,this.$options.data.call(this))
           console.log("success", response.data);
         })
         .catch(function(response) {
           console.log("error", response);
         });
+      this.$router.replace({ path: "/listarclientes" });
+    },
+    voltar() {
       this.$router.replace({ path: "/listarclientes" });
     }
   }
@@ -164,4 +183,8 @@ li {
 a {
   color: #42b983;
 }
+.bv-example-row {
+  padding: 70px 0px;
+}
 </style>
+

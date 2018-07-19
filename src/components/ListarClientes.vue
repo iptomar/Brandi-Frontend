@@ -54,7 +54,7 @@ export default {
     };
   },
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false
    axios
       .post(
         "/listarclientes",

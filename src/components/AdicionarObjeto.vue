@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Objeto</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -205,5 +205,8 @@ h1 {
 
 .btn-primary {
   margin-bottom: 20px;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

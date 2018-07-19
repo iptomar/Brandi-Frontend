@@ -1,13 +1,12 @@
 <template>
-    <b-container v-if="auth.logged" class="bv-example-row">
-        <table style="width:100%">
+    <b-container  v-if="auth.logged"  class="bv-example-row">
+		<table style="width:100%">
           <tr>
-            <th><h1>Quer mesmo arquivar este Objeto?</h1></th>
+            <th><h1>Quer mesmo arquivar o Evento?</h1></th>
           </tr>
           <tr >
-            <td>
-			<b-button style="margin-left: 0%;" variant="primary"  v-on:click=apagar()>Arquivar</b-button>
-			<b-button style="margin-left: 6%;" variant="primary"  v-on:click=cancelar()>Voltar</b-button>
+            <td><b-button variant="primary" style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
+		          	<b-button variant="primary" style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
 			</td> 
           </tr>
         </table>
@@ -26,17 +25,21 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
-      auth: store.auth
+      auth: store.auth,
+      token: store.token
     };
   },
   methods: {
-    // apagar objeto
+    // apagar evento
     apagar() {
       axios
         .post(
-          "/apagar",
+          "/eliminarevento",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
               id: this.$route.query.id
             }
@@ -48,24 +51,24 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.$router.replace("/listarobjetos");
+      this.$router.replace("/listareventos");
     },
-	
-	cancelar() {
-		this.$router.replace("/listarobjetos");
-	}
-	
+
+    cancelar() {
+      this.$router.replace("/listareventos");
+    }
   }
 };
 </script>
 
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped>
 h1,
 h2 {
   font-weight: normal;
 }
 
-h1{
+h1 {
   margin: 80px 0 40px;
 }
 
@@ -78,15 +81,14 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-tr{
+tr {
   height: 85px;
 }
-
 a {
   color: #42b983;
 }
 
 .btn-secondary {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 </style>

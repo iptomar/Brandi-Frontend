@@ -6,7 +6,8 @@
 						<vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
 					</b-container>
 				</b-row>
-      <b-button v-on:click="update">Guardar</b-button>
+      <b-button variant="primary" v-on:click="update">Guardar</b-button>
+			  <b-button variant="primary" @click="voltar">Voltar</b-button>
     </b-container>    
 </template>
 
@@ -150,6 +151,10 @@ export default {
       });
   },
   methods: {
+		 voltar() {
+      this.$router.replace({ path: "/listarobjetos" });
+		},
+		
     // editar objeto
     update() {
       axios
@@ -206,5 +211,8 @@ li {
 
 a {
   color: #42b983;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

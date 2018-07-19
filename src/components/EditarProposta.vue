@@ -6,7 +6,8 @@
         <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
       </b-container>
     </b-row>
-    <b-button v-on:click="guardarProposta">Guardar</b-button>
+    <b-button variant="primary" v-on:click="guardarProposta">Guardar</b-button>
+    <b-button variant="primary" @click="voltar">Voltar</b-button>
   </b-container>
 </template>
 
@@ -21,24 +22,19 @@ import axios from "axios";
 Vue.use(VueFormGenerator);
 
 export default {
-  
   components: {
     "vue-form-generator": VueFormGenerator.component
   },
 
   data() {
     return {
+      token: store.token,
       auth: store.auth,
       error: [],
       model: {
-        id: "",
         aceitacao_proposta: "",
         justificacao_recusa: "",
-        descricao: "",
-        data_elaboracao: "",
-        data_envio: "",
-		id_pedido: "",
-		id_coordenador: ""
+        descricao: ""
       },
 
       schema: {
@@ -47,10 +43,7 @@ export default {
             label: "Aceitação Proposta:",
             model: "aceitacao_proposta",
             type: "select",
-			values: [
-				"Aceite",
-				"Recusada"
-			],
+            values: ["Aceite", "Recusada"],
             required: true
           },
           {
@@ -65,41 +58,11 @@ export default {
             label: "Descrição:",
             model: "descricao",
             type: "textArea",
-			hint: "Máximo 500 caracteres.",
-			max: 500,
-			rows: 4,
+            hint: "Máximo 500 caracteres.",
+            max: 500,
+            rows: 4,
             required: true,
             placeholder: "Insira a descrição da proposta"
-          },
-          {
-            label: "Data de elaboração:",
-            model: "data_elaboracao",
-            type: "input",
-            inputType: "date",
-            required: true
-          },
-          {
-            label: "Data de envio:",
-            model: "data_envio",
-            type: "input",
-            inputType: "date",
-            required: true
-          },
-		  {
-            label: "ID do pedido:",
-            model: "id_pedido",
-            type: "input",
-            inputType: "number",
-            required: true,
-            placeholder: "Insira o ID do pedido"
-          },
-		  {
-            label: "ID Coordenador:",
-            model: "id_coordenador",
-            type: "input",
-            inputType: "number",
-            required: true,
-            placeholder: "Insira o ID do coordenador"
           }
         ]
       },
@@ -110,37 +73,72 @@ export default {
       }
     };
   },
+  created() {
+    // vai buscar a informação ao backend sobre o proposta
 
-  methods: {
-    guardarProposta() {
-      axios.post("/editarproposta", {},
+    var url = "/proposta";
+    axios
+      .post(
+        url,
+        {},
         {
+          headers: {
+            authorization: this.token
+          },
           params: {
-            aceitacao_proposta: this.model.aceitacao_proposta,
-            justificacao_recusa: this.model.justificacao_recusa,
-            descricao: this.model.descricao,
-            data_elaboracao: this.model.data_elaboracao,
-            data_envio: this.model.data_envio,
-			id_pedido: this.model.id_pedido,
-            id_coordenador: this.model.id_coordenador
+            id: this.$route.query.id
           }
         }
       )
-      .then(function(response) {
-        console.log(response);
+      .then(response => {
+        this.model.aceitacao_proposta =
+          response.data.proposta.Aceitação_Proposta;
+        this.model.justificacao_recusa =
+          response.data.proposta.Justificacao_Recusa;
+        this.model.descricao = response.data.proposta.Descricao;
       })
-      .catch(function(error) {
-        console.log(error);
-      })
+      .catch(e => {
+        this.error.push(e);
+      });
+  },
+  methods: {
+    guardarProposta() {
+      axios
+        .post(
+          "/editarproposta",
+          {},
+          {
+            params: {
+              id: this.$route.query.id,
+              Aceitação_Proposta: this.model.aceitacao_proposta,
+              Justificacao_Recusa: this.model.justificacao_recusa,
+              Descricao: this.model.descricao
+            },
+            headers: {
+              authorization: this.token
+            }
+          }
+        )
+        .then(function(response) {
+          console.log("success", response.data);
+        })
+        .catch(function(response) {
+          console.log("error", response);
+        });
+      this.$router.replace({ path: "/listarpropostas" });
+    },
+    voltar() {
+      this.$router.replace({ path: "/listarpropostas" });
     }
   }
 };
 </script>
 
 <style scoped>
-
 h1 {
   font-weight: bold;
 }
-
+.bv-example-row {
+  padding: 70px 0px;
+}
 </style>

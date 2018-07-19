@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Pedido</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -22,7 +22,8 @@
         </div>
       </b-container>
     </b-row>
-    <b-button variant="primary" @click="enviar" v-bind:class="{ disabled: !image }">Guardar</b-button>
+    <b-button variant="primary" @click="enviar">Guardar</b-button>
+    <b-button variant="primary" @click="voltar">Voltar</b-button>    
   </b-container>
 </template>
 
@@ -41,9 +42,12 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
         titulo: "",
+        cliente: "",
+        descricao: "",
         status: true
       },
 
@@ -60,12 +64,21 @@ export default {
           },
           {
             label: "Descrição do Pedido",
-            model: "Descricao",
+            model: "descricao",
             type: "input",
             inputType: "text",
             featured: true,
             required: true,
             placeholder: "Ex.: Neste restauro pretende-se..."
+          },
+          {
+            label: "Cliente",
+            model: "cliente",
+            type: "input",
+            inputType: "number",
+            featured: true,
+            required: true,
+            placeholder: "Ex.: Escolha o Cliente..."
           }
         ]
       },
@@ -81,9 +94,33 @@ export default {
     PictureInput
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listarpedidos" });
+    },
     enviar() {
-      //  faz o post para api da foto
-      if (this.image) {
+      axios
+        .post(
+          "/adicionarpedido",
+          {},
+          {
+            headers: {
+              authorization: this.token
+            },
+            params: {
+              Titulo: this.model.titulo,
+              Descricao: this.model.descricao,
+              ID_Cliente: this.model.cliente
+            }
+          }
+        )
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+      this.$router.replace("/listarpedidos");
+      /*if (this.image) {
         FormDataPost("/cliente/foto", this.image)
           .then(response => {
             if (response.data.success) {
@@ -94,11 +131,10 @@ export default {
           .catch(err => {
             console.error(err);
           });
-      }
-      this.$router.replace("/listarpedidos");
-    },
+      }*/
+    }
 
-    onChange(image) {
+    /*onChange(image) {
       console.log("Alterada");
       if (image) {
         console.log("Fotografia OK");
@@ -106,7 +142,7 @@ export default {
       } else {
         console.log("Erro, no backend");
       }
-    }
+    }*/
   }
 };
 </script>
@@ -118,5 +154,8 @@ h1 {
 
 .btn-primary {
   margin-bottom: 20px;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

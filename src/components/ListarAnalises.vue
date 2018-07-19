@@ -60,10 +60,10 @@ export default {
     };
   },
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false;
     axios
       .post(
-        "/listar_analises_preliminares",
+        "/listaranalises",
         {},
         {
           headers: {
@@ -79,15 +79,15 @@ export default {
   methods: {
     // editar analise
     editar(num) {
-      this.$router.push({ path: "/Editar_analises_preliminares", query: { id: num } });
+      this.$router.push({ path: "/EditarAnalise", query: { id: num } });
     },
     // apagar analise
     apagar(num) {
-      this.$router.push({ path: "/Eliminar_analises_preliminares", query: { id: num } });
+      this.$router.push({ path: "/EliminarAnalise", query: { id: num } });
     },
     // adicionar analise
     novo() {
-      this.$router.push({ path: "/Adicionar_analises_preliminares" });
+      this.$router.push({ path: "/Adicionaranalise" });
     }
   }
 };

@@ -1730,7 +1730,7 @@ export default {
   },
 
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false;
   },
   methods: {
     cellEditDone(newValue, oldValue, rowIndex, rowData, field) {

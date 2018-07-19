@@ -5,8 +5,8 @@
             <th><h1>Quer mesmo arquivar o Cliente?</h1></th>
           </tr>
           <tr >
-            <td><b-button style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
-			<b-button style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
+            <td><b-button variant="primary" style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
+		          	<b-button variant="primary" style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
 			</td> 
           </tr>
         </table>
@@ -25,7 +25,8 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
-      auth: store.auth
+      auth: store.auth,
+      token: store.token
     };
   },
   methods: {
@@ -33,9 +34,12 @@ export default {
     apagar() {
       axios
         .post(
-          "/apagar",
+          "/eliminarcliente",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
               id: this.$route.query.id
             }
@@ -64,7 +68,7 @@ h2 {
   font-weight: normal;
 }
 
-h1{
+h1 {
   margin: 80px 0 40px;
 }
 
@@ -77,7 +81,7 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-tr{
+tr {
   height: 85px;
 }
 a {
@@ -85,6 +89,6 @@ a {
 }
 
 .btn-secondary {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 </style>

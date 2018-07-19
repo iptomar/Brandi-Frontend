@@ -37,6 +37,7 @@ import EliminarObjeto from '@/components/EliminarObjeto'
 import EliminarAnalise from '@/components/EliminarAnalise'
 import EliminarPedido from '@/components/EliminarPedido'
 import EliminarProposta from '@/components/EliminarProposta'
+import EliminarEvento from '@/components/EliminarEvento'
 
 Vue.use(Router)
 
@@ -141,6 +142,11 @@ export default new Router({
       path: '/editaranalise',
       name: 'EditarAnalise',
       component: EditarAnalise
+    },
+    {
+      path: '/eliminarevento',
+      name: 'EliminarEvento',
+      component: EliminarEvento
     },
     {
       path: '/eliminaranalise',

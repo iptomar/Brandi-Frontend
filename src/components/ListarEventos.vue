@@ -20,7 +20,7 @@
           <td>{{evento.Descricao}}</td>
           <td>{{evento.ID_Pedido}}</td>
            <td><button type="button" v-on:click=editar(evento.id) class="btn btn-warning">Editar</button></td>
-          <td><button type="button" v-on:click=voltar() class="btn btn-danger">Arquivar</button></td>
+          <td><button type="button" v-on:click=apagar(evento.id) class="btn btn-danger">Arquivar</button></td>
         </tr>
       </tbody>
     </table>
@@ -56,7 +56,7 @@ export default {
     };
   },
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false;
     axios
       .post(
         "/listareventos",

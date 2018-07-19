@@ -28,7 +28,7 @@
           <td>{{objeto.Data_Entrada_CEARC}}</td>
           
           <td><button type="button" class="btn btn-warning" v-on:click=editar(objeto.id)>Editar</button></td>
-          <td><button type="button" class="btn btn-danger" v-on:click=arquivar(objeto.id)>Arquivar</button></td>
+          <td><button type="button" class="btn btn-danger" v-on:click=apagar(objeto.id)>Arquivar</button></td>
         </tr>
       </tbody>
     </table>
@@ -61,7 +61,7 @@ export default {
   },
 
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false;
     axios
       .post(
         "/listarobjetos",
@@ -77,7 +77,14 @@ export default {
       })
       .catch(function(error) {});
   },
-  methods: {}
+  methods: {
+    editar(num) {
+      this.$router.push({ path: "/editarobjeto", query: { id: num } });
+    },
+    apagar(num) {
+      this.$router.push({ path: "/EliminarObjeto", query: { id: num } });
+    }
+  }
 };
 </script>
 

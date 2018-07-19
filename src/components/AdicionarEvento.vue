@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Evento</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -7,6 +7,7 @@
       </b-container>
     </b-row>
     <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+  <b-button variant="primary" v-on:click="voltar">Voltar</b-button>
   </b-container>
 </template>
 
@@ -26,12 +27,14 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
         id: "",
         descricao: "",
         data_evento: "",
         tipo: "",
+        pedido: "",
         status: true
       },
       schema: {
@@ -53,12 +56,12 @@ export default {
             rows: 4,
             required: true,
             placeholder: "Ex.: O documento XPTO contém informações acerca..."
-          },
-          {
-            label: "Data do Evento",
-            model: "data_evento",
+          },         
+           {
+            label: "Pedido",
+            model: "pedido",
             type: "input",
-            inputType: "date",
+            inputType: "text",
             required: true
           }
         ]
@@ -71,15 +74,21 @@ export default {
     };
   },
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listareventos" });
+    },
     guardar() {
-      axios
+    axios
         .post(
           "/adicionarEvento",
           {},
           {
+            headers: {
+              authorization: this.token
+            },          
             params: {
               descricao: this.model.descricao,
-              data_evento: this.model.data_evento,
+              pedido: this.model.pedido,
               tipo: this.model.tipo
             }
           }
@@ -101,5 +110,8 @@ h1 {
 
 .btn-primary {
   margin-bottom: 20px;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

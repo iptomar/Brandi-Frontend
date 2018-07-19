@@ -6,8 +6,8 @@
           </tr>
           <tr >
             <td>
-			<b-button style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
-			<b-button style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
+			<b-button variant="primary" style="margin-left: 0%;"  v-on:click=apagar()>Arquivar</b-button>
+			<b-button variant="primary" style="margin-left: 6%;" v-on:click=cancelar()>Voltar</b-button>
 			</td>        
           </tr>
         </table>
@@ -26,17 +26,21 @@ Vue.use(VueFormGenerator);
 export default {
   data() {
     return {
+      token: store.token,
       auth: store.auth
     };
   },
   methods: {
-    // apagar objeto
+    // apagar proposta
     apagar() {
       axios
         .post(
-          "/apagar",
+          "/eliminarproposta",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
               id: this.$route.query.id
             }
@@ -48,11 +52,11 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
-      this.$router.replace("/ListarProposta");
+      this.$router.replace("/ListarPropostas");
     },
 
     cancelar() {
-      this.$router.replace("/ListarProposta");
+      this.$router.replace("/ListarPropostas");
     }
   }
 };
@@ -65,7 +69,7 @@ h2 {
   font-weight: normal;
 }
 
-h1{
+h1 {
   margin: 80px 0 40px;
 }
 
@@ -78,7 +82,7 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-tr{
+tr {
   height: 85px;
 }
 a {
@@ -86,6 +90,6 @@ a {
 }
 
 .btn-secondary {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Análise</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -7,6 +7,7 @@
       </b-container>
     </b-row>
     <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+    <b-button variant="primary" @click="voltar">Voltar</b-button>
   </b-container>
 </template>
 
@@ -28,9 +29,9 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
-        id: "",
         descricao: "",
         data_analise: "",
         local_analise: "",
@@ -58,7 +59,7 @@ export default {
             model: "data_analise",
             type: "input",
             inputType: "date",
-            required: true
+            required: false
           },
           {
             label: "Local da Análise:",
@@ -97,6 +98,14 @@ export default {
             required: false,
             placeholder: "Insira outras despesas, caso aplicável"
           }
+          ,
+          {
+            label: "ID do Objeto:",
+            model: "id_objeto",
+            type: "input",
+            inputType: "number",
+            required: false,            
+          }
         ]
       },
 
@@ -108,21 +117,27 @@ export default {
   },
 
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listaranalises" });
+    },
     guardar() {
       axios
         .post(
           "/adicionaranalise",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
-              descricao: this.model.descricao,
-              data_analise: this.model.data_analise,
-              local_analise: this.model.local_analise,
-              inicio_analise: this.model.inicio_analise,
-              fim_analise: this.model.fim_analise,
-              distancia_deslocacao: this.model.distancia_deslocacao,
-              outras_despesas: this.model.outras_despesas,
-              id_objeto: this.$route.query.id//? verificar
+              Descricao_Analise: this.model.descricao,
+              //Data_Realizacao_Analise: this.model.data_analise,
+              Locao_realizacao_Analise: this.model.local_analise,
+              //Inicio_Analise: this.model.inicio_analise,
+              //Fim_Analise: this.model.fim_analise,
+              Distancia_Deslocacao: this.model.distancia_deslocacao,
+              Outras_Despesas: this.model.outras_despesas,
+              ID_Objecto: this.model.id_objeto
             }
           }
         )
@@ -132,6 +147,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+      this.$router.replace({ path: "/listaranalises" });
     }
   }
 };
@@ -145,5 +161,10 @@ h1 {
 .btn-primary {
   margin-bottom: 20px;
 }
-
+.bv-example-row {
+  padding: 70px 0px;
+}
+.bv-example-row {
+  padding: 70px 0px;
+}
 </style>

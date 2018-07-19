@@ -1,5 +1,5 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Cliente</h1>
     <b-row class="panel panel-default">
       <b-container class="panel-body">
@@ -7,6 +7,7 @@
       </b-container>
     </b-row>
     <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+  <b-button variant="primary" v-on:click="voltar">Voltar</b-button>
   </b-container>
 </template>
 
@@ -27,6 +28,7 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
         idCliente: "",
@@ -91,12 +93,18 @@ export default {
   },
 
   methods: {
+     voltar() {
+      this.$router.replace({ path: "/listarclientes" });
+    },
     guardar() {
       axios
         .post(
           "/adicionarcliente",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
               nome: this.model.nome,
               nif: this.model.nif,
@@ -112,6 +120,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+      this.$router.replace({ path: "/listarclientes" });
     }
   }
 };
@@ -124,5 +133,9 @@ h1 {
 
 .btn-primary {
   margin-bottom: 20px;
+}
+
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

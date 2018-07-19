@@ -56,8 +56,8 @@ export default {
   },
 
   created() {
-     this.sideMenu.isOpen = !this.sideMenu.isOpen;
-  axios
+    this.sideMenu.isOpen = false;
+    axios
       .post(
         "/listarpedidos",
         {},
@@ -67,8 +67,8 @@ export default {
           }
         }
       )
-      .then(response => {        
-        this.pedidos = response.data.pedidos_clientes;      
+      .then(response => {
+        this.pedidos = response.data.pedidos_clientes;
       })
       .catch(function(error) {});
   },
@@ -79,11 +79,11 @@ export default {
     apagar(num) {
       this.$router.push({ path: "/eliminarpedido", query: { id: num } });
     },
-    criar_Objeto(){
+    criar_Objeto() {
       this.sideMenu.isOpen = !this.sideMenu.isOpen;
       this.$router.push({ path: "/form" });
     },
-    novo() {      
+    novo() {
       this.$router.push({ path: "/adicionarpedido" });
     }
   }
@@ -109,11 +109,30 @@ a {
   color: #42b983;
 }
 
-.bv-example-row{
-  padding: 70px  0px
+.bv-example-row {
+  padding: 70px 0px;
 }
 
-td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;font-weight:bold;}
-
+td {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+}
+th {
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  padding: 10px 5px;
+  border-style: solid;
+  border-width: 1px;
+  overflow: hidden;
+  word-break: normal;
+  border-color: black;
+  font-weight: bold;
+}
 </style>

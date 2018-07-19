@@ -1,13 +1,15 @@
 <template>
-  <b-container v-if="auth.logged" class="container">
+  <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Adicionar Proposta</h1>
-    <b-row class="panel panel-default">
+    
       <b-container class="panel-body">
-        <vue-form-generator :schema="schema" :model="model" :options="formOptions"></vue-form-generator>
+        <vue-form-generator :schema="schema" :model="model"  :options="formOptions"></vue-form-generator>
       </b-container>
-    </b-row>
-    <b-button variant="primary" v-on:click="guardar">Guardar</b-button>
+
+      <b-button variant="primary" v-on:click="guardarProposta">Guardar</b-button>
+      <b-button variant="primary" @click="voltar">Voltar</b-button>
   </b-container>
+           
 </template>
 
 <script>
@@ -27,16 +29,14 @@ export default {
   data() {
     return {
       auth: store.auth,
+      token: store.token,
       error: [],
       model: {
-        id: "",
         aceitacao_proposta: "",
         justificacao_recusa: "",
         descricao: "",
-        data_elaboracao: "",
-        data_envio: "",
-        id_pedido: "",
-        id_coordenador: ""
+        id_pedido: 0,
+        id_coordenador: 0
       },
 
       schema: {
@@ -67,20 +67,6 @@ export default {
             placeholder: "Ex.: A proposta é constituída por..."
           },
           {
-            label: "Data de Elaboração da Proposta",
-            model: "data_elaboracao",
-            type: "input",
-            inputType: "date",
-            required: true
-          },
-          {
-            label: "Data de Envio da Proposta",
-            model: "data_envio",
-            type: "input",
-            inputType: "date",
-            required: true
-          },
-          {
             label: "ID do Pedido",
             model: "id_pedido",
             type: "input",
@@ -98,7 +84,6 @@ export default {
           }
         ]
       },
-
       formOptions: {
         validateAfterLoad: true,
         validateAfterChanged: true
@@ -107,20 +92,24 @@ export default {
   },
 
   methods: {
+    voltar() {
+      this.$router.replace({ path: "/listarpropostas" });
+    },
     guardarProposta() {
       axios
         .post(
           "/adicionarproposta",
           {},
           {
+            headers: {
+              authorization: this.token
+            },
             params: {
-              aceitacao_proposta: this.model.aceitacao_proposta,
-              justificacao_recusa: this.model.justificacao_recusa,
-              descricao: this.model.descricao,
-              data_elaboracao: this.model.data_elaboracao,
-              data_envio: this.model.data_envio,
-              id_pedido: this.model.id_pedido,
-              id_coordenador: this.model.id_coordenador
+              Aceitação_Proposta: this.model.aceitacao_proposta,
+              Justificacao_Recusa: this.model.justificacao_recusa,
+              Descricao: this.model.descricao,
+              ID_Pedido: this.model.id_pedido,
+              ID_Coordenador: this.model.id_coordenador
             }
           }
         )
@@ -130,6 +119,7 @@ export default {
         .catch(function(error) {
           console.log(error);
         });
+      this.$router.replace({ path: "/listarpropostas" });
     }
   }
 };
@@ -142,5 +132,8 @@ h1 {
 
 .btn-primary {
   margin-bottom: 20px;
+}
+.bv-example-row {
+  padding: 70px 0px;
 }
 </style>

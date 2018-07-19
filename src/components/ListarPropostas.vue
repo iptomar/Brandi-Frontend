@@ -2,7 +2,7 @@
     <b-container v-if="auth.logged" class="bv-example-row">
     <h1>Lista de Propostas</h1>
      <hr>
-     <button type="button" class="btn" v-on:click=novo()>Nova proposta</button>
+     <button type="button" class="btn"  v-on:click=novo()>Nova proposta</button>
     <hr >    
     <table class="table table-hover table-dark">
             <thead>
@@ -23,8 +23,8 @@
                 <td>{{proposta.Justificacao_Recusa}}</td>
                 <td>{{proposta.ID_Pedido}}</td>
                 <td>{{proposta.ID_Coordenador}}</td>
-                <td><button type="button" class="btn btn-warning" v-on:click=editar(proposta.idproposta)>Editar</button></td>
-                <td><button type="button" class="btn btn-danger" v-on:click=arquivar(proposta.idproposta)>Arquivar</button></td>
+                <td><button type="button" class="btn btn-warning" v-on:click=editar(proposta.id)>Editar</button></td>
+                <td><button type="button" class="btn btn-danger" v-on:click=arquivar(proposta.id)>Arquivar</button></td>
             </tr>
             </tbody>
         </table> 
@@ -57,7 +57,7 @@ export default {
   },
 
   created() {
-    this.sideMenu.isOpen = !this.sideMenu.isOpen;
+    this.sideMenu.isOpen = false;
     axios
       .post(
         "/listarPropostas",
@@ -77,8 +77,11 @@ export default {
     editar(num) {
       this.$router.push({ path: "/editarproposta", query: { id: num } });
     },
-    apagar(num) {
+    arquivar(num) {
       this.$router.push({ path: "/eliminarproposta", query: { id: num } });
+    },
+    novo() {
+      this.$router.push({ path: "/adicionarproposta", query: {} });
     }
   }
 };
