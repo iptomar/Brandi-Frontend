@@ -11,9 +11,10 @@
             <b-row class="panel panel-default">
         <b-container class="panel-heading panel-heading-custom">DESIGNAÇÃO DO OBJETO</b-container>
         <b-container class="panel-body">
-            <vue-form-generator :schema='pagina_1' :options='formOptions'></vue-form-generator>
+            <vue-form-generator :schema='pagina_1' :model="model" :options='formOptions'></vue-form-generator>
         </b-container>
     </b-row>
+    <b-button variant="primary" v-on:click="guardar1">Guardar</b-button>
     </b-container>
         </b-tab>
 
@@ -25,6 +26,7 @@
                 <vue-form-generator :schema='pagina_2' :options='formOptions'></vue-form-generator>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar2">Guardar</b-button>
         </b-container>
           </b-tab>
           
@@ -58,6 +60,7 @@
         <vue-form-generator :schema='pagina3_Con' :options='formOptions'></vue-form-generator>
     </b-container>
             </b-row>
+            <b-button variant="primary" v-on:click="guardar3">Guardar</b-button>
              </b-container>
           </b-tab>
           
@@ -73,6 +76,7 @@
                 <vue-form-generator :schema='pagina_4_2' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar4">Guardar</b-button>
     </b-container>
           </b-tab>
 
@@ -91,6 +95,7 @@
                 <vue-form-generator :schema='schema53' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar5">Guardar</b-button>
         </b-container>
           </b-tab>
 
@@ -108,6 +113,7 @@
                 <vue-form-generator :schema='schema63' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar6">Guardar</b-button>
     </b-container>
 </b-tab>
 
@@ -120,7 +126,7 @@
                 <b-container class="panel-body">
                     <vue-form-generator :schema='schema71' :options='formOptions'></vue-form-generator>
                 </b-container>
-            </b-row>
+            </b-row>            
         </b-container>
 
         <b-container class="container">
@@ -138,7 +144,7 @@
                         <p class="card-text">Recursos Materiais | Técnicos | Tecnológicos</p>
                         <vue-form-generator :schema='schema72r' :options='formOptions'></vue-form-generator>
                     </b-col>
-                </b-row>            
+                </b-row>                            
         </b-container>
 
         <b-container class="container">
@@ -159,6 +165,7 @@
         </b-container>
       </b-container>
       </b-row>
+      <b-button variant="primary" v-on:click="guardar7">Guardar</b-button>
     </b-container>
 </b-tab>
 
@@ -181,6 +188,7 @@
       </b-container>
       
      </b-row>
+     <b-button variant="primary" v-on:click="guardar8">Guardar</b-button>
     </b-container> 
 </b-tab>
 
@@ -201,6 +209,7 @@
                 <vue-form-generator :schema='schema94' style="margin-top: 10px" :options='formOptions'></vue-form-generator>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar8">Guardar</b-button>
     </b-container>
 </b-tab>
 
@@ -250,6 +259,7 @@
         </b-container>
             </b-container>
         </b-row>
+        <b-button variant="primary" v-on:click="guardar8">Guardar</b-button>
     </b-container>
 </b-tab>
 
@@ -268,6 +278,7 @@
 import Vue from "vue";
 import VueFormGenerator from "vue-form-generator";
 import store from "../tools/store";
+import axios from "axios";
 
 export default {
   props: {
@@ -357,8 +368,8 @@ export default {
           {
             type: "input",
             inputType: "text",
-            label: "Deseginação do objeto",
-            model: "Deseginacao",
+            label: "Designação do objeto",
+            model: "Designacao",
             placeholder: "Insira a desinação do Objeto",
             featured: true,
             required: true
@@ -475,6 +486,15 @@ export default {
             label: "Proprietário",
             model: "Proprietario",
             placeholder: "Insira o nome do proprietário",
+            featured: true,
+            required: true
+          },
+           {
+            type: "input",
+            inputType: "number",
+            label: "ID Pedido",
+            model: "pedido",
+            placeholder: "Pedido",
             featured: true,
             required: true
           },
@@ -1742,6 +1762,34 @@ export default {
       } else {
         return ["bg-light", "text-info"];
       }
+    },
+    /*                     */
+    guardar1() {
+      axios
+        .post(
+          "/guardarpagina1",
+          {},
+          {
+            headers: {
+              authorization: this.token
+            },
+            params: {
+              Designacao: this.model.Designacao,
+              ProcessoLCRM: this.model.NProcessoLCRM,
+              ProcessoCEARC: this.model.NProcessoCEARC,
+              Coordenacao: this.model.Coordenacao,
+              Tipologia: this.model.Tipologia,
+              Localizacao: this.model.Localizacao,
+              Dimensao: this.model.Dimencao
+            }
+          }
+        )
+        .then(function(response) {
+          console.log(response);
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     }
   }
 };

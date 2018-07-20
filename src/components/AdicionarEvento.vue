@@ -61,7 +61,7 @@ export default {
             label: "Pedido",
             model: "pedido",
             type: "input",
-            inputType: "text",
+            inputType: "number",
             required: true
           }
         ]
